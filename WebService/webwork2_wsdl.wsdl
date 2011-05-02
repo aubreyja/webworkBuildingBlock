@@ -1,0 +1,1608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- WSDL for http://localhostwebwork2_rpc created by Pod::WSDL version: 0.05 on Mon Apr  4 09:49:15 2011 -->
+<wsdl:definitions targetNamespace="http://localhostWebworkSOAP" xmlns:impl="http://localhostWebworkSOAP" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="http://localhostWebworkSOAP">
+
+	<wsdl:types>
+		<schema targetNamespace="http://localhostWebworkSOAP" xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<complexType name="ArrayOfString">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="soapenc:string[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesKey">
+				<sequence>
+					<element name="user_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="key_not_a_keyboard" nillable="true" type="xsd:string">
+					</element>
+					<element name="timestamp" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesKey">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesKey[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesUserSet">
+				<sequence>
+					<element name="user_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="set_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="psvn" nillable="true" type="xsd:string">
+					</element>
+					<element name="set_header" nillable="true" type="xsd:string">
+					</element>
+					<element name="hardcopy_header" nillable="true" type="xsd:string">
+					</element>
+					<element name="open_date" nillable="true" type="xsd:string">
+					</element>
+					<element name="due_date" nillable="true" type="xsd:string">
+					</element>
+					<element name="answer_date" nillable="true" type="xsd:string">
+					</element>
+					<element name="published" nillable="true" type="xsd:string">
+					</element>
+					<element name="enable_reduced_scoring" nillable="true" type="xsd:string">
+					</element>
+					<element name="assignment_type" nillable="true" type="xsd:string">
+					</element>
+					<element name="attempts_per_version" nillable="true" type="xsd:string">
+					</element>
+					<element name="time_interval" nillable="true" type="xsd:string">
+					</element>
+					<element name="versions_per_interval" nillable="true" type="xsd:string">
+					</element>
+					<element name="version_time_limit" nillable="true" type="xsd:string">
+					</element>
+					<element name="version_creation_time" nillable="true" type="xsd:string">
+					</element>
+					<element name="problem_randorder" nillable="true" type="xsd:string">
+					</element>
+					<element name="version_last_attempt_time" nillable="true" type="xsd:string">
+					</element>
+					<element name="problems_per_page" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesUserSet">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesUserSet[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesUserProblem">
+				<sequence>
+					<element name="user_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="set_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="problem_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="source_file" nillable="true" type="xsd:string">
+					</element>
+					<element name="value" nillable="true" type="xsd:string">
+					</element>
+					<element name="max_attempts" nillable="true" type="xsd:string">
+					</element>
+					<element name="problem_seed" nillable="true" type="xsd:string">
+					</element>
+					<element name="status" nillable="true" type="xsd:string">
+					</element>
+					<element name="attempted" nillable="true" type="xsd:string">
+					</element>
+					<element name="last_answer" nillable="true" type="xsd:string">
+					</element>
+					<element name="num_correct" nillable="true" type="xsd:string">
+					</element>
+					<element name="num_incorrect" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesUserProblem">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesUserProblem[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesGlobalSet">
+				<sequence>
+					<element name="set_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="set_header" nillable="true" type="xsd:string">
+					</element>
+					<element name="hardcopy_header" nillable="true" type="xsd:string">
+					</element>
+					<element name="open_date" nillable="true" type="xsd:string">
+					</element>
+					<element name="due_date" nillable="true" type="xsd:string">
+					</element>
+					<element name="answer_date" nillable="true" type="xsd:string">
+					</element>
+					<element name="published" nillable="true" type="xsd:string">
+					</element>
+					<element name="enable_reduced_scoring" nillable="true" type="xsd:string">
+					</element>
+					<element name="assignment_type" nillable="true" type="xsd:string">
+					</element>
+					<element name="attempts_per_version" nillable="true" type="xsd:string">
+					</element>
+					<element name="time_interval" nillable="true" type="xsd:string">
+					</element>
+					<element name="versions_per_interval" nillable="true" type="xsd:string">
+					</element>
+					<element name="version_time_limit" nillable="true" type="xsd:string">
+					</element>
+					<element name="version_creation_time" nillable="true" type="xsd:string">
+					</element>
+					<element name="problem_randorder" nillable="true" type="xsd:string">
+					</element>
+					<element name="version_last_attempt_time" nillable="true" type="xsd:string">
+					</element>
+					<element name="problems_per_page" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesGlobalSet">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesGlobalSet[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesPassword">
+				<sequence>
+					<element name="user_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="password" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesPassword">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesPassword[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesUser">
+				<sequence>
+					<element name="user_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="first_name" nillable="true" type="xsd:string">
+					</element>
+					<element name="last_name" nillable="true" type="xsd:string">
+					</element>
+					<element name="email_address" nillable="true" type="xsd:string">
+					</element>
+					<element name="student_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="status" nillable="true" type="xsd:string">
+					</element>
+					<element name="section" nillable="true" type="xsd:string">
+					</element>
+					<element name="recitation" nillable="true" type="xsd:string">
+					</element>
+					<element name="comment" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesUser">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesUser[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesGlobalProblem">
+				<sequence>
+					<element name="set_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="problem_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="source_file" nillable="true" type="xsd:string">
+					</element>
+					<element name="value" nillable="true" type="xsd:string">
+					</element>
+					<element name="max_attempts" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesGlobalProblem">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesGlobalProblem[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="WebworkSOAPClassesPermission">
+				<sequence>
+					<element name="user_id" nillable="true" type="xsd:string">
+					</element>
+					<element name="permission" nillable="true" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfWebworkSOAPClassesPermission">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WebworkSOAPClassesPermission[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+		</schema>
+	</wsdl:types>
+
+	<wsdl:message name="helloRequest">
+	</wsdl:message>
+
+	<wsdl:message name="helloResponse">
+		<wsdl:part name="helloReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_coursesRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_coursesResponse">
+		<wsdl:part name="list_coursesReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="login_userRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="login_userResponse">
+		<wsdl:part name="login_userReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="assign_set_to_userRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="assign_set_to_userResponse">
+		<wsdl:part name="assign_set_to_userReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="grade_users_setsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userIDs" type="tns1:ArrayOfString" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="grade_users_setsResponse">
+		<wsdl:part name="grade_users_setsReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_set_dataRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_set_dataResponse">
+		<wsdl:part name="get_set_dataReturn" type="tns1:WebworkSOAPClassesGlobalSet" />
+	</wsdl:message>
+
+	<wsdl:message name="add_passwordRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesPassword" />
+	</wsdl:message>
+
+	<wsdl:message name="add_passwordResponse">
+		<wsdl:part name="add_passwordReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_passwordRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesPassword" />
+	</wsdl:message>
+
+	<wsdl:message name="put_passwordResponse">
+		<wsdl:part name="put_passwordReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_passwordRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_passwordResponse">
+		<wsdl:part name="list_passwordReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_passwordsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userIDs" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_passwordsResponse">
+		<wsdl:part name="get_passwordsReturn" type="tns1:ArrayOfWebworkSOAPClassesPassword" />
+	</wsdl:message>
+
+	<wsdl:message name="get_passwordRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_passwordResponse">
+		<wsdl:part name="get_passwordReturn" type="tns1:WebworkSOAPClassesPassword" />
+	</wsdl:message>
+
+	<wsdl:message name="add_permissionRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesPermission" />
+	</wsdl:message>
+
+	<wsdl:message name="add_permissionResponse">
+		<wsdl:part name="add_permissionReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_permissionRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesPermission" />
+	</wsdl:message>
+
+	<wsdl:message name="put_permissionResponse">
+		<wsdl:part name="put_permissionReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_permissionsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_permissionsResponse">
+		<wsdl:part name="list_permissionsReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_permissionsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userIDs" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_permissionsResponse">
+		<wsdl:part name="get_permissionsReturn" type="tns1:ArrayOfWebworkSOAPClassesPermission" />
+	</wsdl:message>
+
+	<wsdl:message name="get_permissionRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_permissionResponse">
+		<wsdl:part name="get_permissionReturn" type="tns1:WebworkSOAPClassesPermission" />
+	</wsdl:message>
+
+	<wsdl:message name="add_keyRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesKey" />
+	</wsdl:message>
+
+	<wsdl:message name="add_keyResponse">
+		<wsdl:part name="add_keyReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_keyRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesKey" />
+	</wsdl:message>
+
+	<wsdl:message name="put_keyResponse">
+		<wsdl:part name="put_keyReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_keysRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_keysResponse">
+		<wsdl:part name="list_keysReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_keysRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userIDs" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_keysResponse">
+		<wsdl:part name="get_keysReturn" type="tns1:ArrayOfWebworkSOAPClassesKey" />
+	</wsdl:message>
+
+	<wsdl:message name="get_keyRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_keyResponse">
+		<wsdl:part name="get_keyReturn" type="tns1:WebworkSOAPClassesKey" />
+	</wsdl:message>
+
+	<wsdl:message name="add_userRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesUser" />
+	</wsdl:message>
+
+	<wsdl:message name="add_userResponse">
+		<wsdl:part name="add_userReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_userRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesUser" />
+	</wsdl:message>
+
+	<wsdl:message name="put_userResponse">
+		<wsdl:part name="put_userReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_usersRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_usersResponse">
+		<wsdl:part name="list_usersReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_userRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_userResponse">
+		<wsdl:part name="get_userReturn" type="tns1:WebworkSOAPClassesUser" />
+	</wsdl:message>
+
+	<wsdl:message name="get_usersRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userIDs" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_usersResponse">
+		<wsdl:part name="get_usersReturn" type="tns1:ArrayOfWebworkSOAPClassesUser" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_userRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_userResponse">
+		<wsdl:part name="delete_userReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="add_global_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesGlobalSet" />
+	</wsdl:message>
+
+	<wsdl:message name="add_global_setResponse">
+		<wsdl:part name="add_global_setReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_global_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesGlobalSet" />
+	</wsdl:message>
+
+	<wsdl:message name="put_global_setResponse">
+		<wsdl:part name="put_global_setReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_global_setsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_global_setsResponse">
+		<wsdl:part name="list_global_setsReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_global_setsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_global_setsResponse">
+		<wsdl:part name="get_all_global_setsReturn" type="tns1:ArrayOfWebworkSOAPClassesGlobalSet" />
+	</wsdl:message>
+
+	<wsdl:message name="get_global_setsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setIDs" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_global_setsResponse">
+		<wsdl:part name="get_global_setsReturn" type="tns1:ArrayOfWebworkSOAPClassesGlobalSet" />
+	</wsdl:message>
+
+	<wsdl:message name="get_global_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_global_setResponse">
+		<wsdl:part name="get_global_setReturn" type="tns1:WebworkSOAPClassesGlobalSet" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_global_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_global_setResponse">
+		<wsdl:part name="delete_global_setReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="add_global_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesGlobalProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="add_global_problemResponse">
+		<wsdl:part name="add_global_problemReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_global_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesGlobalProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="put_global_problemResponse">
+		<wsdl:part name="put_global_problemReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_global_problemsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_global_problemsResponse">
+		<wsdl:part name="list_global_problemsReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_global_problemsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_global_problemsResponse">
+		<wsdl:part name="get_all_global_problemsReturn" type="tns1:ArrayOfWebworkSOAPClassesGlobalProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="get_global_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+		<wsdl:part name="problemID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_global_problemResponse">
+		<wsdl:part name="get_global_problemReturn" type="tns1:WebworkSOAPClassesGlobalProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_global_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+		<wsdl:part name="problemID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_global_problemResponse">
+		<wsdl:part name="delete_global_problemReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="add_user_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesUserProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="add_user_problemResponse">
+		<wsdl:part name="add_user_problemReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_user_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesUserProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="put_user_problemResponse">
+		<wsdl:part name="put_user_problemReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_user_problemsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_user_problemsResponse">
+		<wsdl:part name="list_user_problemsReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_user_problemsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_user_problemsResponse">
+		<wsdl:part name="get_all_user_problemsReturn" type="tns1:ArrayOfWebworkSOAPClassesUserProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_problemsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userProblemIDs" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_problemsResponse">
+		<wsdl:part name="get_user_problemsReturn" type="tns1:ArrayOfWebworkSOAPClassesUserProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+		<wsdl:part name="problemID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_problemResponse">
+		<wsdl:part name="get_user_problemReturn" type="tns1:WebworkSOAPClassesUserProblem" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_user_problemRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+		<wsdl:part name="problemID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_user_problemResponse">
+		<wsdl:part name="delete_user_problemReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="add_user_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesUserSet" />
+	</wsdl:message>
+
+	<wsdl:message name="add_user_setResponse">
+		<wsdl:part name="add_user_setReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="put_user_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="record" type="tns1:WebworkSOAPClassesUserSet" />
+	</wsdl:message>
+
+	<wsdl:message name="put_user_setResponse">
+		<wsdl:part name="put_user_setReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_user_setsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="list_user_setsResponse">
+		<wsdl:part name="list_user_setsReturn" type="tns1:ArrayOfString" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_user_setsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_all_user_setsResponse">
+		<wsdl:part name="get_all_user_setsReturn" type="tns1:ArrayOfWebworkSOAPClassesUserSet" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_setsRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userSetIDs" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_setsResponse">
+		<wsdl:part name="get_user_setsReturn" type="tns1:ArrayOfWebworkSOAPClassesUserSet" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="get_user_setResponse">
+		<wsdl:part name="get_user_setReturn" type="tns1:WebworkSOAPClassesUserSet" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_user_setRequest">
+		<wsdl:part name="authenKey" type="xsd:string" />
+		<wsdl:part name="courseName" type="xsd:string" />
+		<wsdl:part name="userID" type="xsd:string" />
+		<wsdl:part name="setID" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="delete_user_setResponse">
+		<wsdl:part name="delete_user_setReturn" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:portType name="WebworkSOAPHandler">
+		<wsdl:operation name="hello" parameterOrder="">
+			<wsdl:input message="impl:helloRequest" name="helloRequest" />
+			<wsdl:output message="impl:helloResponse" name="helloResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_courses" parameterOrder="authenKey">
+			<wsdl:input message="impl:list_coursesRequest" name="list_coursesRequest" />
+			<wsdl:output message="impl:list_coursesResponse" name="list_coursesResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="login_user" parameterOrder="authenKey courseName userID">
+			<wsdl:input message="impl:login_userRequest" name="login_userRequest" />
+			<wsdl:output message="impl:login_userResponse" name="login_userResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="assign_set_to_user" parameterOrder="authenKey courseName userID setID">
+			<wsdl:input message="impl:assign_set_to_userRequest" name="assign_set_to_userRequest" />
+			<wsdl:output message="impl:assign_set_to_userResponse" name="assign_set_to_userResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="grade_users_sets" parameterOrder="authenKey courseName userIDs setID">
+			<wsdl:input message="impl:grade_users_setsRequest" name="grade_users_setsRequest" />
+			<wsdl:output message="impl:grade_users_setsResponse" name="grade_users_setsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_set_data" parameterOrder="authenKey courseName setID">
+			<wsdl:input message="impl:get_set_dataRequest" name="get_set_dataRequest" />
+			<wsdl:output message="impl:get_set_dataResponse" name="get_set_dataResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_password" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_passwordRequest" name="add_passwordRequest" />
+			<wsdl:output message="impl:add_passwordResponse" name="add_passwordResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_password" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_passwordRequest" name="put_passwordRequest" />
+			<wsdl:output message="impl:put_passwordResponse" name="put_passwordResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_password" parameterOrder="authenKey courseName">
+			<wsdl:input message="impl:list_passwordRequest" name="list_passwordRequest" />
+			<wsdl:output message="impl:list_passwordResponse" name="list_passwordResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_passwords" parameterOrder="authenKey courseName userIDs">
+			<wsdl:input message="impl:get_passwordsRequest" name="get_passwordsRequest" />
+			<wsdl:output message="impl:get_passwordsResponse" name="get_passwordsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_password" parameterOrder="authenKey courseName userID">
+			<wsdl:input message="impl:get_passwordRequest" name="get_passwordRequest" />
+			<wsdl:output message="impl:get_passwordResponse" name="get_passwordResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_permission" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_permissionRequest" name="add_permissionRequest" />
+			<wsdl:output message="impl:add_permissionResponse" name="add_permissionResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_permission" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_permissionRequest" name="put_permissionRequest" />
+			<wsdl:output message="impl:put_permissionResponse" name="put_permissionResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_permissions" parameterOrder="authenKey courseName">
+			<wsdl:input message="impl:list_permissionsRequest" name="list_permissionsRequest" />
+			<wsdl:output message="impl:list_permissionsResponse" name="list_permissionsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_permissions" parameterOrder="authenKey courseName userIDs">
+			<wsdl:input message="impl:get_permissionsRequest" name="get_permissionsRequest" />
+			<wsdl:output message="impl:get_permissionsResponse" name="get_permissionsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_permission" parameterOrder="authenKey courseName userID">
+			<wsdl:input message="impl:get_permissionRequest" name="get_permissionRequest" />
+			<wsdl:output message="impl:get_permissionResponse" name="get_permissionResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_key" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_keyRequest" name="add_keyRequest" />
+			<wsdl:output message="impl:add_keyResponse" name="add_keyResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_key" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_keyRequest" name="put_keyRequest" />
+			<wsdl:output message="impl:put_keyResponse" name="put_keyResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_keys" parameterOrder="authenKey courseName">
+			<wsdl:input message="impl:list_keysRequest" name="list_keysRequest" />
+			<wsdl:output message="impl:list_keysResponse" name="list_keysResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_keys" parameterOrder="authenKey courseName userIDs">
+			<wsdl:input message="impl:get_keysRequest" name="get_keysRequest" />
+			<wsdl:output message="impl:get_keysResponse" name="get_keysResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_key" parameterOrder="authenKey courseName userID">
+			<wsdl:input message="impl:get_keyRequest" name="get_keyRequest" />
+			<wsdl:output message="impl:get_keyResponse" name="get_keyResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_user" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_userRequest" name="add_userRequest" />
+			<wsdl:output message="impl:add_userResponse" name="add_userResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_user" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_userRequest" name="put_userRequest" />
+			<wsdl:output message="impl:put_userResponse" name="put_userResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_users" parameterOrder="authenKey courseName">
+			<wsdl:input message="impl:list_usersRequest" name="list_usersRequest" />
+			<wsdl:output message="impl:list_usersResponse" name="list_usersResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user" parameterOrder="authenKey courseName userID">
+			<wsdl:input message="impl:get_userRequest" name="get_userRequest" />
+			<wsdl:output message="impl:get_userResponse" name="get_userResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_users" parameterOrder="authenKey courseName userIDs">
+			<wsdl:input message="impl:get_usersRequest" name="get_usersRequest" />
+			<wsdl:output message="impl:get_usersResponse" name="get_usersResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_user" parameterOrder="authenKey courseName userID">
+			<wsdl:input message="impl:delete_userRequest" name="delete_userRequest" />
+			<wsdl:output message="impl:delete_userResponse" name="delete_userResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_global_set" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_global_setRequest" name="add_global_setRequest" />
+			<wsdl:output message="impl:add_global_setResponse" name="add_global_setResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_global_set" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_global_setRequest" name="put_global_setRequest" />
+			<wsdl:output message="impl:put_global_setResponse" name="put_global_setResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_global_sets" parameterOrder="authenKey courseName">
+			<wsdl:input message="impl:list_global_setsRequest" name="list_global_setsRequest" />
+			<wsdl:output message="impl:list_global_setsResponse" name="list_global_setsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_global_sets" parameterOrder="authenKey courseName">
+			<wsdl:input message="impl:get_all_global_setsRequest" name="get_all_global_setsRequest" />
+			<wsdl:output message="impl:get_all_global_setsResponse" name="get_all_global_setsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_global_sets" parameterOrder="authenKey courseName setIDs">
+			<wsdl:input message="impl:get_global_setsRequest" name="get_global_setsRequest" />
+			<wsdl:output message="impl:get_global_setsResponse" name="get_global_setsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_global_set" parameterOrder="authenKey courseName setID">
+			<wsdl:input message="impl:get_global_setRequest" name="get_global_setRequest" />
+			<wsdl:output message="impl:get_global_setResponse" name="get_global_setResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_global_set" parameterOrder="authenKey courseName setID">
+			<wsdl:input message="impl:delete_global_setRequest" name="delete_global_setRequest" />
+			<wsdl:output message="impl:delete_global_setResponse" name="delete_global_setResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_global_problem" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_global_problemRequest" name="add_global_problemRequest" />
+			<wsdl:output message="impl:add_global_problemResponse" name="add_global_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_global_problem" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_global_problemRequest" name="put_global_problemRequest" />
+			<wsdl:output message="impl:put_global_problemResponse" name="put_global_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_global_problems" parameterOrder="authenKey courseName setID">
+			<wsdl:input message="impl:list_global_problemsRequest" name="list_global_problemsRequest" />
+			<wsdl:output message="impl:list_global_problemsResponse" name="list_global_problemsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_global_problems" parameterOrder="authenKey courseName setID">
+			<wsdl:input message="impl:get_all_global_problemsRequest" name="get_all_global_problemsRequest" />
+			<wsdl:output message="impl:get_all_global_problemsResponse" name="get_all_global_problemsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_global_problem" parameterOrder="authenKey courseName setID problemID">
+			<wsdl:input message="impl:get_global_problemRequest" name="get_global_problemRequest" />
+			<wsdl:output message="impl:get_global_problemResponse" name="get_global_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_global_problem" parameterOrder="authenKey courseName setID problemID">
+			<wsdl:input message="impl:delete_global_problemRequest" name="delete_global_problemRequest" />
+			<wsdl:output message="impl:delete_global_problemResponse" name="delete_global_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_user_problem" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_user_problemRequest" name="add_user_problemRequest" />
+			<wsdl:output message="impl:add_user_problemResponse" name="add_user_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_user_problem" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_user_problemRequest" name="put_user_problemRequest" />
+			<wsdl:output message="impl:put_user_problemResponse" name="put_user_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_user_problems" parameterOrder="authenKey courseName userID setID">
+			<wsdl:input message="impl:list_user_problemsRequest" name="list_user_problemsRequest" />
+			<wsdl:output message="impl:list_user_problemsResponse" name="list_user_problemsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_user_problems" parameterOrder="authenKey courseName userID setID">
+			<wsdl:input message="impl:get_all_user_problemsRequest" name="get_all_user_problemsRequest" />
+			<wsdl:output message="impl:get_all_user_problemsResponse" name="get_all_user_problemsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_problems" parameterOrder="authenKey courseName userProblemIDs">
+			<wsdl:input message="impl:get_user_problemsRequest" name="get_user_problemsRequest" />
+			<wsdl:output message="impl:get_user_problemsResponse" name="get_user_problemsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_problem" parameterOrder="authenKey courseName userID setID problemID">
+			<wsdl:input message="impl:get_user_problemRequest" name="get_user_problemRequest" />
+			<wsdl:output message="impl:get_user_problemResponse" name="get_user_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_user_problem" parameterOrder="authenKey courseName userID setID problemID">
+			<wsdl:input message="impl:delete_user_problemRequest" name="delete_user_problemRequest" />
+			<wsdl:output message="impl:delete_user_problemResponse" name="delete_user_problemResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="add_user_set" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:add_user_setRequest" name="add_user_setRequest" />
+			<wsdl:output message="impl:add_user_setResponse" name="add_user_setResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="put_user_set" parameterOrder="authenKey courseName record">
+			<wsdl:input message="impl:put_user_setRequest" name="put_user_setRequest" />
+			<wsdl:output message="impl:put_user_setResponse" name="put_user_setResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="list_user_sets" parameterOrder="authenKey courseName userID">
+			<wsdl:input message="impl:list_user_setsRequest" name="list_user_setsRequest" />
+			<wsdl:output message="impl:list_user_setsResponse" name="list_user_setsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_user_sets" parameterOrder="authenKey courseName">
+			<wsdl:input message="impl:get_all_user_setsRequest" name="get_all_user_setsRequest" />
+			<wsdl:output message="impl:get_all_user_setsResponse" name="get_all_user_setsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_sets" parameterOrder="authenKey courseName userSetIDs">
+			<wsdl:input message="impl:get_user_setsRequest" name="get_user_setsRequest" />
+			<wsdl:output message="impl:get_user_setsResponse" name="get_user_setsResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_set" parameterOrder="authenKey courseName userID setID">
+			<wsdl:input message="impl:get_user_setRequest" name="get_user_setRequest" />
+			<wsdl:output message="impl:get_user_setResponse" name="get_user_setResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_user_set" parameterOrder="authenKey courseName userID setID">
+			<wsdl:input message="impl:delete_user_setRequest" name="delete_user_setRequest" />
+			<wsdl:output message="impl:delete_user_setResponse" name="delete_user_setResponse" />
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="WebworkSOAPSoapBinding" type="impl:WebworkSOAPHandler">
+		<wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="hello">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="helloRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="helloResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_courses">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_coursesRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_coursesResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="login_user">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="login_userRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="login_userResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="assign_set_to_user">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="assign_set_to_userRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="assign_set_to_userResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="grade_users_sets">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="grade_users_setsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="grade_users_setsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_set_data">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_set_dataRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_set_dataResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_password">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_passwordRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_passwordResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_password">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_passwordRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_passwordResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_password">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_passwordRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_passwordResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_passwords">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_passwordsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_passwordsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_password">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_passwordRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_passwordResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_permission">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_permissionRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_permissionResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_permission">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_permissionRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_permissionResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_permissions">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_permissionsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_permissionsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_permissions">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_permissionsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_permissionsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_permission">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_permissionRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_permissionResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_key">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_keyRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_keyResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_key">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_keyRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_keyResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_keys">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_keysRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_keysResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_keys">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_keysRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_keysResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_key">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_keyRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_keyResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_user">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_userRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_userResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_user">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_userRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_userResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_users">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_usersRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_usersResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_userRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_userResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_users">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_usersRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_usersResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_user">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="delete_userRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="delete_userResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_global_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_global_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_global_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_global_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_global_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_global_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_global_sets">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_global_setsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_global_setsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_global_sets">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_all_global_setsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_all_global_setsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_global_sets">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_global_setsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_global_setsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_global_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_global_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_global_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_global_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="delete_global_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="delete_global_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_global_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_global_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_global_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_global_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_global_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_global_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_global_problems">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_global_problemsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_global_problemsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_global_problems">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_all_global_problemsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_all_global_problemsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_global_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_global_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_global_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_global_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="delete_global_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="delete_global_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_user_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_user_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_user_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_user_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_user_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_user_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_user_problems">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_user_problemsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_user_problemsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_user_problems">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_all_user_problemsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_all_user_problemsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_problems">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_user_problemsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_user_problemsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_user_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_user_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_user_problem">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="delete_user_problemRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="delete_user_problemResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="add_user_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="add_user_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="add_user_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="put_user_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="put_user_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="put_user_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="list_user_sets">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="list_user_setsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="list_user_setsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_all_user_sets">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_all_user_setsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_all_user_setsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_sets">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_user_setsRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_user_setsResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="get_user_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="get_user_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="get_user_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="delete_user_set">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="delete_user_setRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="delete_user_setResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostWebworkSOAP" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="WebworkSOAPHandlerService">
+		<wsdl:port binding="impl:WebworkSOAPSoapBinding" name="WebworkSOAP">
+			<wsdlsoap:address location="http://localhostwebwork2_rpc" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
