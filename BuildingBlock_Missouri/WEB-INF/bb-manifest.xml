@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<manifest>
+
+	<!-- core extension information -->
+	<plugin>
+		<name value="WeBWorK Assignment" />
+		<handle value="WebworkAssignment" />
+		<description value="Building block for webwork assignments" />
+		<version value="1.0" />
+		<requires>
+			<bbversion value="9.0" />
+		</requires>
+		<vendor>
+			<id value="UOM" />
+			<name value="University of Missouri" />
+			<url value="http://www.missouri.edu/" />
+			<description value="WeBWorK Assignment" />
+		</vendor>
+		<http-actions>
+			<config value="webwork/admin/config.jsp" />
+		</http-actions>
+		<!-- Custom content types defined by this extension -->
+		<content-handlers>
+			<content-handler>
+				<name value="WeBWorK Assignment" />
+				<handle value="resource/x-BbWw-Assign3" />
+				<http-actions>
+					<create value="webwork/create.jsp" />
+					<modify value="webwork/modify.jsp" />
+					<remove value="webwork/remove.jsp" />
+					<!-- <can-copy value="false"/> -->
+				</http-actions>
+				<icons>
+					<toolbar value="/images/organization.gif" />
+					<listitem value="/images/organization.gif" />
+				</icons>
+			</content-handler>
+		</content-handlers>
+
+		<!-- Code permissions required for proper operation -->
+		<permissions>
+			<permission type="persist" name="Content" actions="create,modify,delete" />
+			<permission type="persist" name="Outcome" actions="create,modify,delete" />
+			<permission type="persist" name="OutcomeDefinition"
+				actions="create,modify,delete" />
+			<permission type="persist" name="OutcomeDefinitionCategory"
+				actions="create,modify,delete" />
+			<permission type="persist" name="user" actions="create,modify,delete" />
+			<permission type="persist" name="announcement" actions="create,modify" />
+
+			<permission type="blackboard.data.AttributePermission"
+				name="user.personalinfo" actions="get,set" />
+			<permission type="blackboard.data.AttributePermission"
+				name="user.authinfo" actions="get,set" />
+			<permission type="attribute" name="user.personalinfo"
+				actions="get" />
+			<permission type="attribute" name="user.authinfo" actions="get" />
+
+			<permission type="runtime" name="getClassLoader" actions="" />
+			<permission type="runtime" name="createClassLoader"
+				actions="" />
+			<permission type="java.lang.reflect.ReflectPermission"
+				name="suppressAccessChecks" actions="*" />
+			<permission type="java.net.SocketPermission" name="hosted2.webwork"
+				actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="hosted2.webwork.rochester.edu"
+				actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="webwork.math.missouri.edu"
+				actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="webwork.math"
+				actions="connect,resolve" />
+
+		</permissions>
+
+		<!-- TODO -->
+
+		<!-- Tools defined by this extension -->
+		<!-- <application-defs> <application handle="webworkBlackboard" type="content" 
+			use-ssl="false" name="Webwork" can-allow-guest="false" small-icon="" large-icon=""> 
+			<description lang="en_US">Application information</description> </application> 
+			</application-defs> -->
+	</plugin>
+</manifest>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>WebWork Plug In</display-name>
+	<jsp-config>
+		<!-- Tag Libraries for JSTL -->
+
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+			<taglib-location>/WEB-INF/config/taglibs/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jsp/jstl/functions</taglib-uri>
+			<taglib-location>/WEB-INF/config/taglibs/fn.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<!-- Exceptions and mappings to the error pages. -->
+ 	<error-page>
+		<exception-type>org.apache.jasper.JasperException</exception-type>
+		<location>/webwork/error/jasper.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.reflect.InvocationTargetException</exception-type>
+		<location>/webwork/error/jasper.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>javax.el.PropertyNotFoundException</exception-type>
+		<location>/webwork/error/jasper.jsp</location>
+	</error-page>
+	
+<!--	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/webwork/error/servlet.jsp</location>
+	</error-page>
+	
+	
+	<error-page>
+		<exception-type>blackboard.platform.security.authentication.BbSecurityException</exception-type>
+		<location>/webwork/error/enrollment.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>javax.servlet.jsp.JspTagException</exception-type>
+		<location>/webwork/error/enrollment.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.lang.exception</exception-type>
+		<location>/webwork/error/error.jsp</location>
+	</error-page> -->
+
+</web-app>
