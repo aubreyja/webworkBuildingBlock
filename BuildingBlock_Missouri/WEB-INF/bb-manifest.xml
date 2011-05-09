@@ -30,10 +30,6 @@
 					<remove value="webwork/remove.jsp" />
 					<!-- <can-copy value="false"/> -->
 				</http-actions>
-				<icons>
-					<toolbar value="/images/organization.gif" />
-					<listitem value="/images/organization.gif" />
-				</icons>
 			</content-handler>
 		</content-handlers>
 
