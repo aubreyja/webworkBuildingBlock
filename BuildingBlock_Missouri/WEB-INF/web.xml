@@ -18,43 +18,45 @@
 			<taglib-uri>http://java.sun.com/jsp/jstl/functions</taglib-uri>
 			<taglib-location>/WEB-INF/config/taglibs/fn.tld</taglib-location>
 		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+			<taglib-location>/WEB-INF/config/taglibs/fmt.tld</taglib-location>
+		</taglib>
+
 	</jsp-config>
 
+	<!-- Importing bundles to the context -->
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>label</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+		<param-value>en</param-value>
+	</context-param>
+	
 	<!-- Exceptions and mappings to the error pages. -->
- 	<error-page>
+	<error-page>
 		<exception-type>org.apache.jasper.JasperException</exception-type>
 		<location>/webwork/error/jasper.jsp</location>
 	</error-page>
-	
+
 	<error-page>
 		<exception-type>java.lang.reflect.InvocationTargetException</exception-type>
 		<location>/webwork/error/jasper.jsp</location>
 	</error-page>
-	
+
 	<error-page>
 		<exception-type>javax.el.PropertyNotFoundException</exception-type>
-		<location>/webwork/error/jasper.jsp</location>
-	</error-page>
-	
-<!--	<error-page>
-		<exception-type>javax.servlet.ServletException</exception-type>
-		<location>/webwork/error/servlet.jsp</location>
-	</error-page>
-	
-	
-	<error-page>
-		<exception-type>blackboard.platform.security.authentication.BbSecurityException</exception-type>
-		<location>/webwork/error/enrollment.jsp</location>
-	</error-page>
-
-	<error-page>
-		<exception-type>javax.servlet.jsp.JspTagException</exception-type>
-		<location>/webwork/error/enrollment.jsp</location>
-	</error-page>
-
-	<error-page>
-		<exception-type>java.lang.exception</exception-type>
 		<location>/webwork/error/error.jsp</location>
-	</error-page> -->
+	</error-page>
+
+	<!-- <error-page> <exception-type>javax.servlet.ServletException</exception-type> 
+		<location>/webwork/error/servlet.jsp</location> </error-page> <error-page> 
+		<exception-type>blackboard.platform.security.authentication.BbSecurityException</exception-type> 
+		<location>/webwork/error/enrollment.jsp</location> </error-page> <error-page> 
+		<exception-type>javax.servlet.jsp.JspTagException</exception-type> <location>/webwork/error/enrollment.jsp</location> 
+		</error-page> <error-page> <exception-type>java.lang.exception</exception-type> 
+		<location>/webwork/error/error.jsp</location> </error-page> -->
 
 </web-app>

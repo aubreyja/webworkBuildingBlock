@@ -21,6 +21,7 @@
 <c:set var="validPage" value="${configUtil.redirectUrl }"
 	scope="session" />
 
+
 <c:choose>
 
 	<c:when test="${param.save != null}">
@@ -47,22 +48,38 @@
 				<!--iconUrl="/images/config.gif"   -->
 			</bbNG:pageHeader>
 
-			<bbNG:form action="config.jsp?save=true" method="post">
+			<bbNG:form id="configForm" action="config.jsp?save=true"
+				method="post">
 				<bbNG:dataCollection>
 
 					<bbNG:step title="Web Server Locations"
-						instructions="Type the location of the webserver to hook up.">
-						<bbNG:dataElement label="Type a proper webserver location."
+						instructions="Enter the location of the webserver to hook up.">
+						<bbNG:dataElement label="Enter webserver location."
 							labelFor="webServerLocation">
 							<bbNG:textElement name="webServerLocation" isVertical="true"
 								isRequired="true" value="${configUtil.webServerLocation }"
-								size="100" />
+								size="100" onchange="copyVariable();" />
 						</bbNG:dataElement>
 
-						<bbNG:dataElement label="Type a proper webserver rpc location."
+						<bbNG:dataElement label="Enter webserver rpc location."
 							labelFor="webServerRpcLocation">
+
+							<bbNG:radioElement name="secured" value="secured"></bbNG:radioElement>
+
+							<c:set var="vadlidateRpcLocation">
+								{'copy_variable':'copyVariable();'}
+							</c:set>
+
 							<bbNG:textElement name="webServerRpcLocation" isVertical="true"
 								isRequired="true" value="${configUtil.webServerRpcLocation }"
+								size="100" validation="${vadlidateRpcLocation }" />
+						</bbNG:dataElement>
+
+						<bbNG:dataElement
+							label="Enter webserver Site URL Location. (This is where the content will be accessed from)"
+							labelFor="webServerSiteUrl">
+							<bbNG:textElement name="webServerSiteUrl" isVertical="true"
+								isRequired="true" value="${configUtil.webServerSiteUrl }"
 								size="100" />
 						</bbNG:dataElement>
 
@@ -83,14 +100,12 @@
 
 						<bbNG:dataElement label="Assignment Guest Users Visibility: "
 							labelFor="allowGuestViewers" isRequired="false">
-							<bbNG:radioElement name="allowGuestViewers"
-								value="true"
-								isSelected="${configUtil.allowGuestViewers }">
+							<bbNG:radioElement name="allowGuestViewers" value="true"
+								isSelected="${ (configUtil.allowGuestViewers eq true)? true : false}">
 								True
 							</bbNG:radioElement>
-							<bbNG:radioElement name="allowGuestViewers"
-								value="false"
-								isSelected="${not configUtil.allowGuestViewers }">
+							<bbNG:radioElement name="allowGuestViewers" value="false"
+								isSelected="${ (configUtil.allowGuestViewers eq false)? true : false}">
 								False
 							</bbNG:radioElement>
 						</bbNG:dataElement>
@@ -103,6 +118,21 @@
 
 				</bbNG:dataCollection>
 			</bbNG:form>
+
+			<bbNG:cssBlock>
+				<script type="text/javascript" src="${configUtil.buildingBlockURI }/JS/jsuri.js"></script>
+			</bbNG:cssBlock>
+			<bbNG:jsFile href="${configUtil.buildingBlockURI }/JS/jsuri.js"/>
+			<bbNG:jsBlock>
+				<script type="text/javascript">
+					function copyVariable() {
+						document.forms["configForm"].soapAuthKey.value = new jsUri(
+								'http://www.test.com').setHost('www.yahoo.com')
+								.setProtocol('https');
+						document.forms["configForm"].webServerSiteUrl.value = document.forms["configForm"].webServerLocation.value;
+					}
+				</script>
+			</bbNG:jsBlock>
 
 		</bbNG:learningSystemPage>
 	</c:otherwise>

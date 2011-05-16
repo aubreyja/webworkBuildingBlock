@@ -9,8 +9,9 @@
 <c:choose>
 	<c:when
 		test="${fn:contains(pageContext.exception.message, 'authentication.BbSecurityException')}">
-		<bbNG:receipt title="User not Enrolled" type="FAIL"
-			recallUrl="javascript:history.go(-1);"></bbNG:receipt>
+		<bbNG:jspBlock>
+			User not enrolled in the course to view the content.
+		</bbNG:jspBlock>
 	</c:when>
 	<c:otherwise>
 	The following exception occured ${pageContext.exception }
