@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="webworkBuildingBlock" default="war" basedir=".">
+
+	<property name="project-name" value="webworkBuildingBlock" />
+	<property name="builder" value="Srinivasan Devanathan" />
+
+	<property name="war-file-name" value="webworkBuildingBlock.war" />
+	<property name="source-directory" value="src" />
+	<property name="class-directory" value="WebContent/WEB-INF/classes" />
+	<property name="lib-directory" value="WebContent/WEB-INF/lib" />
+	<property name="web-directory" value="WebContent" />
+	<property name="web-xml-file" value="WebContent/WEB-INF/web.xml" />
+	<tstamp prefix="build-info">
+		<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
+		<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
+	</tstamp>
+	<property name="build-directory" value="C:/Development/WebworkWorkspace" />
+	<property name="reports.dir" value="C:/Development/WebworkWorkspace" />
+
+	<path id="build.classpath">
+		<fileset dir="${lib-directory}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${lib-directory}/Downloaded">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${lib-directory}/Tomcat">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${source-directory}">
+			<include name="**/*.java" />
+		</fileset>
+	</path>
+
+	<target name="clean" description="Deleting all previous class files">
+		<delete dir="${class-directory}" />
+		<mkdir dir="${class-directory}" />
+	</target>
+
+	<target name="compile" description="Compiles the Java Files">
+		<copy todir="${class-directory}" includeemptydirs="false">
+			<fileset dir="${source-directory}" excludes="**/*.java" />
+		</copy>
+		<copyfile dest="${class-directory}/" src="src/edu/missouri/messages.properties" />
+		<javac srcdir="${source-directory}" destdir="${class-directory}" verbose="true" deprecation="true" failonerror="true" listfiles="true" classpathref="build.classpath" debug="on" debuglevel="lines,vars,source">
+		</javac>
+	</target>
+
+	<target name="war" depends="clean,compile">
+		<delete file="${build-directory}/${war-file-name}" />
+		<zip destfile="${build-directory}/${war-file-name}" description="Creating the zip file">
+			<fileset dir="WebContent">
+				<exclude name="**/lib/**" />
+			</fileset>
+		</zip>
+	</target>
+
+	<!-- Target option for UML Diagram creation. -->
+	<target name="javadocs" depends="compile" description="generates javadoc and also UML Diagram">
+		<mkdir dir="${reports.dir}/javadoc" />
+		<javadoc sourcepath="${source-directory}" packagenames="edu.missouri.*" destdir="${reports.dir}/javadoc" classpathref="build.classpath" private="true">
+			<doclet name="org.umlgraph.doclet.UmlGraphDoc" path="${lib-directory}/UmlGraph.jar">
+				<param name="-all" />
+				<param name="-constructors" />
+				<param name="-collapsible" />
+				<!-- <param name="-inferdep" /> -->
+				<!-- <param name="-inferrel" /> -->
+				<param name="-qualify" />
+				<param name="-collpackages" value="edu.missouri.*" />
+				<param name="-visibility" />
+			</doclet>
+		</javadoc>
+		<apply executable="dot" dest="${reports.dir}" parallel="false">
+			<arg value="-Tpng" />
+			<arg value="-o" />
+			<targetfile />
+			<srcfile />
+			<fileset dir="${reports.dir}" includes="*.dot" />
+			<mapper type="glob" from="*.dot" to="*.png" />
+		</apply>
+	</target>
+
+</project>

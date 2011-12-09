@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_nW5oEZFOEeCbC4mFaQsnGw" name="edu.missouri">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_mdaasJj2EeCG--WdBkV8TQ" name="BuildingBlockConstants">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_W3ciEJIJEeCQMd3pv2W8fg" name="BuildingBlockMethods" isAbstract="true">
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_iMjNAJj3EeCG--WdBkV8TQ" name="BlackboadUtil" classifierBehavior="_wHs5QJj3EeCG--WdBkV8TQ">
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_wHs5QJj3EeCG--WdBkV8TQ"/>
+      </nestedClassifier>
+      <ownedOperation xmi:id="__Wl6wJj2EeCG--WdBkV8TQ" name="getLoginKey" concurrency="concurrent"/>
+    </nestedClassifier>
+  </packagedElement>
+</uml:Package>
