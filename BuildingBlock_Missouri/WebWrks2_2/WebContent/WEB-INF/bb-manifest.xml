@@ -6,7 +6,7 @@
 		<name value="WeBWorK Assignment" />
 		<handle value="WebworkAssignment" />
 		<description value="Building block for webwork assignments" />
-		<version value="2.1" />
+		<version value="2.2" />
 		<requires>
 			<bbversion value="9.0" />
 		</requires>

@@ -234,7 +234,7 @@ public class WebworkUtil extends BuildingBlockMethods {
 			LogServiceFactory
 					.getInstance()
 					.logError(
-							"Remote Server exception / Service Exception. Cannot initialize static variables."); // TODO
+							"Remote Server exception / Service Exception. Cannot initialize static variables.", re); // TODO
 			return false;
 		}
 		return true;
