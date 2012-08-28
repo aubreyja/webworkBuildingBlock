@@ -66,8 +66,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	/**
 	 * Config Prop - Search method for webwork courses available to a user.
 	 */
-	private String webworkCoursesSearchMethod = Messages
-			.getString("Default.Empty");
+	private String webworkCoursesSearchMethod = Messages.getString("Default.Empty");
 	/**
 	 * Config Prop - Webwork Data security. The selected security type will be
 	 * used to write to webwork. Right now only SHA-1 is only implemented.
@@ -123,12 +122,9 @@ public class ConfigFile extends BuildingBlockMethods {
 	 */
 	static {
 		try {
-			ConfigFile.configFile = new File(PlugInUtil.getConfigDirectory(
-					constantVendorName, constantBuildingBlockName),
-					constantConfigFile);
+			ConfigFile.configFile = new File(PlugInUtil.getConfigDirectory(constantVendorName, constantBuildingBlockName), constantConfigFile);
 		} catch (PlugInException e) {
-			LogServiceFactory.getInstance().logError(
-					constantConfigFileFailedLoading);
+			LogServiceFactory.getInstance().logError(constantConfigFileFailedLoading);
 		}
 	}
 
@@ -147,10 +143,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[1]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -172,10 +165,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[0]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -195,10 +185,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[2]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -218,10 +205,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[6]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -241,10 +225,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[7]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -265,10 +246,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			return p.getProperty(constantConfigField[3]).equals("true") ? true
 					: false;
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return false;
 		}
 	}
@@ -289,10 +267,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[4]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -315,10 +290,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[5]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -340,10 +312,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[8]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return Messages.getString("Default.Empty");
 		}
 	}
@@ -367,10 +336,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return Integer.parseInt(p.getProperty(constantConfigField[9]));
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return constantWebworkInstructorPermissionLevel;
 		}
 	}
@@ -394,10 +360,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return Integer.parseInt(p.getProperty(constantConfigField[10]));
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return constantWebworkAssignmentPointFactor;
 		}
 	}
@@ -419,10 +382,7 @@ public class ConfigFile extends BuildingBlockMethods {
 			is.close();
 			return p.getProperty(constantConfigField[11]);
 		} catch (IOException e) {
-			LogServiceFactory.getInstance().logError(
-					(new StringBuilder())
-							.append(constantConfigFileFailedLoading)
-							.append(configFile.getAbsolutePath()).toString());
+			LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedLoading).append(configFile.getAbsolutePath()).toString());
 			return constantDefaultWebworkDataSecurity;
 		}
 	}
@@ -436,23 +396,14 @@ public class ConfigFile extends BuildingBlockMethods {
 	 * @return String representing
 	 */
 	public synchronized static String getWebServiceLocations(String key) {
-		if (key.equals(Messages
-				.getString("ConfigFile.WebServerLocationStringKey")))
-			return getStaticWebServerLocation().equals(
-					Messages.getString("Default.Empty")) ? constantWebServerLocation
-					: getStaticWebServerLocation();
+		if (key.equals(Messages.getString("ConfigFile.WebServerLocationStringKey")))
+			return getStaticWebServerLocation().equals(Messages.getString("Default.Empty")) ? constantWebServerLocation : getStaticWebServerLocation();
 
-		if (key.equals(Messages
-				.getString("ConfigFile.WebServerRpcLocationStringKey")))
-			return getStaticWebServerRpcLocation().equals(
-					Messages.getString("Default.Empty")) ? constantWebServerRpcLocation
-					: getStaticWebServerRpcLocation();
+		if (key.equals(Messages.getString("ConfigFile.WebServerRpcLocationStringKey")))
+			return getStaticWebServerRpcLocation().equals(Messages.getString("Default.Empty")) ? constantWebServerRpcLocation : getStaticWebServerRpcLocation();
 
-		if (key.equals(Messages
-				.getString("ConfigFile.WebServerSiteUrlStringKey")))
-			return getStaticWebServerSiteUrl().equals(
-					Messages.getString("Default.Empty")) ? constantWebworkSiteURL
-					: getStaticWebServerSiteUrl();
+		if (key.equals(Messages.getString("ConfigFile.WebServerSiteUrlStringKey")))
+			return getStaticWebServerSiteUrl().equals(Messages.getString("Default.Empty")) ? constantWebworkSiteURL : getStaticWebServerSiteUrl();
 
 		return Messages.getString("Default.Empty");
 	}
@@ -492,15 +443,12 @@ public class ConfigFile extends BuildingBlockMethods {
 		 * accordingly.
 		 */
 		if (this.serverPropertyWritten)
-			redirectUrl = InlineReceiptUtil.addSuccessReceiptToUrl(
-					this.successLocation, this.redirectSuccessMessage);
+			redirectUrl = InlineReceiptUtil.addSuccessReceiptToUrl(this.successLocation, this.redirectSuccessMessage);
 		else{
 			if(this.locationOfBean.equals(constantConfigFilePages[0]))
-				redirectUrl = InlineReceiptUtil.addErrorReceiptToUrl(
-						this.successLocation, this.redirectFailureMessage);
+				redirectUrl = InlineReceiptUtil.addErrorReceiptToUrl(this.successLocation, this.redirectFailureMessage);
 			else
-			redirectUrl = InlineReceiptUtil.addErrorReceiptToUrl(
-					this.locationOfBean, this.redirectFailureMessage);
+				redirectUrl = InlineReceiptUtil.addErrorReceiptToUrl(this.locationOfBean, this.redirectFailureMessage);
 		}
 
 		/*
@@ -514,9 +462,7 @@ public class ConfigFile extends BuildingBlockMethods {
 		 * 'constantWebworkPluginsPage'.
 		 */
 		if (this.successLocation.equals(constantWebworkPluginsPage))
-			redirectUrl = this.requestUrl.substring(0,
-					this.requestUrl.indexOf(this.requestUri))
-					+ redirectUrl;
+			redirectUrl = this.requestUrl.substring(0, this.requestUrl.indexOf(this.requestUri)) + redirectUrl;
 
 		return redirectUrl;
 	}
@@ -544,8 +490,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 * @return the String value configured as the webwork site URL.
 	 */
 	public String getWebServerSiteUrl() {
-		return getWebServiceLocations(Messages
-				.getString("ConfigFile.WebServerSiteUrlStringKey"));
+		return getWebServiceLocations(Messages.getString("ConfigFile.WebServerSiteUrlStringKey"));
 	}
 
 	/**
@@ -571,8 +516,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 * @return the webServerSelection String
 	 */
 	public String getWebServerLocation() {
-		return getWebServiceLocations(Messages
-				.getString("ConfigFile.WebServerLocationStringKey"));
+		return getWebServiceLocations(Messages.getString("ConfigFile.WebServerLocationStringKey"));
 	}
 
 	/**
@@ -599,8 +543,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 *         Server RPC location
 	 */
 	public String getWebServerRpcLocation() {
-		return getWebServiceLocations(Messages
-				.getString("ConfigFile.WebServerRpcLocationStringKey"));
+		return getWebServiceLocations(Messages.getString("ConfigFile.WebServerRpcLocationStringKey"));
 	}
 
 	/**
@@ -622,9 +565,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 * @return String Authorization key value configured in this tool.
 	 */
 	public String getSoapAuthKey() {
-		return getStaticSoapAuthKey().equals(
-				Messages.getString("Default.Empty")) ? constantwebworkSOAPAuthKey
-				: getStaticSoapAuthKey();
+		return getStaticSoapAuthKey().equals(Messages.getString("Default.Empty")) ? constantwebworkSOAPAuthKey : getStaticSoapAuthKey();
 	}
 
 	/**
@@ -646,9 +587,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 * @return the soapClassesPermission
 	 */
 	public String getSoapClassesPermission() {
-		return getStaticSoapClassesPermission().equals(
-				Messages.getString("Default.Empty")) ? constantSoapClassesPermission
-				: getStaticSoapClassesPermission();
+		return getStaticSoapClassesPermission().equals(Messages.getString("Default.Empty")) ? constantSoapClassesPermission : getStaticSoapClassesPermission();
 	}
 
 	/**
@@ -671,9 +610,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 *         in webwork.
 	 */
 	public String getSoapUserStatus() {
-		return getStaticSoapUserStatus().equals(
-				Messages.getString("Default.Empty")) ? constantWebworkUserStatus
-				: getStaticSoapUserStatus();
+		return getStaticSoapUserStatus().equals(Messages.getString("Default.Empty")) ? constantWebworkUserStatus : getStaticSoapUserStatus();
 	}
 
 	/**
@@ -683,8 +620,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 * @param webworkInstructorPermissionLevel
 	 *            integer value for the permission level.
 	 */
-	public void setWebworkInstructorPermissionLevel(
-			int webworkInstructorPermissionLevel) {
+	public void setWebworkInstructorPermissionLevel(int webworkInstructorPermissionLevel) {
 		this.webworkInstructorPermissionLevel = webworkInstructorPermissionLevel;
 	}
 
@@ -749,9 +685,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 *         One of three values - 'Basic', 'Advanced', 'None'.
 	 */
 	public String getWebworkCoursesSearchMethod() {
-		return getStaticWebworkCoursesSearchMethod().equals(
-				Messages.getString("Default.Empty")) ? constantWebworkCoursesSearchMethod
-				: getStaticWebworkCoursesSearchMethod();
+		return getStaticWebworkCoursesSearchMethod().equals(Messages.getString("Default.Empty")) ? constantWebworkCoursesSearchMethod : getStaticWebworkCoursesSearchMethod();
 	}
 
 	/**
@@ -797,9 +731,7 @@ public class ConfigFile extends BuildingBlockMethods {
 	 * @return String value representing the search course configured.
 	 */
 	public String getWebworkSearchCourse() {
-		return getStaticWebworkSearchCourse().equals(
-				Messages.getString("Default.Empty")) ? constantWebworkSearchCourse
-				: getStaticWebworkSearchCourse();
+		return getStaticWebworkSearchCourse().equals(Messages.getString("Default.Empty")) ? constantWebworkSearchCourse : getStaticWebworkSearchCourse();
 	}
 
 	/**
@@ -847,30 +779,21 @@ public class ConfigFile extends BuildingBlockMethods {
 				p.setProperty(constantConfigField[0], this.webServerLocation);
 				p.setProperty(constantConfigField[1], this.webServerRpcLocation);
 				p.setProperty(constantConfigField[2], this.soapAuthKey);
-				p.setProperty(constantConfigField[3],
-						((Boolean) this.allowGuestViewers).toString());
+				p.setProperty(constantConfigField[3], ((Boolean) this.allowGuestViewers).toString());
 				p.setProperty(constantConfigField[4], this.webServerSiteUrl);
-				p.setProperty(constantConfigField[5],
-						this.webworkCoursesSearchMethod);
-				p.setProperty(constantConfigField[6],
-						this.soapClassesPermission);
+				p.setProperty(constantConfigField[5], this.webworkCoursesSearchMethod);
+				p.setProperty(constantConfigField[6], this.soapClassesPermission);
 				p.setProperty(constantConfigField[7], this.soapUserStatus);
 				p.setProperty(constantConfigField[8], this.webworkSearchCourse);
-				p.setProperty(constantConfigField[9],
-						String.valueOf(this.webworkInstructorPermissionLevel));
-				p.setProperty(constantConfigField[10],
-						String.valueOf(this.webworkAssignmentPointFactor));
+				p.setProperty(constantConfigField[9], String.valueOf(this.webworkInstructorPermissionLevel));
+				p.setProperty(constantConfigField[10], String.valueOf(this.webworkAssignmentPointFactor));
 				/* Webwork Data security type added in the next line. */
 				p.setProperty(constantConfigField[11], this.webworkDataSecurity);
 				OutputStream out = new FileOutputStream(ConfigFile.configFile);
 				p.store(out, constantConfigFileComments);
 				out.close();
 			} catch (IOException e) {
-				LogServiceFactory.getInstance().logError(
-						(new StringBuilder())
-								.append(constantConfigFileFailedSaving)
-								.append(configFile.getAbsolutePath())
-								.toString(), e);
+				LogServiceFactory.getInstance().logError((new StringBuilder()).append(constantConfigFileFailedSaving).append(configFile.getAbsolutePath()).toString(), e);
 				this.setServerPropertyWritten(false);
 			}
 			/*

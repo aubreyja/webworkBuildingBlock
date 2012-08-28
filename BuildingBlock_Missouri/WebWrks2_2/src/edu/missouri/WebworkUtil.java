@@ -195,46 +195,31 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 */
 	public static boolean configChanged() {
 		try {
-			WebworkUtil.webworkSoapAuthKey = ConfigFile.getStaticSoapAuthKey()
-					.equals(Messages.getString("Default.Empty")) ? constantwebworkSOAPAuthKey
+			WebworkUtil.webworkSoapAuthKey = ConfigFile.getStaticSoapAuthKey().equals(Messages.getString("Default.Empty")) ? constantwebworkSOAPAuthKey
 					: ConfigFile.getStaticSoapAuthKey();
-			WebworkUtil.webworkSiteUrl = ConfigFile.getStaticWebServerSiteUrl()
-					.equals(Messages.getString("Default.Empty")) ? constantWebworkSiteURL
+			WebworkUtil.webworkSiteUrl = ConfigFile.getStaticWebServerSiteUrl().equals(Messages.getString("Default.Empty")) ? constantWebworkSiteURL
 					: ConfigFile.getStaticWebServerSiteUrl();
 			WebworkUtil.soapHandlerService = new WebworkSOAPHandlerServiceLocator();
-			WebworkUtil.soapHandler = WebworkUtil.soapHandlerService
-					.getWebworkSOAP();
-			WebworkUtil.webworkCoursesSearchMethod = ConfigFile
-					.getStaticWebworkCoursesSearchMethod().equals(
-							Messages.getString("Default.Empty")) ? constantWebworkCoursesSearchMethod
+			WebworkUtil.soapHandler = WebworkUtil.soapHandlerService.getWebworkSOAP();
+			WebworkUtil.webworkCoursesSearchMethod = ConfigFile.getStaticWebworkCoursesSearchMethod().equals(Messages.getString("Default.Empty")) ? constantWebworkCoursesSearchMethod
 					: ConfigFile.getStaticWebworkCoursesSearchMethod();
-			WebworkUtil.webworkUserStatus = ConfigFile
-					.getStaticSoapUserStatus().equals(
-							Messages.getString("Default.Empty")) ? constantWebworkUserStatus
+			WebworkUtil.webworkUserStatus = ConfigFile.getStaticSoapUserStatus().equals(Messages.getString("Default.Empty")) ? constantWebworkUserStatus
 					: ConfigFile.getStaticSoapUserStatus();
-			WebworkUtil.webworkSoapClassesPermission = ConfigFile
-					.getStaticSoapClassesPermission().equals(
-							Messages.getString("Default.Empty")) ? constantSoapClassesPermission
+			WebworkUtil.webworkSoapClassesPermission = ConfigFile.getStaticSoapClassesPermission().equals(Messages.getString("Default.Empty")) ? constantSoapClassesPermission
 					: ConfigFile.getStaticSoapClassesPermission();
-			WebworkUtil.webworkInstructorPermissionLevel = ConfigFile
-					.getStaticWebworkInstructorPermissionLevel();
-			WebworkUtil.webworkAssignmentPointFactor = ConfigFile
-					.getStaticWebworkAssignmentPointFactor();
+			WebworkUtil.webworkInstructorPermissionLevel = ConfigFile.getStaticWebworkInstructorPermissionLevel();
+			WebworkUtil.webworkAssignmentPointFactor = ConfigFile.getStaticWebworkAssignmentPointFactor();
 
 			/* Reset for the webwork courses list. */
 			WebworkUtil.resetDaily();
 
 		} catch (ServiceException se) {
-			LogServiceFactory
-					.getInstance()
-					.logError(
-							"Remote Server exception / Service Exception. Cannot initialize static variables."); // TODO
+			LogServiceFactory.getInstance().logError("Remote Server exception / Service Exception. Cannot initialize static variables."); 
+			// TODO
 			return false;
 		} catch (RemoteException re) {
-			LogServiceFactory
-					.getInstance()
-					.logError(
-							"Remote Server exception / Service Exception. Cannot initialize static variables.", re); // TODO
+			LogServiceFactory.getInstance().logError("Remote Server exception / Service Exception. Cannot initialize static variables.", re); 
+			// TODO
 			return false;
 		}
 		return true;
@@ -256,26 +241,18 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 * @return integer value representing the total grade points for the Webwork
 	 *         assignment.
 	 */
-	public static synchronized int getAssignmentPoints(String courseName,
-			String setName) {
+	public static synchronized int getAssignmentPoints(String courseName, String setName) {
 		try {
 			int points = 0;
 			try {
-				for (WebworkSOAPClassesGlobalProblem eachProblem : WebworkUtil.soapHandler
-						.get_all_global_problems(
-								WebworkUtil.webworkSoapAuthKey, courseName,
-								setName))
+				for (WebworkSOAPClassesGlobalProblem eachProblem : WebworkUtil.soapHandler.get_all_global_problems(WebworkUtil.webworkSoapAuthKey, courseName,setName))
 					points += Integer.parseInt(eachProblem.getValue());
 			} catch (NumberFormatException exc) {
-				LogServiceFactory.getInstance().logError("Error setting value",
-						exc);
+				LogServiceFactory.getInstance().logError("Error setting value",	exc);
 			}
 			return WebworkUtil.webworkAssignmentPointFactor * points;
 		} catch (RemoteException re) {
-			LogServiceFactory
-					.getInstance()
-					.logWarning(
-							"Error in retreiving assignment Points - (Problems in a set)");
+			LogServiceFactory.getInstance().logWarning("Error in retreiving assignment Points - (Problems in a set)");
 			return 0;
 		}
 	}
@@ -309,30 +286,20 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 * @throws ParseException
 	 *             -- TODO
 	 */
-	public static synchronized boolean writeChanges(String user, String course,
-			String set, String startDate, String endDate,
-			String partialEndDate, int partialCredit) throws ParseException {
+	public static synchronized boolean writeChanges(String user, String course, String set, String startDate, String endDate, String partialEndDate, int partialCredit) 
+			throws ParseException {
 		WebworkSOAPClassesGlobalSet SET_DATA = null;
 		if (user == null || course == null || set == null)
 			return false;
 		try {
-			SET_DATA = WebworkUtil.soapHandler.get_global_set(
-					webworkSoapAuthKey, course, set);
-			LogServiceFactory.getInstance().logError(
-					"Exception while writing to webwork server. " + course
-							+ user + set + startDate + endDate);
-			if (startDate != null
-					&& !startDate.equals(Messages.getString("Default.Empty"))) {
-				SET_DATA.setOpen_date(String.valueOf(((Date) constantDateFormat
-						.parse(startDate)).getTime()));
+			SET_DATA = WebworkUtil.soapHandler.get_global_set(webworkSoapAuthKey, course, set);
+			LogServiceFactory.getInstance().logError("Exception while writing to webwork server. " + course	+ user + set + startDate + endDate);
+			if (startDate != null && !startDate.equals(Messages.getString("Default.Empty"))) {
+				SET_DATA.setOpen_date(String.valueOf(((Date) constantDateFormat.parse(startDate)).getTime()));
 			}
-			if (endDate != null
-					&& !endDate.equals(Messages.getString("Default.Empty"))) {
-				SET_DATA.setDue_date(String.valueOf(((Date) constantDateFormat
-						.parse(endDate)).getTime()));
-				SET_DATA.setAnswer_date(String
-						.valueOf(((Date) constantDateFormat.parse(endDate))
-								.getTime()));
+			if (endDate != null && !endDate.equals(Messages.getString("Default.Empty"))) {
+				SET_DATA.setDue_date(String.valueOf(((Date) constantDateFormat.parse(endDate)).getTime()));
+				SET_DATA.setAnswer_date(String.valueOf(((Date) constantDateFormat.parse(endDate)).getTime()));
 			}
 
 			/*
@@ -347,24 +314,14 @@ public class WebworkUtil extends BuildingBlockMethods {
 			 * 
 			 * }
 			 */
-			LogServiceFactory.getInstance().logError(
-					"Exception while writing to webwork server. " + course
-							+ user + set + startDate + endDate);
+			LogServiceFactory.getInstance().logError("Exception while writing to webwork server. " + course	+ user + set + startDate + endDate);
 
-			WebworkUtil.soapHandler.put_global_set(webworkSoapAuthKey, course,
-					SET_DATA);
-			LogServiceFactory.getInstance().logError(
-					"Written to webwork server. " + course + user + set
-							+ startDate + endDate + "\n"
-							+ SET_DATA.getOpen_date()
-							+ SET_DATA.getAnswer_date() + "\n"
-							+ SET_DATA.getClass().getName()
-							+ SET_DATA.getClass().getSimpleName());
+			WebworkUtil.soapHandler.put_global_set(webworkSoapAuthKey, course, SET_DATA);
+			LogServiceFactory.getInstance().logError("Written to webwork server. " + course + user + set + startDate + endDate + "\n" + SET_DATA.getOpen_date()
+					+ SET_DATA.getAnswer_date() + "\n" + SET_DATA.getClass().getName() + SET_DATA.getClass().getSimpleName());
 			// TODO remove the log here.
 		} catch (RemoteException re) {
-			LogServiceFactory.getInstance().logError(
-					"Exception while writing to webwork server. " + course
-							+ user + set + startDate + endDate, re);
+			LogServiceFactory.getInstance().logError("Exception while writing to webwork server. " + course	+ user + set + startDate + endDate, re);
 			return false;
 		}
 
@@ -383,13 +340,9 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 *             Exception occurs when trying to get list of courses from the
 	 *             webwork server.
 	 */
-	public static synchronized List<String> getWebworkAllCoursesList()
-			throws RemoteException {
-		if (WebworkUtil.webworkAllCoursesList == null
-				|| WebworkUtil.webworkAllCoursesList.isEmpty())
-			WebworkUtil.webworkAllCoursesList = Arrays
-					.asList(WebworkUtil.soapHandler
-							.list_courses(WebworkUtil.webworkSoapAuthKey));
+	public static synchronized List<String> getWebworkAllCoursesList() throws RemoteException {
+		if (WebworkUtil.webworkAllCoursesList == null || WebworkUtil.webworkAllCoursesList.isEmpty())
+			WebworkUtil.webworkAllCoursesList = Arrays.asList(WebworkUtil.soapHandler.list_courses(WebworkUtil.webworkSoapAuthKey));
 		return webworkAllCoursesList;
 	}
 
@@ -426,9 +379,7 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 */
 	public void setBlackboardUser(User blackboardUser) {
 		this.blackboardUser = blackboardUser;
-		this.soapClassesPermission = new WebworkSOAPClassesPermission(
-				this.blackboardUser.getUserName(),
-				WebworkUtil.webworkSoapClassesPermission);
+		this.soapClassesPermission = new WebworkSOAPClassesPermission(this.blackboardUser.getUserName(), WebworkUtil.webworkSoapClassesPermission);
 	}
 
 	/**
@@ -455,21 +406,11 @@ public class WebworkUtil extends BuildingBlockMethods {
 		boolean dataEncryptionEnabled = false;
 		if (ConfigFile.getStaticWebworkDataSecurity() != constantDefaultWebworkDataSecurity)
 			dataEncryptionEnabled = true;
-		webworkSOAPUser
-				.setUser_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser
-						.getUserName()) : blackboardUser.getUserName());
-		webworkSOAPUser
-				.setFirst_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser
-						.getGivenName()) : blackboardUser.getGivenName());
-		webworkSOAPUser
-				.setLast_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser
-						.getFamilyName()) : blackboardUser.getFamilyName());
-		webworkSOAPUser
-				.setStudent_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser
-						.getStudentId()) : blackboardUser.getStudentId());
-		webworkSOAPUser
-				.setEmail_address(dataEncryptionEnabled ? getEncryptedValue(blackboardUser
-						.getEmailAddress()) : blackboardUser.getEmailAddress());
+		webworkSOAPUser.setUser_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getUserName()) : blackboardUser.getUserName());
+		webworkSOAPUser.setFirst_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getGivenName()) : blackboardUser.getGivenName());
+		webworkSOAPUser.setLast_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getFamilyName()) : blackboardUser.getFamilyName());
+		webworkSOAPUser.setStudent_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getStudentId()) : blackboardUser.getStudentId());
+		webworkSOAPUser.setEmail_address(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getEmailAddress()) : blackboardUser.getEmailAddress());
 		webworkSOAPUser.setStatus(WebworkUtil.webworkUserStatus);
 		webworkSOAPUser.setSection(null);
 		webworkSOAPUser.setRecitation(null);
@@ -483,8 +424,7 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 * @param soapClassesPermission
 	 *            WebworkSOAPClassesPermission value to set.
 	 */
-	public void setSoapClassesPermission(
-			WebworkSOAPClassesPermission soapClassesPermission) {
+	public void setSoapClassesPermission(WebworkSOAPClassesPermission soapClassesPermission) {
 		this.soapClassesPermission = soapClassesPermission;
 	}
 
@@ -569,11 +509,9 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 *             the webwork server.
 	 */
 	public List<String> getWebworkCourseUsers() throws RemoteException {
-		if (this.webworkCourseUsers == null
-				|| this.webworkCourseUsers.isEmpty())
-			this.webworkCourseUsers = Arrays.asList(WebworkUtil.soapHandler
-					.list_users(WebworkUtil.webworkSoapAuthKey,
-							this.webworkCourse));
+		if (this.webworkCourseUsers == null || this.webworkCourseUsers.isEmpty()){
+			this.webworkCourseUsers = Arrays.asList(WebworkUtil.soapHandler.list_users(WebworkUtil.webworkSoapAuthKey, this.webworkCourse));
+		}
 		return webworkCourseUsers;
 	}
 
@@ -597,8 +535,7 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 */
 	public List<String> getWebworkCoursesList() throws RemoteException {
 		/* If search type is 'None', list all courses */
-		if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages
-				.getLabelString("Config.WebworkCoursesSearchMethod[3]"))) {
+		if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages.getLabelString("Config.WebworkCoursesSearchMethod[3]"))) {
 			return WebworkUtil.getWebworkAllCoursesList();
 		}
 		/*
@@ -608,13 +545,9 @@ public class WebworkUtil extends BuildingBlockMethods {
 		 * configurable using config.jsp page.
 		 */
 		ArrayList<String> tempCoursesList = new ArrayList<String>();
-		if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages
-				.getLabelString("Config.WebworkCoursesSearchMethod[1]"))) {
-			for (String eachWebworkCourse : WebworkUtil
-					.getWebworkAllCoursesList()) {
-				if (this.getWebworkCoursesAdmin().get(eachWebworkCourse) != null
-						&& this.webworkCoursesAdmin.get(eachWebworkCourse)
-								.equals(this.blackboardUser.getUserName()))
+		if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages.getLabelString("Config.WebworkCoursesSearchMethod[1]"))) {
+			for (String eachWebworkCourse : WebworkUtil.getWebworkAllCoursesList()) {
+				if (this.getWebworkCoursesAdmin().get(eachWebworkCourse) != null && this.webworkCoursesAdmin.get(eachWebworkCourse).equals(this.blackboardUser.getUserName()))
 					tempCoursesList.add(eachWebworkCourse);
 			}
 			this.webworkCoursesList = tempCoursesList;
@@ -626,17 +559,11 @@ public class WebworkUtil extends BuildingBlockMethods {
 		 * level of 10(default) is set for the current user. The Permission
 		 * level is configurable using config.jsp page.
 		 */
-		if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages
-				.getLabelString("Config.WebworkCoursesSearchMethod[2]"))) {
-			List<String> tempAllCoursesList = WebworkUtil
-					.getWebworkAllCoursesList();
-			List<String> tempCoursesPermissionLevel = this
-					.getWebworkPermissionLevels();
+		if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages.getLabelString("Config.WebworkCoursesSearchMethod[2]"))) {
+			List<String> tempAllCoursesList = WebworkUtil.getWebworkAllCoursesList();
+			List<String> tempCoursesPermissionLevel = this.getWebworkPermissionLevels();
 			for (int loop = 0; loop < tempAllCoursesList.size(); loop++) {
-				if (tempCoursesPermissionLevel
-						.get(loop)
-						.equals(String
-								.valueOf(WebworkUtil.webworkInstructorPermissionLevel)))
+				if (tempCoursesPermissionLevel.get(loop).equals(String.valueOf(WebworkUtil.webworkInstructorPermissionLevel)))
 					tempCoursesList.add(tempAllCoursesList.get(loop));
 			}
 			this.webworkCoursesList = tempCoursesList;
@@ -681,11 +608,8 @@ public class WebworkUtil extends BuildingBlockMethods {
 
 			ArrayList<String> tempContent = new ArrayList<String>();
 			this.webworkCourse = course;
-			if (this.getWebworkCourseUsers().contains(
-					this.blackboardUser.getUserName())) {
-				tempContent.addAll(Arrays.asList(WebworkUtil.soapHandler
-						.list_global_sets(WebworkUtil.webworkSoapAuthKey,
-								this.webworkCourse)));
+			if (this.getWebworkCourseUsers().contains(this.blackboardUser.getUserName())) {
+				tempContent.addAll(Arrays.asList(WebworkUtil.soapHandler.list_global_sets(WebworkUtil.webworkSoapAuthKey, this.webworkCourse)));
 			}
 			/*
 			 * else { this.setWebworkSOAPUser(new WebworkSOAPClassesUser());
@@ -742,11 +666,9 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 *            the publishWebworkAssignment to set
 	 * @throws RemoteException
 	 */
-	public void setPublishWebworkAssignment(boolean publishWebworkAssignment)
-			throws RemoteException {
+	public void setPublishWebworkAssignment(boolean publishWebworkAssignment) throws RemoteException {
 		if (publishWebworkAssignment == true) {
-			if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages
-					.getLabelString("Config.WebworkCoursesSearchMethod[3]"))) {
+			if (WebworkUtil.webworkCoursesSearchMethod.equals(Messages.getLabelString("Config.WebworkCoursesSearchMethod[3]"))) {
 				this.setCheckWebworkUserPermissions(true);
 			}
 		}
@@ -786,22 +708,15 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 *            the checkWebworkUserPermissions to set
 	 * @throws RemoteException
 	 */
-	public void setCheckWebworkUserPermissions(
-			boolean checkWebworkUserPermissions) throws RemoteException {
+	public void setCheckWebworkUserPermissions(boolean checkWebworkUserPermissions) throws RemoteException {
 		if (checkWebworkUserPermissions) {
-			if (!this.getWebworkCourseUsers().contains(
-					this.blackboardUser.getUserName())) {
+			if (!this.getWebworkCourseUsers().contains(this.blackboardUser.getUserName())) {
 				this.setWebworkSOAPUser(new WebworkSOAPClassesUser());
 				try {
-					WebworkUtil.soapHandler.add_user(
-							WebworkUtil.webworkSoapAuthKey, this.webworkCourse,
-							this.getWebworkSOAPUser());
+					WebworkUtil.soapHandler.add_user(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.getWebworkSOAPUser());
 					LogServiceFactory.getInstance().logFatal("User Created");
 				} catch (Exception exc) {
-					LogServiceFactory
-							.getInstance()
-							.logFatal(
-									"User already exists: Create failed even though list doesn't have the user");
+					LogServiceFactory.getInstance().logFatal("User already exists: Create failed even though list doesn't have the user");
 				}
 			}
 			setCreatePermissionsForUser(true);
@@ -826,33 +741,20 @@ public class WebworkUtil extends BuildingBlockMethods {
 			try {
 				WebworkSOAPClassesPermission tempPermission = null;
 				try {
-					tempPermission = WebworkUtil.soapHandler.get_permission(
-							webworkSoapAuthKey, webworkCourse,
-							this.blackboardUser.getUserName());
+					tempPermission = WebworkUtil.soapHandler.get_permission(webworkSoapAuthKey, webworkCourse, this.blackboardUser.getUserName());
 				} catch (Exception exc) {
-					LogServiceFactory.getInstance().logFatal(
-							"Creating a new Permission level: Failed for"
-									+ this.webworkCourse
-									+ this.blackboardUser.getUserName());
+					LogServiceFactory.getInstance().logFatal("Creating a new Permission level: Failed for" + this.webworkCourse	+ this.blackboardUser.getUserName());
 				}
-				if (tempPermission != null
-						&& tempPermission.getPermission() != null) {
-					LogServiceFactory.getInstance().logInfo(
-							"Permission :" + tempPermission.getPermission());
-				} else if (tempPermission == null
-						|| tempPermission.getPermission() == null) {
-					WebworkUtil.soapHandler.add_permission(
-							WebworkUtil.webworkSoapAuthKey, webworkCourse,
-							this.getSoapClassesPermission());
+				if (tempPermission != null && tempPermission.getPermission() != null) {
+					LogServiceFactory.getInstance().logInfo("Permission :" + tempPermission.getPermission());
+				} else if (tempPermission == null || tempPermission.getPermission() == null) {
+					WebworkUtil.soapHandler.add_permission(WebworkUtil.webworkSoapAuthKey, webworkCourse, this.getSoapClassesPermission());
 
-					WebworkUtil.soapHandler.put_permission(
-							WebworkUtil.webworkSoapAuthKey, webworkCourse,
-							this.getSoapClassesPermission());
+					WebworkUtil.soapHandler.put_permission(WebworkUtil.webworkSoapAuthKey, webworkCourse, this.getSoapClassesPermission());
 				}
 
 			} catch (Exception exc) {
-				LogServiceFactory.getInstance().logError(
-						"Null pointer exception", exc);
+				LogServiceFactory.getInstance().logError("Null pointer exception", exc);
 			}
 		}
 		this.createPermissionsForUser = createPermissionsForUser;
@@ -866,8 +768,7 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 *            the createWebworkPassword to set
 	 */
 	@SuppressWarnings("unused")
-	private void setCreateWebworkPassword(
-			WebworkSOAPClassesPassword createWebworkPassword) {
+	private void setCreateWebworkPassword(WebworkSOAPClassesPassword createWebworkPassword) {
 		this.createWebworkPassword = createWebworkPassword;
 
 	}
@@ -886,22 +787,13 @@ public class WebworkUtil extends BuildingBlockMethods {
 	public void setAssignSetToUser(boolean assignSetToUser) {
 		if (assignSetToUser == true) {
 			try {
-				if (WebworkUtil.soapHandler.get_user_set(
-						WebworkUtil.webworkSoapAuthKey, this.webworkCourse,
-						this.blackboardUser.getUserName(),
-						this.webworkCourseSet) == null)
-					WebworkUtil.soapHandler.assign_set_to_user(
-							WebworkUtil.webworkSoapAuthKey, this.webworkCourse,
-							this.blackboardUser.getUserName(),
-							this.webworkCourseSet);
+				if (WebworkUtil.soapHandler.get_user_set(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.blackboardUser.getUserName(),	this.webworkCourseSet) == null)
+					WebworkUtil.soapHandler.assign_set_to_user(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.blackboardUser.getUserName(), this.webworkCourseSet);
 				else
 					LogServiceFactory.getInstance().logFatal("Set is not null");
 			} catch (Exception exc) {
-				LogServiceFactory.getInstance().logFatal(
-						"Logging assign_set_to_user: Failed for,"
-								+ this.blackboardUser.getUserName()
-								+ this.webworkCourse + this.webworkCourseSet,
-						exc);
+				LogServiceFactory.getInstance().logFatal("Logging assign_set_to_user: Failed for," + this.blackboardUser.getUserName() + this.webworkCourse 
+						+ this.webworkCourseSet, exc);
 			}
 		}
 		this.assignSetToUser = assignSetToUser;
@@ -919,9 +811,7 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 *             webservice.
 	 */
 	private void setAssignSetToUser(String userName) throws RemoteException {
-		WebworkUtil.soapHandler.assign_set_to_user(
-				WebworkUtil.webworkSoapAuthKey, webworkCourse, userName,
-				webworkCourseSet);
+		WebworkUtil.soapHandler.assign_set_to_user(WebworkUtil.webworkSoapAuthKey, webworkCourse, userName,	webworkCourseSet);
 	}
 
 	/**
@@ -990,14 +880,9 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 */
 	public boolean getCalculateGrades() throws RemoteException {
 		try {
-			this.setWebworkAssignmentGrades(WebworkUtil.soapHandler
-					.grade_users_sets(WebworkUtil.webworkSoapAuthKey,
-							webworkCourse,
-							(String[]) this.webworkCourseUsers.toArray(),
+			this.setWebworkAssignmentGrades(WebworkUtil.soapHandler.grade_users_sets(WebworkUtil.webworkSoapAuthKey, webworkCourse,	(String[]) this.webworkCourseUsers.toArray(),
 							this.webworkCourseSet));
-			this.setGradePoints(((Integer
-					.parseInt(this.webworkAssignmentGrades[this.webworkCourseUsers
-							.indexOf(this.blackboardUser.getUserName())]))));
+			this.setGradePoints(((Integer.parseInt(this.webworkAssignmentGrades[this.webworkCourseUsers.indexOf(this.blackboardUser.getUserName())]))));
 		} catch (RemoteException re) {
 			// TODO Log appropriate message.
 			this.setCalculateGrades(false);
@@ -1045,30 +930,21 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 *             while accessing webwork web-service.
 	 */
 	public Map<String, String> getWebworkCoursesAdmin() throws RemoteException {
-		if (this.webworkCoursesAdmin == null
-				|| this.webworkCoursesAdmin.isEmpty()) {
+		if (this.webworkCoursesAdmin == null || this.webworkCoursesAdmin.isEmpty()) {
 
 			ArrayList<String> tempArrayList = null;
 
 			synchronized (tempArrayList) {
-				tempArrayList = new ArrayList<String>(
-						Arrays.asList(WebworkUtil.soapHandler.list_users(
-								WebworkUtil.webworkSoapAuthKey,
-								constantWebworkSearchCourse)));
+				tempArrayList = new ArrayList<String>(Arrays.asList(WebworkUtil.soapHandler.list_users(WebworkUtil.webworkSoapAuthKey, constantWebworkSearchCourse)));
 			}
 
 			this.webworkCoursesAdmin = new HashMap<String, String>();
 
 			for (String eachWebworkCourse : tempArrayList)
 				if (eachWebworkCourse.contains("_")) {
-					String instructorForWebworkCourse = eachWebworkCourse
-							.substring(0, eachWebworkCourse.indexOf('_') + 1);
-					if (instructorForWebworkCourse.equals(this.blackboardUser
-							.getUserName()))
-						this.webworkCoursesAdmin.put(eachWebworkCourse
-								.substring(eachWebworkCourse.indexOf('_') + 1,
-										eachWebworkCourse.length()),
-								instructorForWebworkCourse);
+					String instructorForWebworkCourse = eachWebworkCourse.substring(0, eachWebworkCourse.indexOf('_') + 1);
+					if (instructorForWebworkCourse.equals(this.blackboardUser.getUserName()))
+						this.webworkCoursesAdmin.put(eachWebworkCourse.substring(eachWebworkCourse.indexOf('_') + 1, eachWebworkCourse.length()), instructorForWebworkCourse);
 				}
 		}
 
@@ -1088,25 +964,16 @@ public class WebworkUtil extends BuildingBlockMethods {
 	 * @throws RemoteException
 	 *             while accessing webwork web-service.
 	 */
-	public synchronized List<String> getWebworkPermissionLevels()
-			throws RemoteException {
-		if (this.webworkPermissionLevels == null
-				|| this.webworkPermissionLevels.isEmpty()) {
+	public synchronized List<String> getWebworkPermissionLevels() throws RemoteException {
+		if (this.webworkPermissionLevels == null || this.webworkPermissionLevels.isEmpty()) {
 			ArrayList<String> tempPermissionLevel = new ArrayList<String>();
 			for (String eachCourseList : WebworkUtil.getWebworkAllCoursesList()) {
 				try {
-					tempPermissionLevel.add((WebworkUtil.soapHandler
-							.get_permission(WebworkUtil.webworkSoapAuthKey,
-									eachCourseList,
-									this.blackboardUser.getUserName())
-							.getPermission()));
+					tempPermissionLevel.add((WebworkUtil.soapHandler.get_permission(WebworkUtil.webworkSoapAuthKey, eachCourseList, this.blackboardUser.getUserName()).getPermission()));
 				} catch (Exception exc) {
-					tempPermissionLevel
-							.add(WebworkUtil.webworkSoapClassesPermission);
+					tempPermissionLevel.add(WebworkUtil.webworkSoapClassesPermission);
 
-					LogServiceFactory.getInstance().logFatal(
-							"Some exception with getPermissions for course: "
-									+ eachCourseList, exc);
+					LogServiceFactory.getInstance().logFatal("Some exception with getPermissions for course: " + eachCourseList, exc);
 				}
 			}
 			this.webworkPermissionLevels = tempPermissionLevel;

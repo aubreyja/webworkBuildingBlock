@@ -42,23 +42,18 @@
 <c:set scope="session" var="validPage" value="${jsPreviousPage}" />
 
 <!-- Importing Beans used in this page -->
-<jsp:useBean id="blackboardUtil" scope="session"
-	type="edu.missouri.BlackboardUtil" />
-<jsp:useBean id="webworkUtil" scope="session"
-	type="edu.missouri.WebworkUtil" />
-<jsp:useBean id="searchUtil" scope="session"
-	class="edu.missouri.SearchUtil" />
+<jsp:useBean id="blackboardUtil" scope="session" type="edu.missouri.BlackboardUtil" />
+<jsp:useBean id="webworkUtil" scope="session" type="edu.missouri.WebworkUtil" />
+<jsp:useBean id="searchUtil" scope="session" class="edu.missouri.SearchUtil" />
 
 <c:set var="previousPage" value="${currentPage}" scope="session" />
-<c:set var="validPage" value="${blackboardUtil.courseContentsUrl }"
-	scope="session" />
+<c:set var="validPage" value="${blackboardUtil.courseContentsUrl }" scope="session" />
 
 <!-- Setting the search list to the collection object. -->
 <c:choose>
 	<c:when test="${not empty param.searchCourse}">
 		<jsp:setProperty name="searchUtil" property="*" />
-		<jsp:setProperty name="searchUtil" property="searchCoursesList"
-			value="${sessionScope.webworkCourses}" />
+		<jsp:setProperty name="searchUtil" property="searchCoursesList" value="${sessionScope.webworkCourses}" />
 		<c:set var="coursesList" value="${searchUtil.searchCoursesList}" />
 	</c:when>
 	<c:otherwise>
@@ -70,8 +65,7 @@
 
 	<!-- BreadCrumb to navigate within pages. -->
 	<bbNG:breadcrumbBar environment="COURSE" skipLastContentCrumb="true">
-		<bbNG:breadcrumb title="${breadCrumbTitle1}"
-			href="${blackboardUtil.courseContentsUrl}" />
+		<bbNG:breadcrumb title="${breadCrumbTitle1}" href="${blackboardUtil.courseContentsUrl}" />
 		<bbNG:breadcrumb title="${breadCrumbTitle2}" />
 	</bbNG:breadcrumbBar>
 
@@ -82,18 +76,15 @@
 
 	<!-- Drawer form where submit occurs. Also the elements selected are noted here -->
 	<!-- onsubmit JS function removed as all courses are listed in the first page.  -->
-	<bbNG:drawer onSubmit="${onSubmitFunction}"
-		cancelUrl="${blackboardUtil.courseContentsUrl }"
-		pickerSessionId="${drawerId}" title="${drawerTitle}"
-		useWindowName="true">
+	<bbNG:drawer onSubmit="${onSubmitFunction}" cancelUrl="${blackboardUtil.courseContentsUrl }" pickerSessionId="${drawerId}" title="${drawerTitle}" useWindowName="true">
 		<bbNG:drawerColumn name="${drawerColumn1}" label="${drawerLabel1}" />
 	</bbNG:drawer>
 
 	<!-- Search Form - to search courses in the list of courses. -->
 	<bbNG:form id="${formSearch}" method="post" action="${currentPage}">
-		<bbNG:searchBar selectName="searchKey"
-			operatorValue="${param.searchOperator}" operatorName="searchOperator"
-			textfieldName="searchCourse" textfieldValue="${param.searchCourse}">
+		<bbNG:searchBar selectName="searchKey" operatorValue="${param.searchOperator}" operatorName="searchOperator" textfieldName="searchCourse" 
+			textfieldValue="${param.searchCourse}">
+			
 			<bbNG:searchOption label="${drawerLabel1}" value="${drawerColumn1}" />
 		</bbNG:searchBar>
 	</bbNG:form>
@@ -102,24 +93,18 @@
 
 	<!-- The form where the items are listed. -->
 	<bbNG:form id="${formName}" method="post" action="${submitPage}">
-		<bbNG:dataCollection hasRequiredFields="true"
-			showSubmitButtons="false">
+		<bbNG:dataCollection hasRequiredFields="true" showSubmitButtons="false">
 			<bbNG:step title="${stepTitle}">
-				<bbNG:dataElement isRequired="true" label="${dataElementLabel}"
-					isVertical="true">
-
-					<bbNG:inventoryList listId="${inventoryListId}"
-						className="java.lang.String" collection="${coursesList}"
-						objectVar="eachCourse" emptyMsg="${inventoryListEmpty}"
-						description="${inventoryListDesc}" enableSelectEntireList="true"
-						includePageParameters="true" shoppingCart="true" showAll="true"
+				<bbNG:dataElement isRequired="true" label="${dataElementLabel}" isVertical="true">
+					<bbNG:inventoryList listId="${inventoryListId}" className="java.lang.String" collection="${coursesList}" objectVar="eachCourse" emptyMsg="${inventoryListEmpty}"
+						description="${inventoryListDesc}" enableSelectEntireList="true" includePageParameters="true" shoppingCart="true" showAll="true" 
 						initialSortCol="${drawerColumn1}" renderAjax="true">
+						
 						<bbNG:listOptions allowEditPaging="false" />
-
-						<bbNG:listCheckboxElement name="selectedWebworkCoursesParam"
-							showCheckbox="true" value="${ eachCourse }" />
-						<bbNG:listElement label="${drawerLabel1}" name="${drawerColumn1}"
-							isRowHeader="true">${eachCourse}</bbNG:listElement>
+						<bbNG:listCheckboxElement name="selectedWebworkCoursesParam" showCheckbox="true" value="${ eachCourse }" />
+						<bbNG:listElement label="${drawerLabel1}" name="${drawerColumn1}" isRowHeader="true">
+							${eachCourse}
+						</bbNG:listElement>
 
 					</bbNG:inventoryList>
 				</bbNG:dataElement>

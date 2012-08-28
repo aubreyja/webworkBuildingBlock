@@ -26,8 +26,7 @@
 		<content-handlers>
 			<content-handler>
 				<name value="WeBWorK Assignment" />
-				<!-- Handle must be same as in the BuildingBlockConstants.BuildingBlockContentHandlerType 
-					in messages.properties file -->
+				<!-- Handle must be same as in the BuildingBlockConstants.BuildingBlockContentHandlerType in messages.properties file -->
 				<handle value="resource/x-BbWw-Assign3" />
 				<http-actions>
 					<create value="webwork/create.jsp" />
@@ -45,47 +44,32 @@
 		<permissions>
 			<permission type="persist" name="Content" actions="create,modify,delete" />
 			<permission type="persist" name="Outcome" actions="create,modify,delete" />
-			<permission type="persist" name="OutcomeDefinition"
-				actions="create,modify,delete" />
-			<permission type="persist" name="OutcomeDefinitionCategory"
-				actions="create,modify,delete" />
+			<permission type="persist" name="OutcomeDefinition" actions="create,modify,delete" />
+			<permission type="persist" name="OutcomeDefinitionCategory" actions="create,modify,delete" />
 			<permission type="persist" name="user" actions="create,modify,delete" />
 			<permission type="persist" name="announcement" actions="create,modify" />
 
-			<permission type="blackboard.data.AttributePermission"
-				name="user.personalinfo" actions="get,set" />
-			<permission type="blackboard.data.AttributePermission"
-				name="user.authinfo" actions="get,set" />
-			<permission type="attribute" name="user.personalinfo"
-				actions="get" />
+			<permission type="blackboard.data.AttributePermission" name="user.personalinfo" actions="get,set" />
+			<permission type="blackboard.data.AttributePermission" name="user.authinfo" actions="get,set" />
+			<permission type="attribute" name="user.personalinfo" actions="get" />
 			<permission type="attribute" name="user.authinfo" actions="get" />
 
 			<permission type="runtime" name="getClassLoader" actions="" />
-			<permission type="runtime" name="createClassLoader"
-				actions="" />
-			<permission type="java.lang.reflect.ReflectPermission"
-				name="suppressAccessChecks" actions="*" />
+			<permission type="runtime" name="createClassLoader" actions="" />
+			<permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks" actions="*" />
 
 			<!-- Permissions for the class folders to make network connections. -->
-			<permission type="java.net.SocketPermission" name="webwork.math.missouri.edu"
-				actions="connect,resolve" />
-			<permission type="java.net.SocketPermission" name="webwork.math"
-				actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="webwork.math.missouri.edu" actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="webwork.math" actions="connect,resolve" />
 				
-			<permission type="java.net.SocketPermission" name="webwork.wpi.edu"
-				actions="connect,resolve" />
-			<permission type="java.net.SocketPermission" name="webwork.wpi"
-				actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="webwork.wpi.edu" actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="webwork.wpi" actions="connect,resolve" />
 				
-			<permission type="java.net.SocketPermission" name="hosted2.webwork.rochester.edu"
-				actions="connect,resolve" />
-			<permission type="java.net.SocketPermission" name="hosted2.webwork"
-				actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="hosted2.webwork.rochester.edu" actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="hosted2.webwork" actions="connect,resolve" />
 			
-			<permission type="java.net.SocketPermission" name="devel1.webwork.rochester.edu"
-				actions="connect,resolve" />
-			<permission type="java.net.SocketPermission" name="devel1.webwork"
-				actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="devel1.webwork.rochester.edu" actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="devel1.webwork" actions="connect,resolve" />
 
 		</permissions>
 	</plugin>

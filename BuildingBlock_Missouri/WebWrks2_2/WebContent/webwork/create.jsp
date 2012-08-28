@@ -27,32 +27,22 @@
 <bbNG:genericPage ctxId="ctx" title="WebworkCreate">
 
 	<!--  Setting the blackboard utility class to session object for use in the building block -->
-	<jsp:useBean id="blackboardUtil" scope="session"
-		class="edu.missouri.BlackboardUtil">
-		<jsp:setProperty name="blackboardUtil" property="blackboardUser"
-			value="${ ctx.user }" />
-		<jsp:setProperty name="blackboardUtil" property="courseIdentity"
-			value="${ ctx.course.id }" />
-		<jsp:setProperty name="blackboardUtil" property="courseNumber"
-			param="course_id" />
-		<jsp:setProperty name="blackboardUtil" property="contentNumber"
-			param="content_id" />
-		<jsp:setProperty name="blackboardUtil" property="requestUrl"
-			value="${pageContext.request.requestURL }" />
-		<jsp:setProperty name="blackboardUtil" property="requestUri"
-			value="${pageContext.request.requestURI }" />
+	<jsp:useBean id="blackboardUtil" scope="session" class="edu.missouri.BlackboardUtil">
+		<jsp:setProperty name="blackboardUtil" property="blackboardUser" value="${ ctx.user }" />
+		<jsp:setProperty name="blackboardUtil" property="courseIdentity" value="${ ctx.course.id }" />
+		<jsp:setProperty name="blackboardUtil" property="courseNumber" param="course_id" />
+		<jsp:setProperty name="blackboardUtil" property="contentNumber" param="content_id" />
+		<jsp:setProperty name="blackboardUtil" property="requestUrl" value="${pageContext.request.requestURL }" />
+		<jsp:setProperty name="blackboardUtil" property="requestUri" value="${pageContext.request.requestURI }" />
 	</jsp:useBean>
 
 	<!-- Setting the blackboard user to webworkUtil for necessary functioning. -->
-	<jsp:useBean id="webworkUtil" scope="session"
-		class="edu.missouri.WebworkUtil" />
-	<jsp:setProperty name="webworkUtil" property="blackboardUser"
-		value="${ blackboardUtil.blackboardUser }" />
+	<jsp:useBean id="webworkUtil" scope="session" class="edu.missouri.WebworkUtil" />
+	<jsp:setProperty name="webworkUtil" property="blackboardUser" value="${ blackboardUtil.blackboardUser }" />
 
 	<!-- Setting application attributes for caching request. -->
 	<c:if test="${empty sessionScope.webworkCourses}">
-		<c:set var="webworkCourses" scope="session"
-			value="${webworkUtil.webworkCoursesList}" />
+		<c:set var="webworkCourses" scope="session" value="${webworkUtil.webworkCoursesList}" />
 	</c:if>
 
 	<!-- Forwarding to the courses selection page. -->

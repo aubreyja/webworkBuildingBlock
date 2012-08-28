@@ -1812,34 +1812,35 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
     }
 
     public java.lang.String[] list_users(java.lang.String authenKey, java.lang.String courseName) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[23]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_users"));
+		if (super.cachedEndpoint == null) {
+		    throw new org.apache.axis.NoEndPointException();
+		}
+		org.apache.axis.client.Call _call = createCall();
+		_call.setOperation(_operations[23]);
+		_call.setUseSOAPAction(true);
+		_call.setSOAPActionURI("");
+		_call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+		_call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_users"));
+		
+		setRequestHeaders(_call);
+		setAttachments(_call);
+		try {
+			java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName});
 
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String[]) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String[]) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String[].class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
+			if (_resp instanceof java.rmi.RemoteException) {
+				throw (java.rmi.RemoteException)_resp;
+			}
+			else {
+				extractAttachments(_call);
+				try {
+					return (java.lang.String[]) _resp;
+				} catch (java.lang.Exception _exception) {
+					return (java.lang.String[]) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String[].class);
+				}
+			}
+		} catch (org.apache.axis.AxisFault axisFaultException) {
+			throw axisFaultException;
+		}
     }
 
     public edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser get_user(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID) throws java.rmi.RemoteException {
@@ -1979,22 +1980,22 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, record});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
+		try {
+			java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, record});
+			
+			if (_resp instanceof java.rmi.RemoteException) {
+				throw (java.rmi.RemoteException)_resp;
+			} else {
+				extractAttachments(_call);
+				try {
+					return (java.lang.String) _resp;
+				} catch (java.lang.Exception _exception) {
+					return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+				}
+			}
+		} catch (org.apache.axis.AxisFault axisFaultException) {
+			throw axisFaultException;
+		}
     }
 
     public java.lang.String[] list_global_sets(java.lang.String authenKey, java.lang.String courseName) throws java.rmi.RemoteException {

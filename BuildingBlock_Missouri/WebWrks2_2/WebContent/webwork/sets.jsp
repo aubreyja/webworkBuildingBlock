@@ -40,12 +40,9 @@
 </c:if>
 
 <!-- Importing Beans used in this page -->
-<jsp:useBean id="blackboardUtil" scope="session"
-	type="edu.missouri.BlackboardUtil" />
-<jsp:useBean id="webworkUtil" scope="session"
-	type="edu.missouri.WebworkUtil" />
-<jsp:useBean id="webworkData" scope="session"
-	class="edu.missouri.WebworkData" />
+<jsp:useBean id="blackboardUtil" scope="session" type="edu.missouri.BlackboardUtil" />
+<jsp:useBean id="webworkUtil" scope="session" type="edu.missouri.WebworkUtil" />
+<jsp:useBean id="webworkData" scope="session" class="edu.missouri.WebworkData" />
 
 <c:choose>
 	<c:when test="${ param.startIndex != null }">
@@ -57,9 +54,7 @@
 			<!-- Creating Webwork Data Bean based on the selection from courses page -->
 			<c:choose>
 				<c:when test="paramValues['selectAllFromList'] == true">
-					<jsp:setProperty name="webworkData"
-						property="selectedWebworkCourses"
-						value="${ sessionScope.webworkCourses }" />
+					<jsp:setProperty name="webworkData" property="selectedWebworkCourses" value="${ sessionScope.webworkCourses }" />
 				</c:when>
 				<c:otherwise>
 					<jsp:setProperty name="webworkData" property="*" />
@@ -67,14 +62,11 @@
 			</c:choose>
 
 			<!-- Initializing the new selected courses and sets. See the set method for details.  -->
-			<jsp:setProperty name="webworkUtil" property="webworkCoursesSets"
-				value="${webworkData.selectedCourses}" />
+			<jsp:setProperty name="webworkUtil" property="webworkCoursesSets" value="${webworkData.selectedCourses}" />
 				
 			<!-- For selected courses, capture the list of sets, and corresponding list of courses for each set. -->
-			<jsp:setProperty name="webworkData" property="selectedCourses"
-				value="${webworkUtil.selectedWebworkCourses}" />
-			<jsp:setProperty property="listWebworkSetsForCourses"
-				name="webworkData" value="${webworkUtil.webworkCoursesSets}" />
+			<jsp:setProperty name="webworkData" property="selectedCourses" value="${webworkUtil.selectedWebworkCourses}" />
+			<jsp:setProperty property="listWebworkSetsForCourses" name="webworkData" value="${webworkUtil.webworkCoursesSets}" />
 		</c:if>
 	</c:otherwise>
 </c:choose>
@@ -85,8 +77,7 @@
 
 	<!-- BreadCrumb to navigate within pages. -->
 	<bbNG:breadcrumbBar environment="COURSE">
-		<bbNG:breadcrumb title="${breadCrumbTitle1}"
-			href="${blackboardUtil.courseContentsUrl }" />
+		<bbNG:breadcrumb title="${breadCrumbTitle1}" href="${blackboardUtil.courseContentsUrl }" />
 		<bbNG:breadcrumb title="${breadCrumbTitle2}" href="${beforePage}" />
 		<bbNG:breadcrumb title="${breadCrumbTitle3}" />
 	</bbNG:breadcrumbBar>
@@ -96,9 +87,7 @@
 	</bbNG:pageHeader>
 
 	<!-- Drawer form is where submit button is clicked. Also the elements selected are noted here -->
-	<bbNG:drawer onSubmit="${onSubmitFunction}" cancelUrl="${beforePage}"
-		pickerSessionId="${drawerId}" title="${drawerTitle}"
-		useWindowName="true">
+	<bbNG:drawer onSubmit="${onSubmitFunction}" cancelUrl="${beforePage}" pickerSessionId="${drawerId}" title="${drawerTitle}" useWindowName="true">
 		<bbNG:drawerColumn name="${drawerColumn1}" label="${drawerLabel1}" />
 		<bbNG:drawerColumn name="${drawerColumn2}" label="${drawerLabel2}" />
 		<bbNG:drawerColumn name="${drawerColumn3}" label="${drawerLabel3}" />
@@ -106,25 +95,19 @@
 
 	<bbNG:form id="${formName}" method="post" action="${submitPage}">
 
-		<bbNG:dataCollection hasRequiredFields="true"
-			showSubmitButtons="false">
+		<bbNG:dataCollection hasRequiredFields="true" showSubmitButtons="false">
 
 			<bbNG:step title="${stepTitle}">
-				<bbNG:dataElement isRequired="true" label="${dataElementLabel}"
-					isVertical="true">
+				<bbNG:dataElement isRequired="true" label="${dataElementLabel}" isVertical="true">
 
-					<bbNG:inventoryList listId="${inventoryListId}"
-						className="java.lang.String"
-						collection="${  webworkData.selectedCourses }"
-						objectVar="eachCourse" emptyMsg="${inventoryListEmpty}"
-						description="${inventoryListDesc}" enableSelectEntireList="true"
-						includePageParameters="true" shoppingCart="true" showAll="true">
+					<bbNG:inventoryList listId="${inventoryListId}" className="java.lang.String" collection="${  webworkData.selectedCourses }" objectVar="eachCourse" 
+						emptyMsg="${inventoryListEmpty}" description="${inventoryListDesc}" enableSelectEntireList="true" includePageParameters="true" shoppingCart="true" 
+						showAll="true">
+						
 						<bbNG:listOptions allowShowAll="false" allowEditPaging="false" />
 
-						<bbNG:listCheckboxElement name="selectedWebworkSetsParam"
-							showCheckbox="true" value="${index + offset}" />
-						<bbNG:listElement label="${drawerLabel1}" name="${drawerColumn1}"
-							isRowHeader="true" accessibilityLabelOnly="true">
+						<bbNG:listCheckboxElement name="selectedWebworkSetsParam" showCheckbox="true" value="${index + offset}" />
+						<bbNG:listElement label="${drawerLabel1}" name="${drawerColumn1}" isRowHeader="true" accessibilityLabelOnly="true">
 							${index + offset}
 						</bbNG:listElement>
 						<bbNG:listElement label="${drawerLabel2}" name="${drawerColumn2}">

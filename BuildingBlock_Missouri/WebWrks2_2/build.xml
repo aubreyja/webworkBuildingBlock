@@ -14,8 +14,8 @@
 		<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
 		<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
 	</tstamp>
-	<property name="build-directory" value="C:/Development/WebworkWorkspace" />
-	<property name="reports.dir" value="C:/Development/WebworkWorkspace" />
+	<property name="build-directory" value="C:/WAR" />
+	<property name="reports.dir" value="C:/WAR" />
 
 	<path id="build.classpath">
 		<fileset dir="${lib-directory}">
@@ -41,8 +41,12 @@
 		<copy todir="${class-directory}" includeemptydirs="false">
 			<fileset dir="${source-directory}" excludes="**/*.java" />
 		</copy>
-		<copyfile dest="${class-directory}/" src="src/edu/missouri/messages.properties" />
-		<javac srcdir="${source-directory}" destdir="${class-directory}" verbose="true" deprecation="true" failonerror="true" listfiles="true" classpathref="build.classpath" debug="on" debuglevel="lines,vars,source">
+		<copy todir="${class-directory}">
+			<fileset dir="src/edu/missouri/" includes="messages.properties" />
+		</copy>
+		<!--<copyfile dest="${class-directory}/" src="src/edu/missouri/messages.properties" />-->
+		<javac srcdir="${source-directory}" destdir="${class-directory}" verbose="true" deprecation="true" failonerror="true" listfiles="true" classpathref="build.classpath" 
+			debug="on" debuglevel="lines,vars,source">
 		</javac>
 	</target>
 

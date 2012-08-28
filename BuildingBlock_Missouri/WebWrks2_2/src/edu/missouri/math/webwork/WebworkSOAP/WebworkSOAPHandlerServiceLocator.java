@@ -22,7 +22,7 @@ public class WebworkSOAPHandlerServiceLocator extends org.apache.axis.client.Ser
     }
 
     // Use to get a proxy class for WebworkSOAP
-    private java.lang.String WebworkSOAP_address = "https://webwork.math.missouri.edu/webwork2_rpc";
+    private java.lang.String WebworkSOAP_address = "http://webwork.math.missouri.edu/webwork2_rpc";
 
     public java.lang.String getWebworkSOAPAddress() {
         return WebworkSOAP_address;

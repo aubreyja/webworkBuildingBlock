@@ -22,36 +22,28 @@
 <fmt:message var="failureMessage" key="Failure.Grades" />
 
 <!--  Use Bean declarations  -->
-<jsp:useBean id="assignmentInfo" class="edu.missouri.AssignmentInfo"
-	scope="session">
+<jsp:useBean id="assignmentInfo" class="edu.missouri.AssignmentInfo" scope="session">
 </jsp:useBean>
 
 <!--  Setting the blackboard utility class to session object for use in the building block -->
-<jsp:useBean id="blackboardAccessorUtil" scope="session"
-	class="edu.missouri.BlackboardUtil" />
-<jsp:useBean id="webworkAccessorUtil" scope="session"
-	class="edu.missouri.WebworkUtil" />
+<jsp:useBean id="blackboardAccessorUtil" scope="session" class="edu.missouri.BlackboardUtil" />
+<jsp:useBean id="webworkAccessorUtil" scope="session" class="edu.missouri.WebworkUtil" />
 
 <c:choose>
 
 	<c:when test="${param.save != null}">
 		<!-- Setting necessary info and capturing the grade value to blackboard DB. -->
-		<jsp:setProperty name="blackboardAccessorUtil"
-			property="assignmentInfo" value="${assignmentInfo}" />
-		<jsp:setProperty name="blackboardAccessorUtil" property="writeGrades"
-			value="true" />
+		<jsp:setProperty name="blackboardAccessorUtil" property="assignmentInfo" value="${assignmentInfo}" />
+		<jsp:setProperty name="blackboardAccessorUtil" property="writeGrades" value="true" />
 
 		<!-- Based on grades value display success / failure message. -->
-		<c:set var="gradesWritten"
-			value="${(sessionScope.blackboardAccessorUtil.writeGrades eq true) ? true : false}" />
+		<c:set var="gradesWritten" value="${(sessionScope.blackboardAccessorUtil.writeGrades eq true) ? true : false}" />
 		<c:choose>
 			<c:when test="${gradesWritten eq true}">
-				<c:set var="redirectUrl"
-					value="${sessionScope.blackboardAccessorUtil.courseContentsUrl}${successDisplay}${successMessage}" />
+				<c:set var="redirectUrl" value="${sessionScope.blackboardAccessorUtil.courseContentsUrl}${successDisplay}${successMessage}" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="redirectUrl"
-					value="${sessionScope.blackboardAccessorUtil.courseContentsUrl}${failureDisplay}${failureMessage}" />
+				<c:set var="redirectUrl" value="${sessionScope.blackboardAccessorUtil.courseContentsUrl}${failureDisplay}${failureMessage}" />
 			</c:otherwise>
 		</c:choose>
 		<c:remove var="blackboardAccessorUtil" scope="session" />
@@ -59,56 +51,37 @@
 	</c:when>
 
 	<c:otherwise>
-		<bbNG:learningSystemPage ctxId="ctx" authentication="Y"
-			checkGuest="${ (assignmentInfo.allowGuestViewers eq true)? 'Y' : 'N' }"
-			disableEditToggle="false" title="webworkLogin">
+		<bbNG:learningSystemPage ctxId="ctx" authentication="Y" checkGuest="${ (assignmentInfo.allowGuestViewers eq true)? 'Y' : 'N' }" disableEditToggle="false" title="webworkLogin">
 
 			<!-- Setting the blackboard util the necessary properties. -->
-			<jsp:setProperty name="blackboardAccessorUtil"
-				property="blackboardUser" value="${ ctx.user }" />
-			<jsp:setProperty name="blackboardAccessorUtil"
-				property="courseNumber" param="course_id" />
-			<jsp:setProperty name="blackboardAccessorUtil"
-				property="contentNumber" param="content_id" />
-			<jsp:setProperty name="blackboardAccessorUtil" property="requestUrl"
-				value="${pageContext.request.requestURL }" />
-			<jsp:setProperty name="blackboardAccessorUtil" property="requestUri"
-				value="${pageContext.request.requestURI }" />
+			<jsp:setProperty name="blackboardAccessorUtil" property="blackboardUser" value="${ ctx.user }" />
+			<jsp:setProperty name="blackboardAccessorUtil" property="courseNumber" param="course_id" />
+			<jsp:setProperty name="blackboardAccessorUtil" property="contentNumber" param="content_id" />
+			<jsp:setProperty name="blackboardAccessorUtil" property="requestUrl" value="${pageContext.request.requestURL }" />
+			<jsp:setProperty name="blackboardAccessorUtil" property="requestUri" value="${pageContext.request.requestURI }" />
 
-			<!-- Setting the assignment info the necessary properties.  -->
-			<jsp:setProperty name="assignmentInfo" property="assignmentUser"
-				value="${blackboardAccessorUtil.blackboardUser.userName }" />
+			<!-- Setting the assignment info the necessary properties.  --> 
+			<jsp:setProperty name="assignmentInfo" property="assignmentUser" value="${blackboardAccessorUtil.blackboardUser.userName }" />
 			<jsp:setProperty name="assignmentInfo" property="*" />
 
 			<!-- Setting the webwork util the necessary properties.  -->
-			<jsp:setProperty name="webworkAccessorUtil" property="blackboardUser"
-				value="${ blackboardAccessorUtil.blackboardUser }" />
-			<jsp:setProperty name="webworkAccessorUtil" property="webworkCourse"
-				value="${ assignmentInfo.assignmentCourse }" />
-			<jsp:setProperty name="webworkAccessorUtil"
-				property="webworkCourseSet"
-				value="${ assignmentInfo.assignmentSet }" />
-			<jsp:setProperty name="webworkAccessorUtil"
-				property="checkWebworkUserPermissions" value="true" />
+			<jsp:setProperty name="webworkAccessorUtil" property="blackboardUser" value="${ blackboardAccessorUtil.blackboardUser }" />
+			<jsp:setProperty name="webworkAccessorUtil" property="webworkCourse" value="${ assignmentInfo.assignmentCourse }" />
+			<jsp:setProperty name="webworkAccessorUtil" property="webworkCourseSet" value="${ assignmentInfo.assignmentSet }" />
+			<jsp:setProperty name="webworkAccessorUtil" property="checkWebworkUserPermissions" value="true" />
 
-			<c:set var="messageLabel"
-				value="${loginMessage1}${assignmentInfo.assignmentSet}
-				,${assignmentInfo.assignmentUser }. ${loginMessage2} " />
-			<bbNG:buttonPalette label="${messageLabel }"
-				url="${assignmentInfo.assignmentUrl }" />
+			<c:set var="messageLabel" value="${loginMessage1}${assignmentInfo.assignmentSet}, ${assignmentInfo.assignmentUser }. ${loginMessage2} " />
+			<bbNG:buttonPalette label="${messageLabel }" url="${assignmentInfo.assignmentUrl }" />
 
-			<iframe src="${assignmentInfo.assignmentUrl }" scrolling="auto"
-				id="webworkAssignment" title="WebworkData" height="500 px"
-				width="100%" marginheight="1 px" marginwidth="1 px" longdesc=""
-				align="middle">
+			<iframe src="${assignmentInfo.assignmentUrl }" scrolling="auto" id="webworkAssignment" title="WebworkData" height="500 px" width="100%" marginheight="1 px"
+				marginwidth="1 px" longdesc="" align="middle">
 				<p>${loginMessage3}</p>
 			</iframe>
 
 			<!-- Buttons in the bottom of the page. -->
 			<c:choose>
 				<c:when test="${blackboardAccessorUtil.courseInstructor}">
-					<bbNG:buttonPalette label="Grade Blackboard users"
-						url="${blackboardAccessorUtil.buildingBlockURI }/grades.jsp" />
+					<bbNG:buttonPalette label="Grade Blackboard users" url="${blackboardAccessorUtil.buildingBlockURI }/grades.jsp" />
 				</c:when>
 				<c:otherwise>
 					<bbNG:button url="${jsPreviousPage}" label="${buttonLabelCancel}" />

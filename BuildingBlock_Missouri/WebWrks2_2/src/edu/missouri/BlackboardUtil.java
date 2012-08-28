@@ -212,18 +212,13 @@ public class BlackboardUtil extends BuildingBlockMethods {
 			 * root folder should be in messages.properties file. Check the file
 			 * settings.
 			 */
-			buildingBlockURI = PlugInUtil.getUri(constantVendorName,
-					constantBuildingBlockName, constantRootFolder);
+			buildingBlockURI = PlugInUtil.getUri(constantVendorName, constantBuildingBlockName, constantRootFolder);
 
 			/* All persister and loaders from blackboard */
-			courseMembershipLoader = CourseMembershipDbLoader.Default
-					.getInstance();
-			persistenceManager = PersistenceServiceFactory.getInstance()
-					.getDbPersistenceManager();
-			gradePersister = (LineitemDbPersister) persistenceManager
-					.getPersister(LineitemDbPersister.TYPE);
-			gradeLineItemDb = (LineitemDbLoader) persistenceManager
-					.getLoader(LineitemDbLoader.TYPE);
+			courseMembershipLoader = CourseMembershipDbLoader.Default.getInstance();
+			persistenceManager = PersistenceServiceFactory.getInstance().getDbPersistenceManager();
+			gradePersister = (LineitemDbPersister) persistenceManager.getPersister(LineitemDbPersister.TYPE);
+			gradeLineItemDb = (LineitemDbLoader) persistenceManager.getLoader(LineitemDbLoader.TYPE);
 			contentPersister = ContentDbPersister.Default.getInstance();
 			contentDb = ContentDbLoader.Default.getInstance();
 			courseUserDb = UserDbLoader.Default.getInstance();
@@ -235,11 +230,9 @@ public class BlackboardUtil extends BuildingBlockMethods {
 			 * variables. The checking is done in the constructor.
 			 */
 			refreshStaticVariables = Calendar.getInstance();
-			LogServiceFactory.getInstance().logDebug(
-					"Changing blackboard config.");
+			LogServiceFactory.getInstance().logDebug("Changing blackboard config.");
 		} catch (Exception exc) {
-			LogServiceFactory.getInstance().logError(
-					"Exception during loading BlackboardUtil static function.");
+			LogServiceFactory.getInstance().logError("Exception during loading BlackboardUtil static function.");
 		}
 	}
 
@@ -259,17 +252,14 @@ public class BlackboardUtil extends BuildingBlockMethods {
 		 * request, or any request after a day time with the static object,
 		 * shoots up the if function and executes the static initalizer block.
 		 */
-		if (((long) (whetherToRefresh.getTimeInMillis() - refreshStaticVariables
-				.getTimeInMillis()) / (24 * 60 * 60 * 1000)) > 0) {
+		if (((long) (whetherToRefresh.getTimeInMillis() - refreshStaticVariables.getTimeInMillis()) / (24 * 60 * 60 * 1000)) > 0) {
 			BlackboardUtil.refreshStaticVariables = Calendar.getInstance();
 			try {
 				WebworkUtil.resetDaily();
 			} catch (RemoteException re) {
-				LogServiceFactory.getInstance().logError(
-						"Could not reset all courses static variable.");
+				LogServiceFactory.getInstance().logError("Could not reset all courses static variable.");
 			}
-			LogServiceFactory.getInstance().logDebug(
-					"Called the config changed method.");
+			LogServiceFactory.getInstance().logDebug("Called the config changed method.");
 		}
 	}
 
@@ -296,8 +286,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	public List<User> getEnrolledUserList() throws KeyNotFoundException,
 			PersistenceException {
 		if (this.enrolledUserList == null || this.enrolledUserList.isEmpty()) {
-			this.setEnrolledUserList(courseUserDb
-					.loadByCourseId(courseIdentity));
+			this.setEnrolledUserList(courseUserDb.loadByCourseId(courseIdentity));
 		}
 		return enrolledUserList;
 	}
@@ -369,9 +358,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 		 * Returns whether the user has the proper entitlement usually available
 		 * for instructors / TA.
 		 */
-		return SecurityUtil.userHasEntitlement(this.blackboardUser.getId(),
-				this.courseIdentity, new Entitlement(
-						PlugInConstants.COURSE_CONTROL_PANEL_VIEW));
+		return SecurityUtil.userHasEntitlement(this.blackboardUser.getId(), this.courseIdentity, new Entitlement(PlugInConstants.COURSE_CONTROL_PANEL_VIEW));
 	}
 
 	/**
@@ -450,10 +437,8 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 *            the courseNumber to set
 	 * @throws PersistenceException
 	 */
-	public void setCourseNumber(String courseNumber)
-			throws PersistenceException {
-		this.setCourseIdentity(BlackboardUtil.persistenceManager.generateId(
-				Course.DATA_TYPE, courseNumber));
+	public void setCourseNumber(String courseNumber) throws PersistenceException {
+		this.setCourseIdentity(BlackboardUtil.persistenceManager.generateId(Course.DATA_TYPE, courseNumber));
 		this.courseNumber = courseNumber;
 
 	}
@@ -489,11 +474,8 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 * @throws KeyNotFoundException
 	 * @throws PersistenceException
 	 */
-	public Content getContentModify() throws KeyNotFoundException,
-			PersistenceException {
-		this.setContentModify(BlackboardUtil.contentDb
-				.loadById(BlackboardUtil.persistenceManager.generateId(
-						CourseDocument.DATA_TYPE, this.contentNumber)));
+	public Content getContentModify() throws KeyNotFoundException, PersistenceException {
+		this.setContentModify(BlackboardUtil.contentDb.loadById(BlackboardUtil.persistenceManager.generateId(CourseDocument.DATA_TYPE, this.contentNumber)));
 		return contentModify;
 	}
 
@@ -569,11 +551,8 @@ public class BlackboardUtil extends BuildingBlockMethods {
 		 * address. Then add the plugin url for the course and content that the
 		 * user is in.
 		 */
-		this.setCourseContentsUrl(contentNumber != null ? (courseNumber != null ? this.requestUrl
-				.substring(0, this.requestUrl.indexOf(this.requestUri))
-				+ PlugInUtil.getEditableContentReturnURL(contentNumber,
-						courseNumber) : Messages.getString("Default.Empty"))
-				: Messages.getString("Default.Empty"));
+		this.setCourseContentsUrl(contentNumber != null ? (courseNumber != null ? this.requestUrl.substring(0, this.requestUrl.indexOf(this.requestUri))
+				+ PlugInUtil.getEditableContentReturnURL(contentNumber,	courseNumber) : Messages.getString("Default.Empty")) : Messages.getString("Default.Empty"));
 		return courseContentsUrl;
 	}
 
@@ -649,14 +628,10 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 * @throws RemoteException
 	 * @throws ValidationException
 	 */
-	public void setWriteGrades(boolean writeGrades) throws RemoteException,
-			ValidationException {
+	public void setWriteGrades(boolean writeGrades) throws RemoteException, ValidationException {
 		if (writeGrades) {
-			this.writeGrades = this
-					.persistGradesToBlackboard(Arrays
-							.asList(new Id[] { this.blackboardUser.getId() }),
-							Arrays.asList(new String[] { this.blackboardUser
-									.getUserName() }));
+			this.writeGrades = this.persistGradesToBlackboard(Arrays.asList(new Id[] { this.blackboardUser.getId() }), 
+					Arrays.asList(new String[] { this.blackboardUser.getUserName() }));
 		}
 	}
 
@@ -674,8 +649,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 * @throws PersistenceException
 	 * @throws KeyNotFoundException
 	 */
-	public void setStudentsGrades(boolean studentsGrades)
-			throws KeyNotFoundException, PersistenceException {
+	public void setStudentsGrades(boolean studentsGrades) throws KeyNotFoundException, PersistenceException {
 		if (studentsGrades) {
 			ArrayList<Id> enrolledUserListId = new ArrayList<Id>();
 			ArrayList<String> enrolledUserListName = new ArrayList<String>();
@@ -684,17 +658,13 @@ public class BlackboardUtil extends BuildingBlockMethods {
 			 * Checks if the user is student, and then adds it to the temp list.
 			 */
 			for (User eachEnrolledUser : this.getEnrolledUserList()) {
-				if (((CourseMembership) courseMembershipLoader
-						.loadByCourseAndUserId(this.courseIdentity,
-								eachEnrolledUser.getId())).getRole().equals(
-						CourseMembership.Role.STUDENT)) {
+				if (((CourseMembership) courseMembershipLoader.loadByCourseAndUserId(this.courseIdentity, eachEnrolledUser.getId())).getRole().equals(CourseMembership.Role.STUDENT)) {
 					enrolledUserListId.add(eachEnrolledUser.getId());
 					enrolledUserListName.add(eachEnrolledUser.getUserName());
 				}
 			}
 			this.setEnrolledStudentList(enrolledUserListName);
-			this.studentsGrades = this.persistGradesToBlackboard(
-					enrolledUserListId, enrolledUserListName);
+			this.studentsGrades = this.persistGradesToBlackboard(enrolledUserListId, enrolledUserListName);
 		}
 	}
 
@@ -713,8 +683,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 *            - List of user name's in blackboard to load and set score.
 	 * @return whether all data written successfully or not.
 	 */
-	private synchronized boolean persistGradesToBlackboard(List<Id> userIdList,
-			List<String> userNameList) {
+	private synchronized boolean persistGradesToBlackboard(List<Id> userIdList, List<String> userNameList) {
 
 		String[] struserNameList = null;
 
@@ -725,8 +694,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 			 * Loading the grade book line items having the course Id as parent
 			 * Id.
 			 */
-			ArrayList<Lineitem> gradeBookOriginalLineItems = BlackboardUtil.gradeLineItemDb
-					.loadByCourseId(courseIdentity);
+			ArrayList<Lineitem> gradeBookOriginalLineItems = BlackboardUtil.gradeLineItemDb.loadByCourseId(courseIdentity);
 
 			/*
 			 * Creating an array from the list - since, .toArray() returns null
@@ -737,9 +705,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 				struserNameList[userNameList.indexOf(userName)] = userName;
 
 			/* Get the grades from the web-work */
-			String[] tempGrades = WebworkUtil.soapHandler.grade_users_sets(
-					WebworkUtil.webworkSoapAuthKey,
-					this.assignmentInfo.getAssignmentCourse(), struserNameList,
+			String[] tempGrades = WebworkUtil.soapHandler.grade_users_sets(WebworkUtil.webworkSoapAuthKey, this.assignmentInfo.getAssignmentCourse(), struserNameList,
 					this.assignmentInfo.getAssignmentSet());
 
 			/* Set the grades to an array variable in the util class */
@@ -756,63 +722,42 @@ public class BlackboardUtil extends BuildingBlockMethods {
 			for (Id eachUserId : userIdList) {
 				try {
 
-					Id courseMembershipId = ((CourseMembership) courseMembershipLoader
-							.loadByCourseAndUserId(this.courseIdentity,
-									eachUserId)).getId();
+					Id courseMembershipId = ((CourseMembership) courseMembershipLoader.loadByCourseAndUserId(this.courseIdentity, eachUserId)).getId();
 
 					for (Lineitem eachLineItem : gradeBookOriginalLineItems) {
-						if (eachLineItem.getName().equals(
-								this.assignmentInfo.getGradebookname())) {
+						if (eachLineItem.getName().equals(this.assignmentInfo.getGradebookname())) {
 							try {
-								this.scoreAssignment = scoreLoader
-										.loadByCourseMembershipIdAndLineitemId(
-												courseMembershipId,
-												eachLineItem.getId());
+								this.scoreAssignment = scoreLoader.loadByCourseMembershipIdAndLineitemId(courseMembershipId, eachLineItem.getId());
 							} catch (Exception e) {
 								this.scoreAssignment = new Score();
-								this.scoreAssignment
-										.setCourseMembershipId(courseMembershipId);
-								this.scoreAssignment.setLineitemId(eachLineItem
-										.getId());
+								this.scoreAssignment.setCourseMembershipId(courseMembershipId);
+								this.scoreAssignment.setLineitemId(eachLineItem.getId());
 							}
 
 							try {
 								if (Integer.parseInt(tempGrades[index]) > 0)
-									this.scoreAssignment
-											.setGrade(tempGrades[index]);
+									this.scoreAssignment.setGrade(tempGrades[index]);
 								else
 									this.scoreAssignment.setGrade("0");
 							} catch (NumberFormatException nfe) {
 								this.scoreAssignment.setGrade("0");
 							}
 
-							this.studentsGradesScores[index++] = this.scoreAssignment
-									.getGrade();
-							BlackboardUtil.scorePersister
-									.persist(scoreAssignment);
+							this.studentsGradesScores[index++] = this.scoreAssignment.getGrade();
+							BlackboardUtil.scorePersister.persist(scoreAssignment);
 
 						}
 					}
 				} catch (KeyNotFoundException exc) {
-					LogServiceFactory
-							.getInstance()
-							.logError(
-									"Logging Key not found exception when reading course membership record.",
-									exc);
+					LogServiceFactory.getInstance().logError("Logging Key not found exception when reading course membership record.", exc);
 					success = false;
 					continue;
 				} catch (PersistenceException pe) {
-					LogServiceFactory
-							.getInstance()
-							.logError(
-									"Logging persistence exception when reading course membership record.");
+					LogServiceFactory.getInstance().logError("Logging persistence exception when reading course membership record.");
 					success = false;
 					continue;
 				} catch (ValidationException ve) {
-					LogServiceFactory
-							.getInstance()
-							.logError(
-									"Logging validation exception when writing grades to blackboard.");
+					LogServiceFactory.getInstance().logError("Logging validation exception when writing grades to blackboard.");
 					success = false;
 					continue;
 				}
@@ -821,26 +766,16 @@ public class BlackboardUtil extends BuildingBlockMethods {
 			this.setWebworkGrades(tempGrades);
 
 		} catch (KeyNotFoundException knfe) {
-			LogServiceFactory
-					.getInstance()
-					.logError(
-							"Logging Key not found exception when reading gradebook line items records.");
+			LogServiceFactory.getInstance().logError("Logging Key not found exception when reading gradebook line items records.");
 			success = false;
 		} catch (PersistenceException pe) {
-			LogServiceFactory
-					.getInstance()
-					.logError(
-							"Logging persistence exception when reading gradebook line items records.");
+			LogServiceFactory.getInstance().logError("Logging persistence exception when reading gradebook line items records.");
 			success = false;
 		} catch (RemoteException re) {
-			LogServiceFactory.getInstance().logError(
-					"Logging remote exception when reading webwork grades");
+			LogServiceFactory.getInstance().logError("Logging remote exception when reading webwork grades");
 			success = false;
 		} catch (Exception exc) {
-			LogServiceFactory.getInstance()
-					.logError(
-							"Logging other exception: \n"
-									+ struserNameList.length, exc);
+			LogServiceFactory.getInstance().logError("Logging other exception: \n" + struserNameList.length, exc);
 		}
 		return success;
 	}
@@ -906,27 +841,23 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 * @throws ValidationException
 	 * @throws ParseException
 	 */
-	public void setPublishAssignmentsData(boolean publishAssignmentsData)
-			throws PersistenceException, ValidationException, ParseException {
+	public void setPublishAssignmentsData(boolean publishAssignmentsData) throws PersistenceException, ValidationException, ParseException {
 		if (publishAssignmentsData) {
 			//SimpleDateFormat constantDateFormat2 = new SimpleDateFormat("MM/dd/yyyy 'at' hh:mma z");
 			// TEST
-			SimpleDateFormat constantDateFormat2 = new SimpleDateFormat(
-					Messages.getString("BlackboardUtil.DateFormat") + " HH:mm aa");
+			SimpleDateFormat constantDateFormat2 = new SimpleDateFormat(Messages.getString("BlackboardUtil.DateFormat") + " HH:mm aa");
 
 			/* Setting a temp variable to capture any error occured */
 			boolean failure = false;
 			boolean alreadyPublished;
-			if (this.publishData.getPublishedRecord() == null
-					|| this.publishData.getPublishedRecord().isEmpty())
+			if (this.publishData.getPublishedRecord() == null || this.publishData.getPublishedRecord().isEmpty())
 				alreadyPublished = false;
 			else
 				alreadyPublished = true;
 
 			/* If it is to modify a content, or to create a new content. */
 			if (!this.publishData.getModifyRecord()) {
-				List<Lineitem> gradeBookOriginalLineItems = BlackboardUtil.gradeLineItemDb
-						.loadByCourseId(courseIdentity);
+				List<Lineitem> gradeBookOriginalLineItems = BlackboardUtil.gradeLineItemDb.loadByCourseId(courseIdentity);
 
 				/* Local variable to capture which assignment failed. */
 				List<Boolean> tempRecordsSaved = null;
@@ -936,18 +867,14 @@ public class BlackboardUtil extends BuildingBlockMethods {
 					tempRecordsSaved = this.publishData.getPublishedRecord();
 
 				/* Course And Content Id's */
-				Id generatedCourseId = persistenceManager.generateId(
-						Course.DATA_TYPE, this.courseNumber);
-				Id generatedParentId = persistenceManager.generateId(
-						CourseDocument.DATA_TYPE, this.contentNumber);
+				Id generatedCourseId = persistenceManager.generateId(Course.DATA_TYPE, this.courseNumber);
+				Id generatedParentId = persistenceManager.generateId(CourseDocument.DATA_TYPE, this.contentNumber);
 
 				/* Calendar for startDate and endDate of assignment */
 				Calendar calendarStartObject = Calendar.getInstance();
 				Calendar calendarEndObject = Calendar.getInstance();
 
-				for (int assignmentNumber = 0; assignmentNumber < this.publishData
-						.getName().length; assignmentNumber++) {
-
+				for (int assignmentNumber = 0; assignmentNumber < this.publishData.getName().length; assignmentNumber++) {
 					if (!alreadyPublished)
 						tempRecordsSaved.add(false);
 
@@ -957,34 +884,17 @@ public class BlackboardUtil extends BuildingBlockMethods {
 						Announcement contentAnnouncement = new Announcement();
 
 						/* Change comments to FormattedText as required by BB */
-						FormattedText comments = new FormattedText(
-								this.publishData.getAssignmentComments()[assignmentNumber],
-								FormattedText.Type.HTML);
+						FormattedText comments = new FormattedText(this.publishData.getAssignmentComments()[assignmentNumber], FormattedText.Type.HTML);
 
 						/*
 						 * Create the URL with message information and other
 						 * params.
 						 */
-						String assignmentUrl = Messages
-								.getString("BlackboardUtil.3")
-								+ buildingBlockURI
-								+ Messages.getString("BlackboardUtil.4")
-								+ constantWebworkPageLink
-								+ constantAssignmentInfoCourseParam
-								+ this.publishData.getCourseName().get(
-										assignmentNumber)
-								+ constantAssignmentInfoSetParam
-								+ this.publishData.getSetName().get(
-										assignmentNumber)
-								+ constantAssignmentInfoContentIdParam
-								+ this.contentNumber
-								+ constantAssignmentInfoCourseIdParam
-								+ this.courseNumber
-								+ constantAssignmentGradeBookNameParam
-								+ this.publishData.getName()[assignmentNumber]
-								+ Messages.getString("BlackboardUtil.5")
-								+ this.publishData.getName()[assignmentNumber]
-								+ Messages.getString("BlackboardUtil.6");
+						String assignmentUrl = Messages.getString("BlackboardUtil.3") + buildingBlockURI + Messages.getString("BlackboardUtil.4") + constantWebworkPageLink
+								+ constantAssignmentInfoCourseParam	+ this.publishData.getCourseName().get(assignmentNumber) + constantAssignmentInfoSetParam
+								+ this.publishData.getSetName().get(assignmentNumber) + constantAssignmentInfoContentIdParam + this.contentNumber
+								+ constantAssignmentInfoCourseIdParam + this.courseNumber + constantAssignmentGradeBookNameParam + this.publishData.getName()[assignmentNumber]
+								+ Messages.getString("BlackboardUtil.5") + this.publishData.getName()[assignmentNumber] + Messages.getString("BlackboardUtil.6");
 
 						/*
 						 * ALL Content Information - user preference and normal
@@ -992,23 +902,16 @@ public class BlackboardUtil extends BuildingBlockMethods {
 						 */
 						contentCourseDocument.setTitle(assignmentUrl);
 						contentCourseDocument.setBody(comments);
-						contentCourseDocument
-								.setContentHandler(constantContentHandlerType);
+						contentCourseDocument.setContentHandler(constantContentHandlerType);
 						contentCourseDocument.setCourseId(generatedCourseId);
 						contentCourseDocument.setParentId(generatedParentId);
 						contentCourseDocument.setIsLesson(true);
 						contentCourseDocument.setIsFolder(false);
-						contentCourseDocument.setIsAvailable(this.publishData
-								.getIsAvailable()[assignmentNumber]);
-						contentCourseDocument.setIsTracked(this.publishData
-								.getIsTracked()[assignmentNumber]);
-						calendarStartObject
-								.setTime(constantDateFormat2
-										.parse(this.publishData.getStartDate()[assignmentNumber]));
+						contentCourseDocument.setIsAvailable(this.publishData.getIsAvailable()[assignmentNumber]);
+						contentCourseDocument.setIsTracked(this.publishData.getIsTracked()[assignmentNumber]);
+						calendarStartObject.setTime(constantDateFormat2.parse(this.publishData.getStartDate()[assignmentNumber]));
 						contentCourseDocument.setStartDate(calendarStartObject);
-						calendarEndObject
-								.setTime(constantDateFormat2
-										.parse(this.publishData.getEndDate()[assignmentNumber]));
+						calendarEndObject.setTime(constantDateFormat2.parse(this.publishData.getEndDate()[assignmentNumber]));
 						contentCourseDocument.setEndDate(calendarEndObject);
 						contentCourseDocument.setLaunchInNewWindow(true);
 
@@ -1021,18 +924,10 @@ public class BlackboardUtil extends BuildingBlockMethods {
 						if (this.publishData.getCreateAnnouncement()[assignmentNumber]) {
 
 							/* Announcement information formatted in string */
-							String arguments[] = {
-									this.publishData.getCourseName().get(
-											assignmentNumber)
-											+ Messages
-													.getString("BlackboardUtil.7")
-											+ this.publishData.getSetName()
-													.get(assignmentNumber),
-									this.publishData.getStartDate()[assignmentNumber],
+							String arguments[] = { this.publishData.getCourseName().get(assignmentNumber) + Messages.getString("BlackboardUtil.7") + 
+									this.publishData.getSetName().get(assignmentNumber), this.publishData.getStartDate()[assignmentNumber], 
 									this.publishData.getEndDate()[assignmentNumber] };
-							String announcementInfo = String.format(
-									constantAnnouncementPublishTextBody,
-									(Object[]) arguments);
+							String announcementInfo = String.format( constantAnnouncementPublishTextBody, (Object[]) arguments);
 
 							/*
 							 * Annoucement title selected from the name of
@@ -1040,27 +935,16 @@ public class BlackboardUtil extends BuildingBlockMethods {
 							 * content. Other mandatory information are also
 							 * presented in here.
 							 */
-							String announcementTitle = String.format(
-									constantAnnouncementPublishTextTitle,
-									(Object[]) new String[] { this.publishData
-											.getName()[assignmentNumber] });
-							Calendar announcementEndDate = Calendar
-									.getInstance();
-							announcementEndDate
-									.setTime(constantDateFormat2.parse(this.publishData
-											.getEndDate()[assignmentNumber]));
+							String announcementTitle = String.format(constantAnnouncementPublishTextTitle, (Object[]) new String[] { this.publishData.getName()[assignmentNumber] });
+							Calendar announcementEndDate = Calendar.getInstance();
+							announcementEndDate.setTime(constantDateFormat2.parse(this.publishData.getEndDate()[assignmentNumber]));
 
 							contentAnnouncement.setTitle(announcementTitle);
-							contentAnnouncement.setBody(new FormattedText(
-									announcementInfo,
-									FormattedText.Type.DEFAULT));
+							contentAnnouncement.setBody(new FormattedText(announcementInfo,	FormattedText.Type.DEFAULT));
 							contentAnnouncement.setCourseId(generatedCourseId);
 							// contentAnnouncement.setRestrictionStartDate(announcementEndDate);
-							contentAnnouncement
-									.setType(Announcement.Type.COURSE);
-							contentAnnouncement
-									.setCreatorUserId(this.blackboardUser
-											.getId());
+							contentAnnouncement.setType(Announcement.Type.COURSE);
+							contentAnnouncement.setCreatorUserId(this.blackboardUser.getId());
 						}
 
 						/*
@@ -1074,9 +958,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 						boolean recordExists = false;
 
 						for (Lineitem eachLineItem : gradeBookOriginalLineItems) {
-							if (eachLineItem.getName().equals(
-									this.publishData.getGradeBookItems()
-											.get(assignmentNumber).getName())) {
+							if (eachLineItem.getName().equals(this.publishData.getGradeBookItems().get(assignmentNumber).getName())) {
 								recordExists = true;
 								failure = true;
 							}
@@ -1091,54 +973,31 @@ public class BlackboardUtil extends BuildingBlockMethods {
 						/* Persist the single grade book item to Blackboard */
 						if (tempRecordsSaved.get(assignmentNumber)) {
 							try {
-								BlackboardUtil.contentPersister
-										.persist(contentCourseDocument);
+								BlackboardUtil.contentPersister.persist(contentCourseDocument);
 								if (this.publishData.getCreateAnnouncement()[assignmentNumber])
-									AnnouncementManagerFactory.getInstance()
-											.saveAnnouncement(
-													contentAnnouncement, null);
+									AnnouncementManagerFactory.getInstance().saveAnnouncement(contentAnnouncement, null);
 							} catch (ValidationException pe) {
-								LogServiceFactory
-										.getInstance()
-										.logError(
-												"Error cannot validate the content / annoucement written to blackboard.");
+								LogServiceFactory.getInstance().logError("Error cannot validate the content / annoucement written to blackboard.");
 								failure = true;
 
 							} catch (PersistenceException pe) {
-								LogServiceFactory
-										.getInstance()
-										.logError(
-												"Error cannot persist the content / announcement written to blackboard.");
+								LogServiceFactory.getInstance().logError("Error cannot persist the content / announcement written to blackboard.");
 								failure = true;
 							}
 							if (!failure)
-								gradeBookOriginalLineItems.add(this.publishData
-										.getGradeBookItems().get(
-												assignmentNumber));
-							LogServiceFactory
-									.getInstance()
-									.logError(
-											"this is the type of the item: "
-													+ this.getPublishData()
-															.getType()[assignmentNumber]);
+								gradeBookOriginalLineItems.add(this.publishData.getGradeBookItems().get(assignmentNumber));
+							LogServiceFactory.getInstance().logError("this is the type of the item: " + this.getPublishData().getType()[assignmentNumber]);
 						}
 					}
 				}
 				try {
-					BlackboardUtil.gradePersister
-							.persist(gradeBookOriginalLineItems);
+					BlackboardUtil.gradePersister.persist(gradeBookOriginalLineItems);
 				} catch (ValidationException pe) {
-					LogServiceFactory
-							.getInstance()
-							.logError(
-									"Error cannot validate the gradebook written to blackboard.");
+					LogServiceFactory.getInstance().logError("Error cannot validate the gradebook written to blackboard.");
 					failure = true;
 
 				} catch (PersistenceException pe) {
-					LogServiceFactory
-							.getInstance()
-							.logError(
-									"Error cannot persist the gradebook written to blackboard.");
+					LogServiceFactory.getInstance().logError("Error cannot persist the gradebook written to blackboard.");
 					failure = true;
 				}
 
@@ -1160,35 +1019,25 @@ public class BlackboardUtil extends BuildingBlockMethods {
 				ArrayList<String> tempStartDate = new ArrayList<String>();
 				ArrayList<String> tempEndDate = new ArrayList<String>();
 
-				tempStartDate.add(constantDateFormat2.format(this.contentModify
-						.getStartDate().getTime()));
+				tempStartDate.add(constantDateFormat2.format(this.contentModify.getStartDate().getTime()));
 				this.publishData.setAssignmentsInitialStartDate(tempStartDate);
 
-				tempEndDate.add(constantDateFormat2.format(this.contentModify
-						.getEndDate().getTime()));
+				tempEndDate.add(constantDateFormat2.format(this.contentModify.getEndDate().getTime()));
 				this.publishData.setAssignmentsInitialEndDate(tempEndDate);
 
 				/* Modifying content information */
-				calendarStartObject.setTime(constantDateFormat2
-						.parse(this.publishData.getStartDate()[0]
-								+ Messages.getString("Default.Space")
-								+ this.publishData.getStartTime()));
+				String time = this.publishData.getStartDate()[0] + " " + this.publishData.getStartTime();
+				calendarStartObject.setTime(constantDateFormat2.parse(time));
 				if (oldStartObject.compareTo(calendarStartObject) != 0)
 					this.contentModify.setStartDate(calendarStartObject);
 
-				calendarEndObject.setTime(constantDateFormat2
-						.parse(this.publishData.getEndDate()[0]
-								+ Messages.getString("Default.Space")
-								+ this.publishData.getStartTime()));
+				calendarEndObject.setTime(constantDateFormat2.parse(this.publishData.getEndDate()[0] + " " + this.publishData.getStartTime()));
 				if (oldEndObject.compareTo(calendarEndObject) != 0)
 					this.contentModify.setEndDate(calendarEndObject);
 
-				this.contentModify.setIsAvailable(Boolean
-						.valueOf(this.publishData.getIsAvailable()[0]));
-				this.contentModify.setIsTracked(Boolean
-						.valueOf(this.publishData.getIsTracked()[0]));
-				this.contentModify.setBody(FormattedText
-						.toFormattedText(this.publishData.getBodytext()));
+				this.contentModify.setIsAvailable(Boolean.valueOf(this.publishData.getIsAvailable()[0]));
+				this.contentModify.setIsTracked(Boolean.valueOf(this.publishData.getIsTracked()[0]));
+				this.contentModify.setBody(FormattedText.toFormattedText(this.publishData.getBodytext()));
 				this.contentModify.setTitle(this.publishData.getTitle());
 
 				BlackboardUtil.contentPersister.persist(this.contentModify);
@@ -1217,23 +1066,20 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 */
 	public boolean writeWebworkChanges() {
 		for (int loopVar = 0; loopVar < this.publishData.getStartDate().length; loopVar++) {
-			if (this.publishData.getAssignmentsInitialStartDate().isEmpty()
-					|| this.publishData.getAssignmentsInitialEndDate()
-							.isEmpty()
-					|| !this.publishData.getAssignmentsInitialStartDate()
-							.get(loopVar)
-							.equals(this.publishData.getStartDate()[loopVar])
-					|| !this.publishData.getAssignmentsInitialEndDate()
-							.get(loopVar)
-							.equals(this.publishData.getEndDate()[loopVar])) {
+			if (this.publishData.getAssignmentsInitialStartDate().isEmpty() || this.publishData.getAssignmentsInitialEndDate().isEmpty() 
+					|| !this.publishData.getAssignmentsInitialStartDate().get(loopVar).equals(this.publishData.getStartDate()[loopVar])	
+					|| !this.publishData.getAssignmentsInitialEndDate().get(loopVar).equals(this.publishData.getEndDate()[loopVar])) {
 				try {
-					return WebworkUtil.writeChanges(this.blackboardUser
-							.getUserName(), this.publishData.getCourseName()
-							.get(loopVar),
-							this.publishData.getSetName().get(loopVar),
-							this.publishData.getStartDate()[loopVar],
-							this.publishData.getEndDate()[loopVar], null, 0);
+					String user = this.blackboardUser.getUserName();
+					String course = this.publishData.getCourseName().get(loopVar);
+					String name = this.publishData.getSetName().get(loopVar);
+					String start = this.publishData.getStartDate()[loopVar];
+					String end = this.publishData.getEndDate()[loopVar];
+					boolean bo = WebworkUtil.writeChanges(user, course, name, start, end, null, 0);
+					return bo;
 				} catch (ParseException e) {
+					return false;
+				} catch (Exception e) {
 					return false;
 				}
 			}

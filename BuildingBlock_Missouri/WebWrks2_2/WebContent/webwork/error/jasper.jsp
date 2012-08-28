@@ -22,40 +22,25 @@
 <c:choose>
 	<c:when
 		test="${fn:contains(pageContext.exception.message, scopeException )}">
-		<c:set var="displayMessage"
-			value="Scope object not found. Session might have expired."
+		<c:set var="displayMessage" value="Scope object not found. Session might have expired." scope="page" />
+	</c:when>
+	<c:when test="${fn:contains(pageContext.exception.message, propertyException )}">
+		<c:set var="displayMessage" value="EL is not good enough to capture different properties. Check the properties of useBean with the parameters properties" 
 			scope="page" />
 	</c:when>
-	<c:when
-		test="${fn:contains(pageContext.exception.message, propertyException )}">
-		<c:set var="displayMessage"
-			value="EL is not good enough to capture different properties. Check the properties of 
-					useBean with the parameters properties"
+	<c:when test="${fn:contains(pageContext.exception.message, propertyNotFound )}">
+		<c:set var="displayMessage" value="EL cannot find the specified properties. Tell the developer to check the UseBean declaration and the properties for it."
 			scope="page" />
 	</c:when>
-	<c:when
-		test="${fn:contains(pageContext.exception.message, propertyNotFound )}">
-		<c:set var="displayMessage"
-			value="EL cannot find the specified properties. Tell the developer to check the 
-					UseBean declaration and the properties for it."
+	<c:when test="${fn:contains(pageContext.exception.message, java.lang.reflect.InvocationTargetException )}">
+		<c:set var="displayMessage" value="Something wrong happened with the invoking certain functions / webservice. The detail message is available in the log file."
 			scope="page" />
 	</c:when>
-	<c:when
-		test="${fn:contains(pageContext.exception.message, java.lang.reflect.InvocationTargetException )}">
-		<c:set var="displayMessage"
-			value="Something wrong happened with the invoking certain functions / webservice.
-					The detail message is available in the log file."
-			scope="page" />
-	</c:when>
-	<c:when
-		test="${fn:contains(pageContext.exception.message, serverException )}">
-		<c:set var="displayMessage"
-			value="Some network problem. Please try again later." scope="page" />
+	<c:when test="${fn:contains(pageContext.exception.message, serverException )}"> 
+		<c:set var="displayMessage" value="Some network problem. Please try again later." scope="page" />
 	</c:when>
 	<c:otherwise>
-		<c:set var="displayMessage"
-			value="Unknown Error message: ${pageContext.exception.message}"
-			scope="page" />
+		<c:set var="displayMessage" value="Unknown Error message: ${pageContext.exception.message}" scope="page" />
 	</c:otherwise>
 </c:choose>
 
@@ -81,52 +66,39 @@
 	<bbNG:okButton url="${sessionScope.validPage }" />
 
 	<bbNG:collapsibleList isDynamic="false" id="exceptionInfo">
-		<bbNG:collapsibleListItem id="exceptionInfo0"
-			title="Message:" expandOnPageLoad="true">
+		<bbNG:collapsibleListItem id="exceptionInfo0" title="Message:" expandOnPageLoad="true">
 			<c:out value="${pageContext.exception.message }" />
 		</bbNG:collapsibleListItem>
-		<bbNG:collapsibleListItem id="exceptionInfo1"
-			title="Detailed Exception:">
-			<c:forEach items="${pageContext.errorData.throwable.stackTrace}"
-				var="element">
+		<bbNG:collapsibleListItem id="exceptionInfo1" title="Detailed Exception:">
+			<c:forEach items="${pageContext.errorData.throwable.stackTrace}" var="element">
 				<c:out value="${element}" />
 				<br />
 			</c:forEach>
 		</bbNG:collapsibleListItem>
 		<bbNG:collapsibleListItem id="exceptionInfo2" title="Detailed Cause:">
-			<c:forEach
-				items="${pageContext.errorData.throwable.cause.stackTrace}"
-				var="element">
+			<c:forEach items="${pageContext.errorData.throwable.cause.stackTrace}" var="element"> 
 				<c:out value="${element}" />
 				<br />
 			</c:forEach>
 		</bbNG:collapsibleListItem>
 		<bbNG:collapsibleListItem id="exceptionInfo3" title="Root Cause:">
-			<c:forEach
-				items="${pageContext.errorData.throwable.cause.cause.stackTrace}"
-				var="element">
+			<c:forEach items="${pageContext.errorData.throwable.cause.cause.stackTrace}" var="element">
 				<c:out value="${element}" />
 				<br />
 			</c:forEach>
 		</bbNG:collapsibleListItem>
 		<bbNG:collapsibleListItem id="exceptionInfo4" title="Primary Cause:">
-			<c:forEach
-				items="${pageContext.errorData.throwable.cause.cause.cause.stackTrace}"
-				var="element">
+			<c:forEach items="${pageContext.errorData.throwable.cause.cause.cause.stackTrace}" var="element">
 				<c:out value="${element}" />
 				<br />
 			</c:forEach>
 			<h3></h3>
-			<c:forEach
-				items="${pageContext.errorData.throwable.cause.cause.cause.cause.stackTrace}"
-				var="element">
+			<c:forEach items="${pageContext.errorData.throwable.cause.cause.cause.cause.stackTrace}" var="element">
 				<c:out value="${element}" />
 				<br />
 			</c:forEach>
 			<h3></h3>
-			<c:forEach
-				items="${pageContext.errorData.throwable.cause.cause.cause.cause.cause.stackTrace}"
-				var="element">
+			<c:forEach items="${pageContext.errorData.throwable.cause.cause.cause.cause.cause.stackTrace}" var="element">
 				<c:out value="${element}" />
 				<br />
 			</c:forEach>
