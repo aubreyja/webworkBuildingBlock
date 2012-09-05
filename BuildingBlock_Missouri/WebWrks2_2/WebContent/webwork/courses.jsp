@@ -96,9 +96,9 @@
 		<bbNG:dataCollection hasRequiredFields="true" showSubmitButtons="false">
 			<bbNG:step title="${stepTitle}">
 				<bbNG:dataElement isRequired="true" label="${dataElementLabel}" isVertical="true">
-					<bbNG:inventoryList listId="${inventoryListId}" className="java.lang.String" collection="${coursesList}" objectVar="eachCourse" emptyMsg="${inventoryListEmpty}"
-						description="${inventoryListDesc}" enableSelectEntireList="true" includePageParameters="true" shoppingCart="true" showAll="true" 
-						initialSortCol="${drawerColumn1}" renderAjax="true">
+					<bbNG:inventoryList listId="${inventoryListId}" className="java.lang.String" collection="${coursesList}" objectVar="eachCourse" 
+						emptyMsg="${inventoryListEmpty}" description="${inventoryListDesc}" enableSelectEntireList="true" includePageParameters="true" 
+						shoppingCart="true" showAll="true" initialSortCol="${drawerColumn1}" renderAjax="true">
 						
 						<bbNG:listOptions allowEditPaging="false" />
 						<bbNG:listCheckboxElement name="selectedWebworkCoursesParam" showCheckbox="true" value="${ eachCourse }" />

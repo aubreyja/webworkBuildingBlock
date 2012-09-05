@@ -85,8 +85,7 @@
 				</c:when>
 				<c:otherwise>
 					<bbNG:button url="${jsPreviousPage}" label="${buttonLabelCancel}" />
-					<bbNG:button url="${currentPage}?save=true"
-						label="${buttonLabelSave}" />
+					<bbNG:button url="${currentPage}?save=true" label="${buttonLabelSave}" />
 				</c:otherwise>
 			</c:choose>
 

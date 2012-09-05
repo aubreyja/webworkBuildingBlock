@@ -83,8 +83,7 @@ public class WebworkData extends BuildingBlockMethods {
 	 * @param selectedWebworkCourses
 	 *            user selected courses from the request.
 	 */
-	public void setSelectedWebworkCoursesParam(
-			String[] selectedWebworkCoursesParam) {
+	public void setSelectedWebworkCoursesParam(String[] selectedWebworkCoursesParam) {
 		this.selectedWebworkCoursesParam = selectedWebworkCoursesParam;
 		/* Selected courses are converted to list for display purposes. */
 		this.selectedCourses = Arrays.asList(selectedWebworkCoursesParam);
@@ -173,8 +172,7 @@ public class WebworkData extends BuildingBlockMethods {
 	 * @param listWebworkSetsForCourses
 	 *            list of user selected webwork sets.
 	 */
-	public void setListWebworkSetsForCourses(
-			List<String> listWebworkSetsForCourses) {
+	public void setListWebworkSetsForCourses(List<String> listWebworkSetsForCourses) {
 		this.listWebworkSetsForCourses = listWebworkSetsForCourses;
 	}
 
@@ -216,8 +214,7 @@ public class WebworkData extends BuildingBlockMethods {
 	 * @param selectedWebworkCourseForSets
 	 *            the selectedWebworkCourseForSets to set
 	 */
-	public void setSelectedWebworkCoursesMap(
-			List<String> selectedWebworkCoursesMap) {
+	public void setSelectedWebworkCoursesMap(List<String> selectedWebworkCoursesMap) {
 		this.selectedWebworkCoursesMap = selectedWebworkCoursesMap;
 	}
 
@@ -259,8 +256,7 @@ public class WebworkData extends BuildingBlockMethods {
 	 * @param selectedWebworkSetsDueDate
 	 *            the selectedWebworkSetsDueDate to set
 	 */
-	public void setSelectedWebworkSetsDueDate(
-			List<String> selectedWebworkSetsDueDate) {
+	public void setSelectedWebworkSetsDueDate(List<String> selectedWebworkSetsDueDate) {
 		this.selectedWebworkSetsDueDate = selectedWebworkSetsDueDate;
 	}
 
@@ -282,8 +278,7 @@ public class WebworkData extends BuildingBlockMethods {
 	 * @param selectedWebworkSetsOpenDate
 	 *            the selectedWebworkSetsOpenDate to set
 	 */
-	public void setSelectedWebworkSetsOpenDate(
-			List<String> selectedWebworkSetsOpenDate) {
+	public void setSelectedWebworkSetsOpenDate(List<String> selectedWebworkSetsOpenDate) {
 		this.selectedWebworkSetsOpenDate = selectedWebworkSetsOpenDate;
 	}
 
@@ -338,25 +333,20 @@ public class WebworkData extends BuildingBlockMethods {
 				 * them to map variables for proper display in assignment.jsp
 				 * page
 				 */
-				String tempSelectedSet = this.getListWebworkSetsForCourses()
-						.get(Integer.valueOf(eachSelectedSet));
-				String tempSelectedCourse = this.getSelectedCourses().get(
-						Integer.valueOf(eachSelectedSet));
+				String tempSelectedSet = this.getListWebworkSetsForCourses().get(Integer.valueOf(eachSelectedSet));
+				String tempSelectedCourse = this.getSelectedCourses().get(Integer.valueOf(eachSelectedSet));
 
 				tempSelectedSetsMap.add(tempSelectedSet);
 				tempSelectedCoursesMap.add(tempSelectedCourse);
 
 				/* Pull the grade points from webwork for each assignment */
-				tempAssignmentPoints.add((Integer) WebworkUtil
-						.getAssignmentPoints(tempSelectedCourse,
-								tempSelectedSet));
+				tempAssignmentPoints.add((Integer) WebworkUtil.getAssignmentPoints(tempSelectedCourse, tempSelectedSet));
 
 				/* Temp variable to capture the date information from webwork. */
 				String returnDate = null;
 				//SimpleDateFormat constantDateFormat2 = new SimpleDateFormat("MM/dd/yyyy 'at' hh:mma z");
 				//TEST
-                     SimpleDateFormat constantDateFormat2 = new SimpleDateFormat(
-						Messages.getString("BlackboardUtil.DateFormat") + " HH:mm aa");
+                     SimpleDateFormat constantDateFormat2 = new SimpleDateFormat(Messages.getString("BlackboardUtil.DateFormat") + " HH:mm aa");
 
 				/*
 				 * Capture the end date from webwork , if null / can't format
@@ -365,21 +355,14 @@ public class WebworkData extends BuildingBlockMethods {
 				 * set a date, which will be written back to webwork.
 				 */
 				try {
-					returnDate = ((WebworkSOAPClassesGlobalSet) WebworkUtil.soapHandler
-							.get_global_set(WebworkUtil.webworkSoapAuthKey,
-									tempSelectedCourse, tempSelectedSet))
+					returnDate = ((WebworkSOAPClassesGlobalSet) WebworkUtil.soapHandler.get_global_set(WebworkUtil.webworkSoapAuthKey, tempSelectedCourse, tempSelectedSet))
 							.getDue_date();
 
-					tempSelectedSetsDueDate.add(constantDateFormat2
-							.format(new java.util.Date(
-									Long.valueOf(returnDate) * 1000)));
+					tempSelectedSetsDueDate.add(constantDateFormat2.format(new java.util.Date(Long.valueOf(returnDate) * 1000)));
 				} catch (Exception exc) {
-					LogServiceFactory.getInstance().logFatal(
-							"Cannot get / format the webwork assignment start date : \n"
-									+ ((returnDate == null) ? "Date is null"
-											: returnDate), exc);
-					tempSelectedSetsDueDate.add(constantDateFormat2
-							.format(Calendar.getInstance().getTime()));
+					LogServiceFactory.getInstance().logFatal("Cannot get / format the webwork assignment start date : \n" + ((returnDate == null) ? "Date is null"
+							: returnDate), exc);
+					tempSelectedSetsDueDate.add(constantDateFormat2.format(Calendar.getInstance().getTime()));
 				}
 
 				/*
@@ -387,20 +370,13 @@ public class WebworkData extends BuildingBlockMethods {
 				 * assign today's date & log the exception.
 				 */
 				try {
-					returnDate = ((WebworkSOAPClassesGlobalSet) WebworkUtil.soapHandler
-							.get_global_set(WebworkUtil.webworkSoapAuthKey,
-									tempSelectedCourse, tempSelectedSet))
+					returnDate = ((WebworkSOAPClassesGlobalSet) WebworkUtil.soapHandler.get_global_set(WebworkUtil.webworkSoapAuthKey, tempSelectedCourse, tempSelectedSet))
 							.getOpen_date();
-					tempSelectedSetsOpenDate.add(constantDateFormat2
-							.format(new java.util.Date(
-									Long.valueOf(returnDate) * 1000)));
+					tempSelectedSetsOpenDate.add(constantDateFormat2.format(new java.util.Date(Long.valueOf(returnDate) * 1000)));
 				} catch (Exception exc) {
-					LogServiceFactory.getInstance().logFatal(
-							"Cannot get / format the webwork assignment end date:\n"
-									+ ((returnDate == null) ? "Date is null"
-											: returnDate), exc);
-					tempSelectedSetsOpenDate.add(constantDateFormat2
-							.format(Calendar.getInstance().getTime()));
+					LogServiceFactory.getInstance().logFatal("Cannot get / format the webwork assignment end date:\n" + ((returnDate == null) ? "Date is null"
+							: returnDate), exc);
+					tempSelectedSetsOpenDate.add(constantDateFormat2.format(Calendar.getInstance().getTime()));
 				}
 			}
 

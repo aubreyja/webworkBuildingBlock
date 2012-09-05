@@ -27,14 +27,15 @@
 		<jsp:setProperty name="modifyData" property="endDate" param="endDate_date" />
 		<jsp:setProperty name="modifyData" property="endTime" param="endDate_time" />
 		<jsp:setProperty name="modifyData" property="startDate" param="startDate_date" />
-		<jsp:setProperty name="modifyData" property="startTime" param="startDate_time" />		
+		<jsp:setProperty name="modifyData" property="startTime" param="startDate_time" />
 		<jsp:setProperty name="modifyData" property="title" param="titletext" />
 		<jsp:setProperty name="modifyData" property="modifyRecord" value="true" />
-
+		<jsp:setProperty name="modifyData" property="courseAndSetNames" value="true" />
+		
 		<!-- Setting the data inside blackboard for writing to blackboard DB. -->
 		<jsp:setProperty name="blackboardModifyUtil" property="publishData" value="${modifyData}" />
 		<jsp:setProperty name="blackboardModifyUtil" property="publishAssignmentsData" value="true" />
-
+		
 		<!-- ConfigFile properties for getting the redirect url and displaying success / failed msg. -->
 		<jsp:setProperty name="configUtil" property="serverPropertyWritten" value="true" />
 		<jsp:setProperty name="configUtil" property="successLocation" value="${blackboardModifyUtil.courseContentsUrl }" />
@@ -50,7 +51,6 @@
 			<!--  Setting the blackboard utility class to session object for use in the building block. -->
 			<jsp:setProperty name="blackboardModifyUtil" property="blackboardUser" value="${ ctx.user }" />
 			<jsp:setProperty name="blackboardModifyUtil" property="courseNumber" param="course_id" />
-			<jsp:setProperty name="blackboardModifyUtil" property="contentNumber" param="content_id" />
 			<jsp:setProperty name="blackboardModifyUtil" property="contentNumber" param="content_id" />
 			<jsp:setProperty name="blackboardModifyUtil" property="requestUrl" value="${pageContext.request.requestURL }" />
 			<jsp:setProperty name="blackboardModifyUtil" property="requestUri" value="${pageContext.request.requestURI }" />

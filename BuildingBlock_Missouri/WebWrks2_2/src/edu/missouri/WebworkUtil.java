@@ -293,6 +293,7 @@ public class WebworkUtil extends BuildingBlockMethods {
 			return false;
 		try {
 			SET_DATA = WebworkUtil.soapHandler.get_global_set(webworkSoapAuthKey, course, set);
+			SET_DATA.setOtherStuff();
 			LogServiceFactory.getInstance().logError("Exception while writing to webwork server. " + course	+ user + set + startDate + endDate);
 			if (startDate != null && !startDate.equals(Messages.getString("Default.Empty"))) {
 				SET_DATA.setOpen_date(String.valueOf(((Date) constantDateFormat.parse(startDate)).getTime()));

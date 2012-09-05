@@ -132,6 +132,8 @@ public class PublishData extends BuildingBlockMethods {
 	 * 
 	 */
 	private String startTime;
+	
+	private boolean courseAndSetNames;
 
 	/**
 	 * Assignment initial start dates captured from webwork. Used in identifying
@@ -296,6 +298,20 @@ public class PublishData extends BuildingBlockMethods {
 		return courseName;
 	}
 
+	public void setCourseAndSetNames(boolean courseAndSetNames){
+		if(courseAndSetNames){
+			String[] temp = title.split("[?&=]");
+			
+			List<String> clist = new ArrayList<String>();
+			List<String> slist = new ArrayList<String>();
+			clist.add(temp[3]);
+			slist.add(temp[5]);
+	
+			this.courseName = clist;
+			this.setName = slist;
+		}
+	}
+	
 	/**
 	 * Retrieves the availability information entered for each assignment for
 	 * use in blackboard.

@@ -283,8 +283,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	 * @throws PersistenceException
 	 * @throws KeyNotFoundException
 	 */
-	public List<User> getEnrolledUserList() throws KeyNotFoundException,
-			PersistenceException {
+	public List<User> getEnrolledUserList() throws KeyNotFoundException, PersistenceException {
 		if (this.enrolledUserList == null || this.enrolledUserList.isEmpty()) {
 			this.setEnrolledUserList(courseUserDb.loadByCourseId(courseIdentity));
 		}
@@ -735,7 +734,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 							}
 
 							try {
-								if (Integer.parseInt(tempGrades[index]) > 0)
+								if (Double.parseDouble(tempGrades[index]) > 0)
 									this.scoreAssignment.setGrade(tempGrades[index]);
 								else
 									this.scoreAssignment.setGrade("0");
@@ -922,7 +921,6 @@ public class BlackboardUtil extends BuildingBlockMethods {
 						 * annoucement.
 						 */
 						if (this.publishData.getCreateAnnouncement()[assignmentNumber]) {
-
 							/* Announcement information formatted in string */
 							String arguments[] = { this.publishData.getCourseName().get(assignmentNumber) + Messages.getString("BlackboardUtil.7") + 
 									this.publishData.getSetName().get(assignmentNumber), this.publishData.getStartDate()[assignmentNumber], 
@@ -1060,7 +1058,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 	}
 
 	/**
-	 * Method write changes to wrbwork server. Any change in the start date of
+	 * Method write changes to webwork server. Any change in the start date of
 	 * the assignment, end date of the assignment, partial credit enabling, this
 	 * is written over to the webwork.
 	 */

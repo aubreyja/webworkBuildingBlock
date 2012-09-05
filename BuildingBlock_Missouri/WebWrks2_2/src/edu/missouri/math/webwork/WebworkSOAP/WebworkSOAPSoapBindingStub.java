@@ -2104,22 +2104,22 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, setID});
+		try {        
+			java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, setID});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet) org.apache.axis.utils.JavaUtils.convert(_resp, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
+	        if (_resp instanceof java.rmi.RemoteException) {
+	            throw (java.rmi.RemoteException)_resp;
+	        } else {
+	            extractAttachments(_call);
+	            try {
+	                return (edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet) _resp;
+	            } catch (java.lang.Exception _exception) {
+	                return (edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet) org.apache.axis.utils.JavaUtils.convert(_resp, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class);
+	            }
+	        }
+		} catch (org.apache.axis.AxisFault axisFaultException) {
+			throw axisFaultException;
+		}
     }
 
     public java.lang.String delete_global_set(java.lang.String authenKey, java.lang.String courseName, java.lang.String setID) throws java.rmi.RemoteException {

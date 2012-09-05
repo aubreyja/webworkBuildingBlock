@@ -7,88 +7,100 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import javax.xml.namespace.QName;
+
+import org.apache.axis.description.ElementDesc;
+import org.apache.axis.description.TypeDesc;
+import org.apache.axis.encoding.Deserializer;
+import org.apache.axis.encoding.Serializer;
+import org.apache.axis.encoding.ser.BeanDeserializer;
+import org.apache.axis.encoding.ser.BeanSerializer;
+
 public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
-    private java.lang.String set_id;
+    private String set_id;
+    private String set_header;
+    private String hardcopy_header;
+    private String open_date;
+    private String due_date;
+    private String answer_date;
+    private String visible;
+    private String enable_reduced_scoring;
+    private String assignment_type;
+    private String attempts_per_version;
+    private String time_interval;
+    private String versions_per_interval;
+    private String version_time_limit;
+    private String version_creation_time;
+    private String problem_randorder;
+    private String version_last_attempt_time;
+    private String problems_per_page;
+    
+    private String hide_score;
 
-    private java.lang.String set_header;
+    private String hide_score_by_problem;
 
-    private java.lang.String hardcopy_header;
+    private String hide_work;
+    
+    private String time_limit_cap;
 
-    private java.lang.String open_date;
-
-    private java.lang.String due_date;
-
-    private java.lang.String answer_date;
-
-    private java.lang.String visible;
-
-    private java.lang.String enable_reduced_scoring;
-
-    private java.lang.String assignment_type;
-
-    private java.lang.String attempts_per_version;
-
-    private java.lang.String time_interval;
-
-    private java.lang.String versions_per_interval;
-
-    private java.lang.String version_time_limit;
-
-    private java.lang.String version_creation_time;
-
-    private java.lang.String problem_randorder;
-
-    private java.lang.String version_last_attempt_time;
-
-    private java.lang.String problems_per_page;
+    private String restrict_ip;
+    
+    private String relax_restrict_ip;
+    
+    private String restricted_login_proctor;
+    
+    
 
     public WebworkSOAPClassesGlobalSet() {
     }
 
-    public WebworkSOAPClassesGlobalSet(
-           java.lang.String set_id,
-           java.lang.String set_header,
-           java.lang.String hardcopy_header,
-           java.lang.String open_date,
-           java.lang.String due_date,
-           java.lang.String answer_date,
-           java.lang.String visible,
-           java.lang.String enable_reduced_scoring,
-           java.lang.String assignment_type,
-           java.lang.String attempts_per_version,
-           java.lang.String time_interval,
-           java.lang.String versions_per_interval,
-           java.lang.String version_time_limit,
-           java.lang.String version_creation_time,
-           java.lang.String problem_randorder,
-           java.lang.String version_last_attempt_time,
-           java.lang.String problems_per_page) {
-           this.set_id = set_id;
-           this.set_header = set_header;
-           this.hardcopy_header = hardcopy_header;
-           this.open_date = open_date;
-           this.due_date = due_date;
-           this.answer_date = answer_date;
-           this.visible = visible;
-           this.enable_reduced_scoring = enable_reduced_scoring;
-           this.assignment_type = assignment_type;
-           this.attempts_per_version = attempts_per_version;
-           this.time_interval = time_interval;
-           this.versions_per_interval = versions_per_interval;
-           this.version_time_limit = version_time_limit;
-           this.version_creation_time = version_creation_time;
-           this.problem_randorder = problem_randorder;
-           this.version_last_attempt_time = version_last_attempt_time;
-           this.problems_per_page = problems_per_page;
+    public WebworkSOAPClassesGlobalSet(String set_id, String set_header, String hardcopy_header, String open_date, String due_date, String answer_date, String visible,
+		String enable_reduced_scoring, String assignment_type, String attempts_per_version, String time_interval, String versions_per_interval, String version_time_limit,
+		String version_creation_time, String problem_randorder, String version_last_attempt_time, String problems_per_page) {
+    	
+		this.set_id = set_id;
+		this.set_header = set_header;
+		this.hardcopy_header = hardcopy_header;
+		this.open_date = open_date;
+		this.due_date = due_date;
+		this.answer_date = answer_date;
+		this.visible = visible;
+		this.enable_reduced_scoring = enable_reduced_scoring;
+		this.assignment_type = assignment_type;
+		this.attempts_per_version = attempts_per_version;
+		this.time_interval = time_interval;
+		this.versions_per_interval = versions_per_interval;
+		this.version_time_limit = version_time_limit;
+		this.version_creation_time = version_creation_time;
+		this.problem_randorder = problem_randorder;
+		this.version_last_attempt_time = version_last_attempt_time;
+		this.problems_per_page = problems_per_page;
+		this.hide_score = "N";
+		this.hide_score_by_problem = "N";
+		this.hide_work = "N";
+		this.time_limit_cap = "0";
+		this.restrict_ip = "No";
+		this.relax_restrict_ip = "No";
+		this.restricted_login_proctor = "No";
     }
 
+    public void setOtherStuff()
+    {
+        this.hide_score = "N";
+        this.hide_score_by_problem = "N";
+        this.hide_work = "N";
+        this.time_limit_cap = "0";
+        this.restrict_ip = "No";
+        this.relax_restrict_ip = "No";
+        this.restricted_login_proctor = "No";
+    }
 
     /**
      * Gets the set_id value for this WebworkSOAPClassesGlobalSet.
      * 
      * @return set_id
      */
-    public java.lang.String getSet_id() {
+    public String getSet_id() {
         return set_id;
     }
 
@@ -98,7 +110,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param set_id
      */
-    public void setSet_id(java.lang.String set_id) {
+    public void setSet_id(String set_id) {
         this.set_id = set_id;
     }
 
@@ -108,7 +120,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return set_header
      */
-    public java.lang.String getSet_header() {
+    public String getSet_header() {
         return set_header;
     }
 
@@ -118,7 +130,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param set_header
      */
-    public void setSet_header(java.lang.String set_header) {
+    public void setSet_header(String set_header) {
         this.set_header = set_header;
     }
 
@@ -128,7 +140,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return hardcopy_header
      */
-    public java.lang.String getHardcopy_header() {
+    public String getHardcopy_header() {
         return hardcopy_header;
     }
 
@@ -138,7 +150,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param hardcopy_header
      */
-    public void setHardcopy_header(java.lang.String hardcopy_header) {
+    public void setHardcopy_header(String hardcopy_header) {
         this.hardcopy_header = hardcopy_header;
     }
 
@@ -148,7 +160,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return open_date
      */
-    public java.lang.String getOpen_date() {
+    public String getOpen_date() {
         return open_date;
     }
 
@@ -158,7 +170,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param open_date
      */
-    public void setOpen_date(java.lang.String open_date) {
+    public void setOpen_date(String open_date) {
         this.open_date = open_date;
     }
 
@@ -168,7 +180,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return due_date
      */
-    public java.lang.String getDue_date() {
+    public String getDue_date() {
         return due_date;
     }
 
@@ -178,7 +190,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param due_date
      */
-    public void setDue_date(java.lang.String due_date) {
+    public void setDue_date(String due_date) {
         this.due_date = due_date;
     }
 
@@ -188,7 +200,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return answer_date
      */
-    public java.lang.String getAnswer_date() {
+    public String getAnswer_date() {
         return answer_date;
     }
 
@@ -198,7 +210,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param answer_date
      */
-    public void setAnswer_date(java.lang.String answer_date) {
+    public void setAnswer_date(String answer_date) {
         this.answer_date = answer_date;
     }
 
@@ -208,7 +220,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return visible
      */
-    public java.lang.String getVisible() {
+    public String getVisible() {
         return visible;
     }
 
@@ -218,7 +230,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param visible
      */
-    public void setVisible(java.lang.String visible) {
+    public void setVisible(String visible) {
         this.visible = visible;
     }
 
@@ -228,7 +240,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return enable_reduced_scoring
      */
-    public java.lang.String getEnable_reduced_scoring() {
+    public String getEnable_reduced_scoring() {
         return enable_reduced_scoring;
     }
 
@@ -238,7 +250,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param enable_reduced_scoring
      */
-    public void setEnable_reduced_scoring(java.lang.String enable_reduced_scoring) {
+    public void setEnable_reduced_scoring(String enable_reduced_scoring) {
         this.enable_reduced_scoring = enable_reduced_scoring;
     }
 
@@ -248,7 +260,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return assignment_type
      */
-    public java.lang.String getAssignment_type() {
+    public String getAssignment_type() {
         return assignment_type;
     }
 
@@ -258,7 +270,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param assignment_type
      */
-    public void setAssignment_type(java.lang.String assignment_type) {
+    public void setAssignment_type(String assignment_type) {
         this.assignment_type = assignment_type;
     }
 
@@ -268,7 +280,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return attempts_per_version
      */
-    public java.lang.String getAttempts_per_version() {
+    public String getAttempts_per_version() {
         return attempts_per_version;
     }
 
@@ -278,7 +290,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param attempts_per_version
      */
-    public void setAttempts_per_version(java.lang.String attempts_per_version) {
+    public void setAttempts_per_version(String attempts_per_version) {
         this.attempts_per_version = attempts_per_version;
     }
 
@@ -288,7 +300,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return time_interval
      */
-    public java.lang.String getTime_interval() {
+    public String getTime_interval() {
         return time_interval;
     }
 
@@ -298,7 +310,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param time_interval
      */
-    public void setTime_interval(java.lang.String time_interval) {
+    public void setTime_interval(String time_interval) {
         this.time_interval = time_interval;
     }
 
@@ -308,7 +320,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return versions_per_interval
      */
-    public java.lang.String getVersions_per_interval() {
+    public String getVersions_per_interval() {
         return versions_per_interval;
     }
 
@@ -318,7 +330,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param versions_per_interval
      */
-    public void setVersions_per_interval(java.lang.String versions_per_interval) {
+    public void setVersions_per_interval(String versions_per_interval) {
         this.versions_per_interval = versions_per_interval;
     }
 
@@ -328,7 +340,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return version_time_limit
      */
-    public java.lang.String getVersion_time_limit() {
+    public String getVersion_time_limit() {
         return version_time_limit;
     }
 
@@ -338,7 +350,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param version_time_limit
      */
-    public void setVersion_time_limit(java.lang.String version_time_limit) {
+    public void setVersion_time_limit(String version_time_limit) {
         this.version_time_limit = version_time_limit;
     }
 
@@ -348,7 +360,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return version_creation_time
      */
-    public java.lang.String getVersion_creation_time() {
+    public String getVersion_creation_time() {
         return version_creation_time;
     }
 
@@ -358,7 +370,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param version_creation_time
      */
-    public void setVersion_creation_time(java.lang.String version_creation_time) {
+    public void setVersion_creation_time(String version_creation_time) {
         this.version_creation_time = version_creation_time;
     }
 
@@ -368,7 +380,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return problem_randorder
      */
-    public java.lang.String getProblem_randorder() {
+    public String getProblem_randorder() {
         return problem_randorder;
     }
 
@@ -378,7 +390,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param problem_randorder
      */
-    public void setProblem_randorder(java.lang.String problem_randorder) {
+    public void setProblem_randorder(String problem_randorder) {
         this.problem_randorder = problem_randorder;
     }
 
@@ -388,7 +400,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return version_last_attempt_time
      */
-    public java.lang.String getVersion_last_attempt_time() {
+    public String getVersion_last_attempt_time() {
         return version_last_attempt_time;
     }
 
@@ -398,7 +410,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param version_last_attempt_time
      */
-    public void setVersion_last_attempt_time(java.lang.String version_last_attempt_time) {
+    public void setVersion_last_attempt_time(String version_last_attempt_time) {
         this.version_last_attempt_time = version_last_attempt_time;
     }
 
@@ -408,7 +420,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @return problems_per_page
      */
-    public java.lang.String getProblems_per_page() {
+    public String getProblems_per_page() {
         return problems_per_page;
     }
 
@@ -418,19 +430,25 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
      * 
      * @param problems_per_page
      */
-    public void setProblems_per_page(java.lang.String problems_per_page) {
+    public void setProblems_per_page(String problems_per_page) {
         this.problems_per_page = problems_per_page;
     }
 
-    private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof WebworkSOAPClassesGlobalSet)) return false;
+    private Object __equalsCalc = null;
+    public synchronized boolean equals(Object obj) {
+        if (!(obj instanceof WebworkSOAPClassesGlobalSet)) 
+        	return false;
+        
         WebworkSOAPClassesGlobalSet other = (WebworkSOAPClassesGlobalSet) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        
+        if (obj == null) 
+        	return false;
+        if (this == obj) 
+        	return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
+        
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
@@ -552,111 +570,110 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(WebworkSOAPClassesGlobalSet.class, true);
+    private static TypeDesc typeDesc = new TypeDesc(WebworkSOAPClassesGlobalSet.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        typeDesc.setXmlType(new QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet"));
+        ElementDesc elemField = new ElementDesc();
         elemField.setFieldName("set_id");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "set_id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "set_id"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("set_header");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "set_header"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "set_header"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("hardcopy_header");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "hardcopy_header"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "hardcopy_header"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("open_date");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "open_date"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "open_date"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("due_date");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "due_date"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "due_date"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("answer_date");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "answer_date"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "answer_date"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("visible");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "visible"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "visible"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("enable_reduced_scoring");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "enable_reduced_scoring"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "enable_reduced_scoring"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("assignment_type");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "assignment_type"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "assignment_type"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("attempts_per_version");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "attempts_per_version"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "attempts_per_version"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("time_interval");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "time_interval"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "time_interval"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("versions_per_interval");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "versions_per_interval"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "versions_per_interval"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("version_time_limit");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "version_time_limit"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "version_time_limit"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("version_creation_time");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "version_creation_time"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "version_creation_time"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("problem_randorder");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "problem_randorder"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "problem_randorder"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("version_last_attempt_time");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "version_last_attempt_time"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "version_last_attempt_time"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("problems_per_page");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "problems_per_page"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "problems_per_page"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
     }
@@ -664,32 +681,22 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
     /**
      * Return type metadata object
      */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+    public static TypeDesc getTypeDesc() {
         return typeDesc;
     }
 
     /**
      * Get Custom Serializer
      */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+    public static Serializer getSerializer(String mechType, Class _javaType, QName _xmlType) {
+        return new BeanSerializer(_javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+    public static Deserializer getDeserializer(String mechType, Class _javaType, QName _xmlType) {
+        return new BeanDeserializer(_javaType, _xmlType, typeDesc);
     }
 
 }
