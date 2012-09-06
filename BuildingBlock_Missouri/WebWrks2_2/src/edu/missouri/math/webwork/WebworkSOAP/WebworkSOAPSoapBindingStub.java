@@ -7,16 +7,31 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import java.rmi.RemoteException;
+import java.util.Vector;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axis.AxisFault;
+import org.apache.axis.NoEndPointException;
+import org.apache.axis.client.Call;
+import org.apache.axis.constants.Style;
+import org.apache.axis.constants.Use;
+import org.apache.axis.description.OperationDesc;
+import org.apache.axis.description.ParameterDesc;
+import org.apache.axis.soap.SOAPConstants;
+import org.apache.axis.utils.JavaUtils;
+
 public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub implements edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPHandler {
-    private java.util.Vector cachedSerClasses = new java.util.Vector();
-    private java.util.Vector cachedSerQNames = new java.util.Vector();
-    private java.util.Vector cachedSerFactories = new java.util.Vector();
-    private java.util.Vector cachedDeserFactories = new java.util.Vector();
+    private Vector cachedSerClasses = new Vector();
+    private Vector cachedSerQNames = new Vector();
+    private Vector cachedSerFactories = new Vector();
+    private Vector cachedDeserFactories = new Vector();
 
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[54];
+        _operations = new org.apache.axis.description.OperationDesc[55];
         _initOperationDesc1();
         _initOperationDesc2();
         _initOperationDesc3();
@@ -829,21 +844,21 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         _operations[51] = oper;
 
-        oper = new org.apache.axis.description.OperationDesc();
+        oper = new OperationDesc();
         oper.setName("get_user_set");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "authenKey"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new ParameterDesc(new QName("", "authenKey"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new ParameterDesc(new QName("", "courseName"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new ParameterDesc(new QName("", "userID"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new ParameterDesc(new QName("", "setID"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet"));
-        oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("", "get_user_setReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.RPC);
-        oper.setUse(org.apache.axis.constants.Use.ENCODED);
+        oper.setReturnType(new QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet"));
+        oper.setReturnClass(WebworkSOAPClassesUserSet.class);
+        oper.setReturnQName(new QName("", "get_user_setReturn"));
+        oper.setStyle(Style.RPC);
+        oper.setUse(Use.ENCODED);
         _operations[52] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -862,7 +877,6 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         _operations[53] = oper;
-
     }
 
     public WebworkSOAPSoapBindingStub() throws org.apache.axis.AxisFault {
@@ -2711,35 +2725,36 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 }
     }
 
-    public edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet get_user_set(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID, java.lang.String setID) throws java.rmi.RemoteException {
+    public WebworkSOAPClassesUserSet get_user_set(String authenKey, String courseName, String userID, String setID) throws RemoteException {
         if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
+            throw new NoEndPointException();
         }
-        org.apache.axis.client.Call _call = createCall();
+        Call _call = createCall();
         _call.setOperation(_operations[52]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_user_set"));
+        _call.setSOAPVersion(SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_user_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, userID, setID});
+        
+        try {
+        	Object _resp = _call.invoke(new Object[] {authenKey, courseName, userID, setID});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet) org.apache.axis.utils.JavaUtils.convert(_resp, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
+	        if (_resp instanceof RemoteException) {
+	            throw (RemoteException)_resp;
+	        } else {
+	        	extractAttachments(_call);
+	            try {
+	            	return (WebworkSOAPClassesUserSet) _resp;
+	            } catch (Exception _exception) {
+	                return (WebworkSOAPClassesUserSet) JavaUtils.convert(_resp, WebworkSOAPClassesUserSet.class);
+	            }
+	        }
+        } catch (AxisFault axisFaultException) {
+        	throw axisFaultException;
+		}
     }
 
     public java.lang.String delete_user_set(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID, java.lang.String setID) throws java.rmi.RemoteException {

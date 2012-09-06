@@ -366,7 +366,5 @@ public class WebworkSOAPHandlerProxy implements edu.missouri.math.webwork.Webwor
     if (webworkSOAPHandler == null)
       _initWebworkSOAPHandlerProxy();
     return webworkSOAPHandler.delete_user_set(authenKey, courseName, userID, setID);
-  }
-  
-  
+  }  
 }

@@ -407,14 +407,14 @@ public class WebworkUtil extends BuildingBlockMethods {
 		boolean dataEncryptionEnabled = false;
 		if (ConfigFile.getStaticWebworkDataSecurity() != constantDefaultWebworkDataSecurity)
 			dataEncryptionEnabled = true;
-		webworkSOAPUser.setUser_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getUserName()) : blackboardUser.getUserName());
-		webworkSOAPUser.setFirst_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getGivenName()) : blackboardUser.getGivenName());
-		webworkSOAPUser.setLast_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getFamilyName()) : blackboardUser.getFamilyName());
-		webworkSOAPUser.setStudent_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getStudentId()) : blackboardUser.getStudentId());
-		webworkSOAPUser.setEmail_address(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getEmailAddress()) : blackboardUser.getEmailAddress());
+//		webworkSOAPUser.setUser_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getUserName()) : blackboardUser.getUserName());
+//		webworkSOAPUser.setFirst_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getGivenName()) : blackboardUser.getGivenName());
+//		webworkSOAPUser.setLast_name(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getFamilyName()) : blackboardUser.getFamilyName());
+//		webworkSOAPUser.setStudent_id(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getStudentId()) : blackboardUser.getStudentId());
+//		webworkSOAPUser.setEmail_address(dataEncryptionEnabled ? getEncryptedValue(blackboardUser.getEmailAddress()) : blackboardUser.getEmailAddress());
 		webworkSOAPUser.setStatus(WebworkUtil.webworkUserStatus);
-		webworkSOAPUser.setSection(null);
-		webworkSOAPUser.setRecitation(null);
+//		webworkSOAPUser.setSection(null);
+//		webworkSOAPUser.setRecitation(null);
 		webworkSOAPUser.setComment(WebworkUtil.constantWebworkUserComments);
 		this.webworkSOAPUser = webworkSOAPUser;
 	}
@@ -712,7 +712,8 @@ public class WebworkUtil extends BuildingBlockMethods {
 	public void setCheckWebworkUserPermissions(boolean checkWebworkUserPermissions) throws RemoteException {
 		if (checkWebworkUserPermissions) {
 			if (!this.getWebworkCourseUsers().contains(this.blackboardUser.getUserName())) {
-				this.setWebworkSOAPUser(new WebworkSOAPClassesUser());
+				String str = this.blackboardUser.getUserName();
+				this.setWebworkSOAPUser(new WebworkSOAPClassesUser(this.blackboardUser));
 				try {
 					WebworkUtil.soapHandler.add_user(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.getWebworkSOAPUser());
 					LogServiceFactory.getInstance().logFatal("User Created");
@@ -788,10 +789,10 @@ public class WebworkUtil extends BuildingBlockMethods {
 	public void setAssignSetToUser(boolean assignSetToUser) {
 		if (assignSetToUser == true) {
 			try {
-				if (WebworkUtil.soapHandler.get_user_set(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.blackboardUser.getUserName(),	this.webworkCourseSet) == null)
-					WebworkUtil.soapHandler.assign_set_to_user(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.blackboardUser.getUserName(), this.webworkCourseSet);
-				else
-					LogServiceFactory.getInstance().logFatal("Set is not null");
+//				if (WebworkUtil.soapHandler.get_user_set(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.blackboardUser.getUserName(), this.webworkCourseSet) == null)
+				WebworkUtil.soapHandler.assign_set_to_user(WebworkUtil.webworkSoapAuthKey, this.webworkCourse, this.blackboardUser.getUserName(), this.webworkCourseSet);
+//				else
+//					LogServiceFactory.getInstance().logFatal("Set is not null");
 			} catch (Exception exc) {
 				LogServiceFactory.getInstance().logFatal("Logging assign_set_to_user: Failed for," + this.blackboardUser.getUserName() + this.webworkCourse 
 						+ this.webworkCourseSet, exc);

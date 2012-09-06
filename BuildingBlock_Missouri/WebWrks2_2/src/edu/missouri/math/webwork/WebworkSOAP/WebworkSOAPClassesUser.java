@@ -7,47 +7,64 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import javax.xml.namespace.QName;
+
+import blackboard.data.user.User;
+
 public class WebworkSOAPClassesUser  implements java.io.Serializable {
-    private java.lang.String user_id;
+    private String user_id;
 
-    private java.lang.String first_name;
+    private String first_name;
 
-    private java.lang.String last_name;
+    private String last_name;
 
-    private java.lang.String email_address;
+    private String email_address;
 
-    private java.lang.String student_id;
+    private String student_id;
 
-    private java.lang.String status;
+    private String status;
 
-    private java.lang.String section;
+    private String section;
 
-    private java.lang.String recitation;
+    private String recitation;
 
-    private java.lang.String comment;
+    private String comment;
 
     public WebworkSOAPClassesUser() {
+    	this.user_id = "";
+    	this.first_name = "";
+    	this.last_name = "";
+    	this.email_address = "";
+    	this.student_id = "";
+    	this.status = "";
+    	this.section = "";
+    	this.recitation = "";
+    	this.comment = "";
     }
 
-    public WebworkSOAPClassesUser(
-           java.lang.String user_id,
-           java.lang.String first_name,
-           java.lang.String last_name,
-           java.lang.String email_address,
-           java.lang.String student_id,
-           java.lang.String status,
-           java.lang.String section,
-           java.lang.String recitation,
-           java.lang.String comment) {
-           this.user_id = user_id;
-           this.first_name = first_name;
-           this.last_name = last_name;
-           this.email_address = email_address;
-           this.student_id = student_id;
-           this.status = status;
-           this.section = section;
-           this.recitation = recitation;
-           this.comment = comment;
+    public WebworkSOAPClassesUser(String user_id, String first_name, String last_name, String email_address, String student_id, String status, String section, String recitation, 
+    		String comment) {
+    	this.user_id = user_id;
+    	this.first_name = first_name;
+    	this.last_name = last_name;
+    	this.email_address = email_address;
+    	this.student_id = student_id;
+    	this.status = status;
+    	this.section = section;
+    	this.recitation = recitation;
+    	this.comment = comment;
+    }
+    
+    public WebworkSOAPClassesUser(User blackboardUser){
+    	this.user_id = blackboardUser.getUserName();
+    	this.first_name = blackboardUser.getGivenName();
+    	this.last_name = blackboardUser.getFamilyName();
+    	this.email_address = blackboardUser.getEmailAddress();
+    	this.student_id = blackboardUser.getStudentId();
+    	this.status = "";
+    	this.section = "";
+    	this.recitation = "";
+    	this.comment = "";
     }
 
 
@@ -56,7 +73,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return user_id
      */
-    public java.lang.String getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
@@ -66,7 +83,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param user_id
      */
-    public void setUser_id(java.lang.String user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
@@ -76,7 +93,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return first_name
      */
-    public java.lang.String getFirst_name() {
+    public String getFirst_name() {
         return first_name;
     }
 
@@ -86,7 +103,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param first_name
      */
-    public void setFirst_name(java.lang.String first_name) {
+    public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
 
@@ -96,7 +113,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return last_name
      */
-    public java.lang.String getLast_name() {
+    public String getLast_name() {
         return last_name;
     }
 
@@ -106,7 +123,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param last_name
      */
-    public void setLast_name(java.lang.String last_name) {
+    public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
 
@@ -116,7 +133,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return email_address
      */
-    public java.lang.String getEmail_address() {
+    public String getEmail_address() {
         return email_address;
     }
 
@@ -126,7 +143,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param email_address
      */
-    public void setEmail_address(java.lang.String email_address) {
+    public void setEmail_address(String email_address) {
         this.email_address = email_address;
     }
 
@@ -136,7 +153,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return student_id
      */
-    public java.lang.String getStudent_id() {
+    public String getStudent_id() {
         return student_id;
     }
 
@@ -146,7 +163,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param student_id
      */
-    public void setStudent_id(java.lang.String student_id) {
+    public void setStudent_id(String student_id) {
         this.student_id = student_id;
     }
 
@@ -156,7 +173,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return status
      */
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return status;
     }
 
@@ -166,7 +183,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param status
      */
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -176,7 +193,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return section
      */
-    public java.lang.String getSection() {
+    public String getSection() {
         return section;
     }
 
@@ -186,7 +203,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param section
      */
-    public void setSection(java.lang.String section) {
+    public void setSection(String section) {
         this.section = section;
     }
 
@@ -196,7 +213,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return recitation
      */
-    public java.lang.String getRecitation() {
+    public String getRecitation() {
         return recitation;
     }
 
@@ -206,7 +223,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param recitation
      */
-    public void setRecitation(java.lang.String recitation) {
+    public void setRecitation(String recitation) {
         this.recitation = recitation;
     }
 
@@ -216,7 +233,7 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @return comment
      */
-    public java.lang.String getComment() {
+    public String getComment() {
         return comment;
     }
 
@@ -226,16 +243,19 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * 
      * @param comment
      */
-    public void setComment(java.lang.String comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof WebworkSOAPClassesUser)) return false;
+        if (!(obj instanceof WebworkSOAPClassesUser)) 
+        	return false;
         WebworkSOAPClassesUser other = (WebworkSOAPClassesUser) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (obj == null) 
+        	return false;
+        if (this == obj) 
+        	return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
@@ -316,59 +336,59 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
         new org.apache.axis.description.TypeDesc(WebworkSOAPClassesUser.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUser"));
+        typeDesc.setXmlType(new QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUser"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("user_id");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "user_id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "user_id"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("first_name");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "first_name"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "first_name"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("last_name");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "last_name"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "last_name"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("email_address");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "email_address"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "email_address"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("student_id");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "student_id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "student_id"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("status");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "status"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "status"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("section");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "section"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "section"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("recitation");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "recitation"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "recitation"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("comment");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "comment"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("", "comment"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
     }
@@ -384,9 +404,9 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
+           String mechType, 
            java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return 
           new  org.apache.axis.encoding.ser.BeanSerializer(
             _javaType, _xmlType, typeDesc);
@@ -396,9 +416,9 @@ public class WebworkSOAPClassesUser  implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
+           String mechType, 
            java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return 
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
