@@ -18,15 +18,13 @@ public class Messages {
 	 * General bundle for properties specified in the package edu.missouri.
 	 */
 	private static final String BUNDLE_NAME = "edu.missouri.messages";
-	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
-			.getBundle(BUNDLE_NAME);
+	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 
 	/**
 	 * Bundle for loading the label properties (display purpose)
 	 */
 	private static final String LABEL_BUNDLE_NAME = "label";
-	private static final ResourceBundle RESOURCE_LABEL_BUNDLE = ResourceBundle
-			.getBundle(LABEL_BUNDLE_NAME);
+	private static final ResourceBundle RESOURCE_LABEL_BUNDLE = ResourceBundle.getBundle(LABEL_BUNDLE_NAME);
 
 	/**
 	 * Default constructor. No initialization until version 2.0. Can be modified

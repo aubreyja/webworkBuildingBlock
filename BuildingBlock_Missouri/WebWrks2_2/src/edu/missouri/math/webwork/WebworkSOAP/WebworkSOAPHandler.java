@@ -7,10 +7,12 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import blackboard.data.user.User;
+
 public interface WebworkSOAPHandler extends java.rmi.Remote {
     public java.lang.String hello() throws java.rmi.RemoteException;
     public java.lang.String[] list_courses(java.lang.String authenKey) throws java.rmi.RemoteException;
-    public java.lang.String login_user(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID) throws java.rmi.RemoteException;
+    public java.lang.String login_user(java.lang.String authenKey, java.lang.String courseName, User blackboardUser) throws java.rmi.RemoteException;
     public java.lang.String assign_set_to_user(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID, java.lang.String setID) throws java.rmi.RemoteException;
     public java.lang.String[] grade_users_sets(java.lang.String authenKey, java.lang.String courseName, java.lang.String[] userIDs, java.lang.String setID) throws java.rmi.RemoteException;
     public edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet get_set_data(java.lang.String authenKey, java.lang.String courseName, java.lang.String setID) throws java.rmi.RemoteException;

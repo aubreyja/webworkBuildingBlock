@@ -22,6 +22,8 @@ import org.apache.axis.description.ParameterDesc;
 import org.apache.axis.soap.SOAPConstants;
 import org.apache.axis.utils.JavaUtils;
 
+import blackboard.data.user.User;
+
 public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub implements edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPHandler {
     private Vector cachedSerClasses = new Vector();
     private Vector cachedSerQNames = new Vector();
@@ -1174,7 +1176,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 }
     }
 
-    public java.lang.String login_user(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID) throws java.rmi.RemoteException {
+    public java.lang.String login_user(java.lang.String authenKey, java.lang.String courseName, User blackboardUser) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1187,22 +1189,32 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, userID});
+        try {
+        	java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, blackboardUser.getUserName()});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
+	        if (_resp instanceof java.rmi.RemoteException) {
+	            throw (java.rmi.RemoteException)_resp;
+	        } else {
+	        	extractAttachments(_call);
+	            try {
+	                return (java.lang.String) _resp;
+	            } catch (java.lang.Exception _exception) {
+	                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+	            }
+	        }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+        	if(axisFaultException.getMessage().equals("User not found."))
+        	{
+        		WebworkSOAPClassesUser record = new WebworkSOAPClassesUser(blackboardUser);
+        		record.setStatus("C");
+        		record.setComment("User added through blackboard plugin.");
+        		add_user(authenKey, courseName, record);
+        		add_password(authenKey, courseName, new WebworkSOAPClassesPassword(blackboardUser));
+        		return login_user(authenKey, courseName, blackboardUser);
+        	} else {
+        		throw axisFaultException;
+        	}
         }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
     }
 
     public java.lang.String assign_set_to_user(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID, java.lang.String setID) throws java.rmi.RemoteException {
@@ -1298,7 +1310,8 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 }
     }
 
-    public java.lang.String add_password(java.lang.String authenKey, java.lang.String courseName, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword record) throws java.rmi.RemoteException {
+    public java.lang.String add_password(java.lang.String authenKey, java.lang.String courseName, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword record) 
+    		throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1311,22 +1324,22 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, record});
+        try {
+        	java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, record});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
+		    if (_resp instanceof java.rmi.RemoteException) {
+		        throw (java.rmi.RemoteException)_resp;
+		    } else {
+		    	extractAttachments(_call);
+	            try {
+	                return (java.lang.String) _resp;
+	            } catch (java.lang.Exception _exception) {
+	                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+	            }
+	        }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+		  throw axisFaultException;
+		}
     }
 
     public java.lang.String put_password(java.lang.String authenKey, java.lang.String courseName, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword record) throws java.rmi.RemoteException {
@@ -1763,7 +1776,8 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 }
     }
 
-    public java.lang.String add_user(java.lang.String authenKey, java.lang.String courseName, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser record) throws java.rmi.RemoteException {
+    public java.lang.String add_user(java.lang.String authenKey, java.lang.String courseName, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser record) 
+    		throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1776,22 +1790,23 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, record});
+		try {        
+			java.lang.Object _resp = _call.invoke(new java.lang.Object[] {authenKey, courseName, record});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
+	        if (_resp instanceof java.rmi.RemoteException) {
+	            throw (java.rmi.RemoteException)_resp;
+	        }
+	        else {
+	            extractAttachments(_call);
+	            try {
+	                return (java.lang.String) _resp;
+	            } catch (java.lang.Exception _exception) {
+	                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+	            }
+	        }
+		} catch (org.apache.axis.AxisFault axisFaultException) {
+			throw axisFaultException;
+		}
     }
 
     public java.lang.String put_user(java.lang.String authenKey, java.lang.String courseName, edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser record) throws java.rmi.RemoteException {

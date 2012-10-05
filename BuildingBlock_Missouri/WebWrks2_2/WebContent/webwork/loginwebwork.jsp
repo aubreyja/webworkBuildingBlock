@@ -62,7 +62,9 @@
 
 			<!-- Setting the assignment info the necessary properties.  --> 
 			<jsp:setProperty name="assignmentInfo" property="assignmentUser" value="${blackboardAccessorUtil.blackboardUser.userName }" />
+			<jsp:setProperty name="assignmentInfo" property="blackboardUser" value="${ ctx.user }" />
 			<jsp:setProperty name="assignmentInfo" property="*" />
+			<jsp:setProperty name="assignmentInfo" property="newAssignmentUrl" value="true" />
 
 			<!-- Setting the webwork util the necessary properties.  -->
 			<jsp:setProperty name="webworkAccessorUtil" property="blackboardUser" value="${ blackboardAccessorUtil.blackboardUser }" />

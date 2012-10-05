@@ -300,12 +300,19 @@ public class PublishData extends BuildingBlockMethods {
 
 	public void setCourseAndSetNames(boolean courseAndSetNames){
 		if(courseAndSetNames){
-			String[] temp = title.split("[?&=]");
-			
 			List<String> clist = new ArrayList<String>();
 			List<String> slist = new ArrayList<String>();
-			clist.add(temp[3]);
-			slist.add(temp[5]);
+			
+			String[] temp1 = title.split("[?&=]");
+			String[] temp2 = bodytext.split("[?&=]");
+			
+			if(temp1.length > 1){
+				clist.add(temp1[3]);
+				slist.add(temp1[5]);
+			} else if(temp2.length > 1){
+				clist.add(temp2[3]);
+				slist.add(temp2[5]);
+			}
 	
 			this.courseName = clist;
 			this.setName = slist;
@@ -492,8 +499,7 @@ public class PublishData extends BuildingBlockMethods {
 	 * @param assignmentsInitialStartDate
 	 *            the assignmentsInitialStartDate to set
 	 */
-	public void setAssignmentsInitialStartDate(
-			ArrayList<String> assignmentsInitialStartDate) {
+	public void setAssignmentsInitialStartDate(ArrayList<String> assignmentsInitialStartDate) {
 		this.assignmentsInitialStartDate = assignmentsInitialStartDate;
 	}
 
@@ -515,8 +521,7 @@ public class PublishData extends BuildingBlockMethods {
 	 * @param assignmentsInitialEndDate
 	 *            the assignmentsInitialEndDate to set
 	 */
-	public void setAssignmentsInitialEndDate(
-			ArrayList<String> assignmentsInitialEndDate) {
+	public void setAssignmentsInitialEndDate(ArrayList<String> assignmentsInitialEndDate) {
 		this.assignmentsInitialEndDate = assignmentsInitialEndDate;
 	}
 
@@ -718,8 +723,7 @@ public class PublishData extends BuildingBlockMethods {
 	 */
 	private void writeGradeBookItems() {
 		for (int itemNumber = 0; itemNumber < this.name.length; itemNumber++) {
-			OutcomeDefinitionCategory category = new OutcomeDefinitionCategory(
-					this.type[itemNumber]);
+			OutcomeDefinitionCategory category = new OutcomeDefinitionCategory(this.type[itemNumber]);
 			OutcomeDefinition definition = new OutcomeDefinition();
 			definition.setCategory(category);
 			Lineitem gradeBookItem = new Lineitem(definition);

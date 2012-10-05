@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import blackboard.data.user.User;
 import blackboard.platform.BbServiceException;
 import blackboard.platform.log.LogService;
 import blackboard.platform.log.LogServiceFactory;
@@ -76,13 +77,10 @@ public abstract class BuildingBlockMethods implements BuildingBlockConstants {
 	 * user can get the login key at a time. Thus, one person login key does not
 	 * messes up with the other person's key.
 	 * 
-	 * 
 	 * @return the LoginKey
 	 */
-	public static synchronized String getLoginKey(String course, String user,
-			String set) throws RemoteException {
-		return WebworkUtil.soapHandler.login_user(
-				WebworkUtil.webworkSoapAuthKey, course, user);
+	public static synchronized String getLoginKey(String course, String set, User blackboardUser) throws RemoteException {
+		return WebworkUtil.soapHandler.login_user(WebworkUtil.webworkSoapAuthKey, course, blackboardUser);
 	}
 
 	/**

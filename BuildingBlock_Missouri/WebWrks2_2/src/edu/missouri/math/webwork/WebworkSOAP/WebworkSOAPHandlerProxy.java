@@ -1,5 +1,7 @@
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import blackboard.data.user.User;
+
 public class WebworkSOAPHandlerProxy implements edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPHandler {
   private String _endpoint = null;
   private edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPHandler webworkSOAPHandler = null;
@@ -56,10 +58,10 @@ public class WebworkSOAPHandlerProxy implements edu.missouri.math.webwork.Webwor
     return webworkSOAPHandler.list_courses(authenKey);
   }
   
-  public java.lang.String login_user(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID) throws java.rmi.RemoteException{
+  public java.lang.String login_user(java.lang.String authenKey, java.lang.String courseName, User blackboardUser) throws java.rmi.RemoteException{
     if (webworkSOAPHandler == null)
       _initWebworkSOAPHandlerProxy();
-    return webworkSOAPHandler.login_user(authenKey, courseName, userID);
+    return webworkSOAPHandler.login_user(authenKey, courseName, blackboardUser);
   }
   
   public java.lang.String assign_set_to_user(java.lang.String authenKey, java.lang.String courseName, java.lang.String userID, java.lang.String setID) throws java.rmi.RemoteException{

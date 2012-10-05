@@ -4,6 +4,8 @@
 package edu.missouri;
 
 import java.rmi.RemoteException;
+
+import blackboard.data.user.User;
 import blackboard.platform.plugin.PlugInException;
 
 /**
@@ -45,6 +47,10 @@ public class AssignmentInfo extends BuildingBlockMethods {
 	 * Gradebook name in blackboard to which grades should be written.
 	 */
 	private String gradebookname = null;
+	
+	private boolean newAssignmentUrl;
+	
+	private User blackboardUser;
 
 	/**
 	 * Constructor - Default. No initializations made.
@@ -75,8 +81,7 @@ public class AssignmentInfo extends BuildingBlockMethods {
 	 *             from webwork, or any other webservice error.
 	 */
 	public String getLoginKey() throws RemoteException {
-		this.setLoginKey(BuildingBlockMethods.getLoginKey(assignmentCourse,
-				assignmentUser, assignmentSet));
+		this.setLoginKey(BuildingBlockMethods.getLoginKey(assignmentCourse, assignmentSet, blackboardUser));
 		return loginKey;
 	}
 
@@ -164,13 +169,18 @@ public class AssignmentInfo extends BuildingBlockMethods {
 	 * @return the assignmentUrl
 	 * @throws RemoteException
 	 */
-	public String getAssignmentUrl() throws RemoteException {
-		this.setAssignmentUrl(WebworkUtil.webworkSiteUrl
-				+ this.assignmentCourse + "/" + this.assignmentSet
-				+ constantWebworkSiteUserParam + this.assignmentUser
-				+ constantWebworkSiteKeyParam + this.getLoginKey());
-
-		return assignmentUrl;
+	public String getAssignmentUrl() {
+		return this.assignmentUrl;
+	}
+	
+	public void setNewAssignmentUrl(boolean newAssignmentUrl) throws RemoteException {
+		if(newAssignmentUrl)
+		{
+			String key = this.getLoginKey();
+			this.setAssignmentUrl(WebworkUtil.webworkSiteUrl + this.assignmentCourse + "/" + this.assignmentSet + constantWebworkSiteUserParam + 
+				this.assignmentUser + constantWebworkSiteKeyParam + key);
+		}
+		this.newAssignmentUrl = newAssignmentUrl;
 	}
 
 	/**
@@ -206,4 +216,11 @@ public class AssignmentInfo extends BuildingBlockMethods {
 		return gradebookname;
 	}
 
+	public void setBlackboardUser(User blackboardUser){
+		this.blackboardUser = blackboardUser;
+	}
+	
+	public User getBlackboardUser(){
+		return blackboardUser;
+	}
 }

@@ -7,6 +7,8 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import blackboard.data.user.User;
+
 public class WebworkSOAPClassesPassword  implements java.io.Serializable {
     private java.lang.String user_id;
 
@@ -15,11 +17,14 @@ public class WebworkSOAPClassesPassword  implements java.io.Serializable {
     public WebworkSOAPClassesPassword() {
     }
 
-    public WebworkSOAPClassesPassword(
-           java.lang.String user_id,
-           java.lang.String password) {
+    public WebworkSOAPClassesPassword(java.lang.String user_id, java.lang.String password) {
            this.user_id = user_id;
            this.password = password;
+    }
+
+    public WebworkSOAPClassesPassword(User blackboardUser) {
+           this.user_id = blackboardUser.getUserName();
+           this.password = blackboardUser.getPassword();
     }
 
 

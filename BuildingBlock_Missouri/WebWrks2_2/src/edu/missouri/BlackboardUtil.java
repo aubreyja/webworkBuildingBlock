@@ -882,12 +882,8 @@ public class BlackboardUtil extends BuildingBlockMethods {
 						CourseDocument contentCourseDocument = new CourseDocument();
 						Announcement contentAnnouncement = new Announcement();
 
-						/* Change comments to FormattedText as required by BB */
-						FormattedText comments = new FormattedText(this.publishData.getAssignmentComments()[assignmentNumber], FormattedText.Type.HTML);
-
 						/*
-						 * Create the URL with message information and other
-						 * params.
+						 * Create the URL with message information and other params.
 						 */
 						String assignmentUrl = Messages.getString("BlackboardUtil.3") + buildingBlockURI + Messages.getString("BlackboardUtil.4") + constantWebworkPageLink
 								+ constantAssignmentInfoCourseParam	+ this.publishData.getCourseName().get(assignmentNumber) + constantAssignmentInfoSetParam
@@ -895,11 +891,15 @@ public class BlackboardUtil extends BuildingBlockMethods {
 								+ constantAssignmentInfoCourseIdParam + this.courseNumber + constantAssignmentGradeBookNameParam + this.publishData.getName()[assignmentNumber]
 								+ Messages.getString("BlackboardUtil.5") + this.publishData.getName()[assignmentNumber] + Messages.getString("BlackboardUtil.6");
 
+						/* Change comments to FormattedText as required by BB */
+						FormattedText comments = new FormattedText(assignmentUrl + "<br /><br />" + this.publishData.getAssignmentComments()[assignmentNumber], 
+								FormattedText.Type.HTML);
+
 						/*
 						 * ALL Content Information - user preference and normal
 						 * ones. Dates are captured from the web-work.
 						 */
-						contentCourseDocument.setTitle(assignmentUrl);
+						contentCourseDocument.setTitle(this.publishData.getName()[assignmentNumber]);
 						contentCourseDocument.setBody(comments);
 						contentCourseDocument.setContentHandler(constantContentHandlerType);
 						contentCourseDocument.setCourseId(generatedCourseId);
