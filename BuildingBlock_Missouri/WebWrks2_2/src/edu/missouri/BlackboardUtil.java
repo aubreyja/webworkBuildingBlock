@@ -857,6 +857,7 @@ public class BlackboardUtil extends BuildingBlockMethods {
 			/* If it is to modify a content, or to create a new content. */
 			if (!this.publishData.getModifyRecord()) {
 				List<Lineitem> gradeBookOriginalLineItems = BlackboardUtil.gradeLineItemDb.loadByCourseId(courseIdentity);
+				List<Lineitem> gradeBookNewLineItems = new ArrayList<Lineitem>();
 
 				/* Local variable to capture which assignment failed. */
 				List<Boolean> tempRecordsSaved = null;
@@ -983,13 +984,13 @@ public class BlackboardUtil extends BuildingBlockMethods {
 								failure = true;
 							}
 							if (!failure)
-								gradeBookOriginalLineItems.add(this.publishData.getGradeBookItems().get(assignmentNumber));
+								gradeBookNewLineItems.add(this.publishData.getGradeBookItems().get(assignmentNumber));
 							LogServiceFactory.getInstance().logError("this is the type of the item: " + this.getPublishData().getType()[assignmentNumber]);
 						}
 					}
 				}
 				try {
-					BlackboardUtil.gradePersister.persist(gradeBookOriginalLineItems);
+					BlackboardUtil.gradePersister.persist(gradeBookNewLineItems);
 				} catch (ValidationException pe) {
 					LogServiceFactory.getInstance().logError("Error cannot validate the gradebook written to blackboard.");
 					failure = true;
