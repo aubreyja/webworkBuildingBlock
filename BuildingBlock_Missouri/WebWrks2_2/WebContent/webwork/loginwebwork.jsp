@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" errorPage="error/jasper.jsp"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" errorPage="error/jasper.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <!-- Tag libraries -->
@@ -72,22 +71,27 @@
 			<jsp:setProperty name="webworkAccessorUtil" property="webworkCourseSet" value="${ assignmentInfo.assignmentSet }" />
 			<jsp:setProperty name="webworkAccessorUtil" property="checkWebworkUserPermissions" value="true" />
 
-			<c:set var="messageLabel" value="${loginMessage1}${assignmentInfo.assignmentSet}, ${assignmentInfo.assignmentUser }. ${loginMessage2} " />
-			<bbNG:buttonPalette label="${messageLabel }" url="${assignmentInfo.assignmentUrl }" />
-
-			<iframe src="${assignmentInfo.assignmentUrl }" scrolling="auto" id="webworkAssignment" title="WebworkData" height="500 px" width="100%" marginheight="1 px"
+			<c:set var="messageLabel" value="${ loginMessage1 }${ assignmentInfo.assignmentSet }, ${ assignmentInfo.assignmentUser }. ${ loginMessage2 } " />
+			<!-- <bbNG:buttonPalette label="${ messageLabel }" url="${ assignmentInfo.assignmentUrl }"  /> -->
+			
+			<div style="text-align:center; width:100%; margin:20px 0 20px 0;">
+				<a href="${ assignmentInfo.assignmentUrl }" target="new">${ messageLabel }</a>
+			</div>
+			
+			
+			<iframe src="${ assignmentInfo.assignmentUrl }" scrolling="auto" id="webworkAssignment" title="WebworkData" height="500 px" width="100%" marginheight="1 px"
 				marginwidth="1 px" longdesc="" align="middle">
 				<p>${loginMessage3}</p>
 			</iframe>
 
 			<!-- Buttons in the bottom of the page. -->
 			<c:choose>
-				<c:when test="${blackboardAccessorUtil.courseInstructor}">
-					<bbNG:buttonPalette label="Grade Blackboard users" url="${blackboardAccessorUtil.buildingBlockURI }/grades.jsp" />
+				<c:when test="${ blackboardAccessorUtil.courseInstructor }">
+					<bbNG:buttonPalette label="Grade Blackboard users" url="${ blackboardAccessorUtil.buildingBlockURI }/grades.jsp" />
 				</c:when>
 				<c:otherwise>
-					<bbNG:button url="${jsPreviousPage}" label="${buttonLabelCancel}" />
-					<bbNG:button url="${currentPage}?save=true" label="${buttonLabelSave}" />
+					<bbNG:button url="${ jsPreviousPage }" label="${ buttonLabelCancel }" />
+					<bbNG:button url="${ currentPage }?save=true" label="${ buttonLabelSave }" />
 				</c:otherwise>
 			</c:choose>
 

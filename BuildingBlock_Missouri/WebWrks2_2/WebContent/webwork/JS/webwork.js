@@ -164,10 +164,8 @@ function selectCheckbox() {
  * 
  */
 function errorSelection() {
-	window
-			.alert("Are you sure you want to change the dates? THIS IS TEST VERSION, SET MIGHT EVEN BE DELETED."
-					+ "If yes, change to a valid date. \n"
-					+ "Know that you can also modify date later through Content -> Edit");
+	window.alert("Are you sure you want to change the dates? THIS IS TEST VERSION, SET MIGHT EVEN BE DELETED." + "If yes, change to a valid date. \n" + 
+		"Know that you can also modify date later through Content -> Edit");
 }
 
 /**
@@ -219,8 +217,7 @@ function validateForm() {
 				document.forms["assignmentsForm"].pointsPossible[loop].focus();
 				return false;
 			}
-			if (document.forms["assignmentsForm"].startDate[loop].value == ""
-					|| document.forms["assignmentsForm"].endDate[loop].value == "") {
+			if (document.forms["assignmentsForm"].startDate[loop].value == "" || document.forms["assignmentsForm"].endDate[loop].value == "") {
 				window.alert("Assignment Dates cannot be empty.");
 				return false;
 			}
@@ -239,8 +236,7 @@ function validateForm() {
 			document.forms["assignmentsForm"].pointsPossible.focus();
 			return false;
 		}
-		if (document.forms["assignmentsForm"].startDate.value == ""
-				|| document.forms["assignmentsForm"].endDate.value == "") {
+		if (document.forms["assignmentsForm"].startDate.value == "" || document.forms["assignmentsForm"].endDate.value == "") {
 			window.alert("Assignment Dates cannot be empty.");
 			return false;
 		}
@@ -262,12 +258,10 @@ function validatePublishForm() {
 				}
 				if (document.forms["assignmentsFailedForm"].pointsPossible[loop].value == 0) {
 					window.alert("Grades can only have a non-zero value.");
-					document.forms["assignmentsFailedForm"].pointsPossible[loop]
-							.focus();
+					document.forms["assignmentsFailedForm"].pointsPossible[loop].focus();
 					return false;
 				}
-				if (document.forms["assignmentsFailedForm"].startDate[loop].value == ""
-						|| document.forms["assignmentsFailedForm"].endDate[loop].value == "") {
+				if (document.forms["assignmentsFailedForm"].startDate[loop].value == "" || document.forms["assignmentsFailedForm"].endDate[loop].value == "") {
 					// ||
 					// (document.forms["assignmentsFailedForm"].partialDate[loop].disabled
 					// == false &&
@@ -311,17 +305,14 @@ function validatePublishForm() {
 			document.forms["assignmentsFailedForm"].pointsPossible.focus();
 			return false;
 		}
-		if (document.forms["assignmentsFailedForm"].startDate.value == ""
-				|| document.forms["assignmentsFailedForm"].endDate.value == "") {
+		if (document.forms["assignmentsFailedForm"].startDate.value == "" || document.forms["assignmentsFailedForm"].endDate.value == "") {
 			// || (document.forms["assignmentsFailedForm"].partialDate.disabled
 			// == false && document.forms["assignmentsForm"].partialDate.value
 			// == "")) {
 			window.alert("Assignment Dates cannot be empty.");
 			return false;
 		}
-		if (document.forms["assignmentsFailedForm"].type.value == ""
-				|| document.forms["assignmentsFailedForm"].type.value
-						.toUpperCase() != "Assignment".toUpperCase()) {
+		if (document.forms["assignmentsFailedForm"].type.value == "" || document.forms["assignmentsFailedForm"].type.value.toUpperCase() != "Assignment".toUpperCase()) {
 			window.alert("Assignment is the only type available right now.");
 			document.forms["assignmentsFailedForm"].type.focus();
 			return false;
@@ -358,8 +349,6 @@ function displayOtherElements() {
  * Function to change the webserver variables when one changes the SOAP.
  */
 function copyVariable() {
-	document.forms["configForm"].soapAuthKey.value = new jsUri(
-			'http://www.test.com').setHost('www.yahoo.com')
-			.setProtocol('https');
+	document.forms["configForm"].soapAuthKey.value = new jsUri('http://www.test.com').setHost('www.yahoo.com').setProtocol('https');
 	document.forms["configForm"].webServerSiteUrl.value = document.forms["configForm"].webServerLocation.value;
 }
