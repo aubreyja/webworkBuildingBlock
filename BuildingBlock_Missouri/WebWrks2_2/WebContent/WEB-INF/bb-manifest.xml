@@ -59,7 +59,9 @@
 			<permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks" actions="*" />
 
 			<!-- Permissions for the class folders to make network connections. -->
-			<permission type="java.net.SocketPermission" name="webwork.math.missouri.edu" actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="*" actions="connect,resolve,listen" />
+			
+			<!-- <permission type="java.net.SocketPermission" name="webwork.math.missouri.edu" actions="connect,resolve" />
 			<permission type="java.net.SocketPermission" name="webwork.math" actions="connect,resolve" />
 				
 			<permission type="java.net.SocketPermission" name="webwork.wpi.edu" actions="connect,resolve" />
@@ -69,7 +71,7 @@
 			<permission type="java.net.SocketPermission" name="hosted2.webwork" actions="connect,resolve" />
 			
 			<permission type="java.net.SocketPermission" name="devel1.webwork.rochester.edu" actions="connect,resolve" />
-			<permission type="java.net.SocketPermission" name="devel1.webwork" actions="connect,resolve" />
+			<permission type="java.net.SocketPermission" name="devel1.webwork" actions="connect,resolve" /> -->
 
 		</permissions>
 	</plugin>
