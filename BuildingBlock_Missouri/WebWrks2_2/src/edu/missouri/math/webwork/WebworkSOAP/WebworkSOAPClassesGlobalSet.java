@@ -7,6 +7,7 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import edu.missouri.ConfigFile;
 import javax.xml.namespace.QName;
 
 import org.apache.axis.description.ElementDesc;
@@ -573,7 +574,7 @@ public class WebworkSOAPClassesGlobalSet  implements java.io.Serializable {
     private static TypeDesc typeDesc = new TypeDesc(WebworkSOAPClassesGlobalSet.class, true);
 
     static {
-        typeDesc.setXmlType(new QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet"));
+        typeDesc.setXmlType(new QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalSet"));
         ElementDesc elemField = new ElementDesc();
         elemField.setFieldName("set_id");
         elemField.setXmlName(new QName("", "set_id"));

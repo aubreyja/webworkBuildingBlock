@@ -7,6 +7,8 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import edu.missouri.ConfigFile;
+
 public class WebworkSOAPClassesPermission  implements java.io.Serializable {
     private java.lang.String user_id;
 
@@ -106,7 +108,7 @@ public class WebworkSOAPClassesPermission  implements java.io.Serializable {
         new org.apache.axis.description.TypeDesc(WebworkSOAPClassesPermission.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPermission"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPermission"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("user_id");
         elemField.setXmlName(new javax.xml.namespace.QName("", "user_id"));

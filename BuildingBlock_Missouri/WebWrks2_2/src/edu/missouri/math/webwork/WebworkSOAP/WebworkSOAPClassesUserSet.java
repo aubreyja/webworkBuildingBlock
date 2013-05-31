@@ -7,6 +7,8 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import edu.missouri.ConfigFile;
+
 public class WebworkSOAPClassesUserSet  implements java.io.Serializable {
     private java.lang.String user_id;
 
@@ -616,7 +618,7 @@ public class WebworkSOAPClassesUserSet  implements java.io.Serializable {
         new org.apache.axis.description.TypeDesc(WebworkSOAPClassesUserSet.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserSet"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("user_id");
         elemField.setXmlName(new javax.xml.namespace.QName("", "user_id"));

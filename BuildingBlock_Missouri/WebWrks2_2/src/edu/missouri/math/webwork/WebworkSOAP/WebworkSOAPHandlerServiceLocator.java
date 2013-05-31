@@ -7,6 +7,8 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import edu.missouri.ConfigFile;
+
 public class WebworkSOAPHandlerServiceLocator extends org.apache.axis.client.Service implements edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPHandlerService {
 
     public WebworkSOAPHandlerServiceLocator() {
@@ -105,7 +107,7 @@ public class WebworkSOAPHandlerServiceLocator extends org.apache.axis.client.Ser
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPHandlerService");
+        return new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPHandlerService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +115,7 @@ public class WebworkSOAPHandlerServiceLocator extends org.apache.axis.client.Ser
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAP"));
+            ports.add(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAP"));
         }
         return ports.iterator();
     }

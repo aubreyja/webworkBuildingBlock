@@ -7,6 +7,7 @@
 
 package edu.missouri.math.webwork.WebworkSOAP;
 
+import edu.missouri.ConfigFile;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
@@ -58,7 +59,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.setName("list_courses");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "authenKey"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_coursesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -103,11 +104,11 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "grade_users_setsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -122,7 +123,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalSet"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_set_dataReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -135,7 +136,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPassword"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPassword"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -150,7 +151,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPassword"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPassword"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -165,7 +166,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_passwordReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -178,9 +179,9 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"), java.lang.String[].class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesPassword"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesPassword"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_passwordsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -200,7 +201,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPassword"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPassword"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_passwordReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -213,7 +214,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPermission"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPermission"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -228,7 +229,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPermission"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPermission"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -243,7 +244,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_permissionsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -256,9 +257,9 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"), java.lang.String[].class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesPermission"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesPermission"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_permissionsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -273,7 +274,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPermission"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPermission"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_permissionReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -286,7 +287,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesKey"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesKey"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -301,7 +302,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesKey"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesKey"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -316,7 +317,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_keysReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -329,9 +330,9 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"), java.lang.String[].class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesKey"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesKey"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_keysReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -351,7 +352,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesKey"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesKey"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_keyReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -364,7 +365,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUser"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUser"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -379,7 +380,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUser"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUser"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -394,7 +395,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_usersReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -409,7 +410,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUser"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUser"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_userReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -422,9 +423,9 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"), java.lang.String[].class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUser"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUser"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_usersReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -452,7 +453,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -467,7 +468,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -482,7 +483,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_global_setsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -500,7 +501,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesGlobalSet"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesGlobalSet"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_all_global_setsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -513,9 +514,9 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"), java.lang.String[].class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesGlobalSet"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesGlobalSet"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_global_setsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -530,7 +531,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalSet"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_global_setReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -558,7 +559,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -573,7 +574,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -590,7 +591,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_global_problemsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -605,7 +606,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesGlobalProblem"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesGlobalProblem"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_all_global_problemsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -622,7 +623,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "problemID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalProblem"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalProblem"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_global_problemReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -657,7 +658,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -672,7 +673,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserProblem"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -691,7 +692,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_user_problemsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -708,7 +709,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "setID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUserProblem"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUserProblem"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_all_user_problemsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -721,9 +722,9 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userProblemIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userProblemIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"), java.lang.String[].class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUserProblem"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUserProblem"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_user_problemsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -742,7 +743,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "problemID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserProblem"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserProblem"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_user_problemReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -774,7 +775,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -789,7 +790,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "record"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserSet"), edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
@@ -806,7 +807,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "list_user_setsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -824,7 +825,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "courseName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUserSet"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUserSet"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_all_user_setsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -839,7 +840,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "userSetIDs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUserSet"));
+        oper.setReturnType(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUserSet"));
         oper.setReturnClass(edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "get_user_setsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
@@ -856,7 +857,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         oper.addParameter(param);
         param = new ParameterDesc(new QName("", "setID"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet"));
+        oper.setReturnType(new QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserSet"));
         oper.setReturnClass(WebworkSOAPClassesUserSet.class);
         oper.setReturnQName(new QName("", "get_user_setReturn"));
         oper.setStyle(Style.RPC);
@@ -910,7 +911,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
             java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfString");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfString");
             cachedSerQNames.add(qName);
             cls = java.lang.String[].class;
             cachedSerClasses.add(cls);
@@ -919,128 +920,128 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesGlobalProblem");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesGlobalProblem");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalProblem");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalProblem");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesGlobalSet");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesGlobalSet");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalSet");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesKey");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesKey");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesKey");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesKey");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesPassword");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesPassword");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPassword");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPassword");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesPermission");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesPermission");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPermission");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPermission");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUser");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUser");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUser");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUser");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUserProblem");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUserProblem");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserProblem");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserProblem");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "ArrayOfWebworkSOAPClassesUserSet");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "ArrayOfWebworkSOAPClassesUserSet");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet[].class;
             cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserSet");
             qName2 = null;
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalProblem");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalProblem");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalProblem.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesGlobalSet");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesGlobalSet");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesGlobalSet.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesKey");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesKey");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesKey.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPassword");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPassword");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPassword.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesPermission");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesPermission");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesPermission.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUser");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUser");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUser.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserProblem");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserProblem");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserProblem.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "WebworkSOAPClassesUserSet");
+            qName = new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "WebworkSOAPClassesUserSet");
             cachedSerQNames.add(qName);
             cls = edu.missouri.math.webwork.WebworkSOAP.WebworkSOAPClassesUserSet.class;
             cachedSerClasses.add(cls);
@@ -1123,7 +1124,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "hello"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "hello"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1154,7 +1155,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_courses"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_courses"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1185,7 +1186,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "login_user"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "login_user"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1226,7 +1227,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "assign_set_to_user"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "assign_set_to_user"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1257,7 +1258,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "grade_users_sets"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "grade_users_sets"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1288,7 +1289,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_set_data"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_set_data"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1320,7 +1321,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_password"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_password"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1351,7 +1352,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_password"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_password"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1382,7 +1383,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_password"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_password"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1413,7 +1414,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_passwords"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_passwords"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1444,7 +1445,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_password"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_password"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1475,7 +1476,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_permission"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_permission"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1506,7 +1507,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_permission"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_permission"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1537,7 +1538,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_permissions"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_permissions"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1568,7 +1569,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_permissions"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_permissions"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1599,7 +1600,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_permission"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_permission"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1630,7 +1631,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_key"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_key"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1661,7 +1662,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_key"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_key"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1692,7 +1693,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_keys"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_keys"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1723,7 +1724,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_keys"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_keys"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1754,7 +1755,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_key"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_key"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1786,7 +1787,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_user"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_user"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1818,7 +1819,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_user"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_user"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1849,7 +1850,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
 		_call.setUseSOAPAction(true);
 		_call.setSOAPActionURI("");
 		_call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-		_call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_users"));
+		_call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_users"));
 		
 		setRequestHeaders(_call);
 		setAttachments(_call);
@@ -1881,7 +1882,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_user"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_user"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1912,7 +1913,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_users"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_users"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1943,7 +1944,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "delete_user"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "delete_user"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1974,7 +1975,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_global_set"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_global_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2005,7 +2006,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_global_set"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_global_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2036,7 +2037,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_global_sets"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_global_sets"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2067,7 +2068,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_all_global_sets"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_all_global_sets"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2098,7 +2099,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_global_sets"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_global_sets"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2129,7 +2130,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_global_set"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_global_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2160,7 +2161,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "delete_global_set"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "delete_global_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2191,7 +2192,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_global_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_global_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2222,7 +2223,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_global_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_global_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2253,7 +2254,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_global_problems"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_global_problems"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2284,7 +2285,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_all_global_problems"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_all_global_problems"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2315,7 +2316,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_global_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_global_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2346,7 +2347,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "delete_global_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "delete_global_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2377,7 +2378,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_user_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_user_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2408,7 +2409,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_user_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_user_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2439,7 +2440,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_user_problems"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_user_problems"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2470,7 +2471,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_all_user_problems"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_all_user_problems"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2501,7 +2502,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_user_problems"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_user_problems"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2532,7 +2533,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_user_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_user_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2563,7 +2564,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "delete_user_problem"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "delete_user_problem"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2594,7 +2595,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "add_user_set"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "add_user_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2625,7 +2626,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "put_user_set"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "put_user_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2656,7 +2657,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "list_user_sets"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "list_user_sets"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2687,7 +2688,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_all_user_sets"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_all_user_sets"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2718,7 +2719,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_user_sets"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_user_sets"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2749,7 +2750,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new QName("https://webwork.math.missouri.edu/WebworkSOAP", "get_user_set"));
+        _call.setOperationName(new QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "get_user_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2781,7 +2782,7 @@ public class WebworkSOAPSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("https://webwork.math.missouri.edu/WebworkSOAP", "delete_user_set"));
+        _call.setOperationName(new javax.xml.namespace.QName(ConfigFile.getWebServiceLocations("WebworkService.WebServerLocation"), "delete_user_set"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
