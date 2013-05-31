@@ -9,8 +9,12 @@ For configuration information see
 
 http://webwork.maa.org/wiki/Blackboard
 
-Unless otherwise indicated the building block code is Copyright 2010-2013 
-University of Missouri and University of Rochester.
+Ongoing development is being done by the [University of Missouri's Application Developer's Network](http://adn.missouri.edu/).
+The building block is based on code originally developed by the IT group at the University of Rochester and graciously
+provided to MU for continued development.
+
+This repository intended to be a mirror of the active [svn repository](http://webwork.maa.org/viewvc/bbplugin/trunk/).
+Unless otherwise indicated the building block code is Copyright 2010-2013 University of Missouri and University of Rochester.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
